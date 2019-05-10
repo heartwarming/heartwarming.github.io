@@ -96,7 +96,17 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_01.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_02.png">
-<meta property="og:updated_time" content="2019-05-10T04:51:43.608Z">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_03.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_04.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_05.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_06.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_07.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_08.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_09.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_10.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_12.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_13.png">
+<meta property="og:updated_time" content="2019-05-10T05:03:31.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内存管理">
 <meta name="twitter:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  内存管理的速成课程要理解为什么将ArrayBuffer和SharedArrayBuffer添加到JavaScript">
@@ -478,33 +488,33 @@
 <p>这些盒子中的每一个都是相同的大小，可以容纳一定数量的信息。盒子的大小是机器特有的。该大小称为字大小。它通常类似于32位或64位。但是为了更容易显示，我将使用8位的字大小。</p>
 <p><img src="/images/memory_02.png" alt></p>
 <p>如果我们想将数字2放在其中一个框中，我们可以轻松完成。数字很容易用二进制表示。</p>
-<p><a href="/images/memory_03.png"></a></p>
+<p><img src="/images/memory_03.png" alt></p>
 <p>如果我们想要一些不是数字的东西呢？喜欢字母H？</p>
 <p>我们需要有办法将其表示为数字。为此，我们需要一种编码，如UTF-8。我们需要一些东西把它变成那个数字……就像一个编码器环。然后我们可以存储它。</p>
-<p><a href="/images/memory_04.png"></a></p>
+<p><img src="/images/memory_04.png" alt></p>
 <p>当我们想要将它从包装盒中取出时，我们必须通过解码器将其转换回H.</p>
 <p><strong>自动内存管理</strong><br>当你在JavaScript中工作时，你实际上并不需要考虑这个记忆。它被抽象出来了。这意味着您不要直接触摸内存。</p>
 <p>相反，JS引擎充当中介。它为您管理内存。</p>
-<p><a href="/images/memory_05.png"></a><br>一列盒子，前面有一根绳子，JS引擎就像弹跳器一样站在那根绳子上</p>
+<p><img src="/images/memory_05.png" alt><br>一列盒子，前面有一根绳子，JS引擎就像弹跳器一样站在那根绳子上</p>
 <p>所以让我们说一些JS代码，比如React，想要创建一个变量。</p>
-<p><a href="/images/memory_06.png"></a></p>
+<p><img src="/images/memory_06.png" alt></p>
 <p>JS引擎所做的是通过编码器运行该值以获取值的二进制表示。</p>
-<p><a href="/images/memory_07.png"></a><br>JS引擎使用编码器环将字符串转换为二进制</p>
+<p><img src="/images/memory_07.png" alt><br>JS引擎使用编码器环将字符串转换为二进制</p>
 <p>它会在内存中找到可以将二进制表示放入的空间。此过程称为分配内存。</p>
-<p><a href="/images/memory_08.png"></a><br>JS引擎在框的列中查找二进制文件的空间</p>
+<p><img src="/images/memory_08.png" alt><br>JS引擎在框的列中查找二进制文件的空间</p>
 <p>然后，引擎将跟踪该变量是否仍可从程序中的任何位置访问。如果无法再访问该变量，则将回收内存，以便JS引擎可以在其中放置新值。</p>
-<p><a href="/images/memory_09.png"></a><br>垃圾收集器清除内存</p>
+<p><img src="/images/memory_09.png" alt><br>垃圾收集器清除内存</p>
 <p>这个监视变量字符串，对象和其他类型值的过程在内存中进行，并在无法再访问它们时将其清除，称为垃圾回收。</p>
 <p>JavaScript之类的语言（代码不直接处理内存）称为内存管理语言。</p>
 <p>这种自动内存管理可以使开发人员更轻松。但它也增加了一些开销。而这种开销有时会使性能无法预测。</p>
 <p><strong>手动内存管理</strong><br>手动管理内存的语言不同。例如，让我们看看如果React是用C语言编写的，React将如何处理内存（现在可以  使用WebAssembly）。</p>
 <p>C没有JavaScript在内存上做的那个抽象层。相反，你直接在内存上运行。您可以从内存加载内容，并可以将内容存储到内存中。</p>
-<p><a href="/images/memory_09.png"></a><br>React的WebAssembly版本直接使用内存</p>
+<p><img src="/images/memory_10.png" alt><br>React的WebAssembly版本直接使用内存</p>
 <p>当您将C或其他语言编译为WebAssembly时，您使用的工具会在WebAssembly中添加一些帮助程序代码。例如，它将添加执行编码和解码字节的代码。此代码称为运行时环境。运行时环境将帮助处理JS引擎为JS所做的一些事情。</p>
-<p><a href="/images/memory_10.png"></a><br>编码器环作为.wasm文件的一部分传送下来</p>
+<p><img src="/images/memory_12.png" alt><br>编码器环作为.wasm文件的一部分传送下来</p>
 <p>但对于手动管理的语言，该运行时将不包括垃圾收集。</p>
 <p>这并不意味着你完全依靠自己。即使在具有手动内存管理的语言中，您通常也会从语言运行时获得一些帮助。例如，在C中，运行时将跟踪在称为空闲列表的内容中打开的内存地址。</p>
-<p><a href="/images/memory_11.png"></a><br>列框旁边的空闲列表，列出哪些框现在是免费的</p>
+<p><img src="/images/memory_13.png" alt><br>列框旁边的空闲列表，列出哪些框现在是免费的</p>
 <p>您可以使用该函数malloc（内存分配的简称）来要求运行时查找一些适合您数据的内存地址。这将从免费列表中取出这些地址。当您完成该数据后，您必须调用free以释放内存。然后这些地址将被添加回空闲列表。</p>
 <p>你必须弄清楚何时调用这些功能。这就是为什么它被称为手动内存管理 - 你自己管理内存。</p>
 <p>作为开发人员，弄清楚何时清除内存的不同部分可能很困难。如果你在错误的时间进行，它可能会导致错误，甚至导致安全漏洞。如果你不这样做，你的内存就会耗尽。</p>
