@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://heartwarming.github.io/images/es2017.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/es2018.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/es2019.png">
-<meta property="og:updated_time" content="2019-05-10T04:28:53.152Z">
+<meta property="og:updated_time" content="2019-05-10T10:05:41.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES7&#x2F;ES8&#x2F;ES9&#x2F;10新特性介绍">
 <meta name="twitter:description" content="ES7新特性(ECMAScript 2016)ES7在ES6的基础上主要添加了两项内容：  Array.prototype.includes()方法 求幂运算符(**)  Array.prototype.includes()方法includes() 方法用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false。123456789101112var array =">
@@ -513,7 +513,7 @@
 <p>并行处理多个异步函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">async function asyncFunc() &#123;</span><br><span class="line">    const [result1, result2] = await Promise.all([</span><br><span class="line">        otherAsyncFunc1(),</span><br><span class="line">        otherAsyncFunc2(),</span><br><span class="line">    ]);</span><br><span class="line">    console.log(result1, result2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Equivalent to:</span><br><span class="line">function asyncFunc() &#123;</span><br><span class="line">    return Promise.all([</span><br><span class="line">        otherAsyncFunc1(),</span><br><span class="line">        otherAsyncFunc2(),</span><br><span class="line">    ])</span><br><span class="line">    .then([result1, result2] =&gt; &#123;</span><br><span class="line">        console.log(result1, result2);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>处理错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">async function asyncFunc() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        await otherAsyncFunc();</span><br><span class="line">    &#125; catch (err) &#123;</span><br><span class="line">        console.error(err);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Equivalent to:</span><br><span class="line">function asyncFunc() &#123;</span><br><span class="line">    return otherAsyncFunc()</span><br><span class="line">    .catch(err =&gt; &#123;</span><br><span class="line">        console.error(err);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Async Functions若是要展开去讲，可以占用很大段的篇幅。鉴于本文是一篇介绍性文章，再次不再进行深入。</p>
-<h2 id="SharedArrayBuffer和Atomics"><a href="#SharedArrayBuffer和Atomics" class="headerlink" title="SharedArrayBuffer和Atomics"></a>SharedArrayBuffer和Atomics</h2><p>注，如果之前您没有接触过ArrayBuffer相关知识的话，建议您移步<a href="https://heartwarming.github.io/categories/cache/">https://heartwarming.github.io/categories/cache/</a><br>ECMAScript 2017 特性 SharedArrayBuffer 和 atomics”，由Lars T. Hansen设计。它引入了一个新的构造函数 SharedArrayBuffer 和 具有辅助函数的命名空间对象 Atomics。</p>
+<h2 id="SharedArrayBuffer和Atomics"><a href="#SharedArrayBuffer和Atomics" class="headerlink" title="SharedArrayBuffer和Atomics"></a>SharedArrayBuffer和Atomics</h2><p>注，如果之前您没有接触过ArrayBuffer相关知识的话，建议您移步<a href="https://heartwarming.github.io/categories/memory/">https://heartwarming.github.io/categories/memory/</a><br>ECMAScript 2017 特性 SharedArrayBuffer 和 atomics”，由Lars T. Hansen设计。它引入了一个新的构造函数 SharedArrayBuffer 和 具有辅助函数的命名空间对象 Atomics。</p>
 <p>在我们开始之前，让我们澄清两个相似但截然不同的术语：并行(Parallelism) 和 并发(Concurrency) 。他们存在许多定义，我使用的定义如下</p>
 <ul>
 <li>并行(Parallelism) (parallel 并行 vs. serial 串行)：同时执行多个任务；</li>
@@ -854,8 +854,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/heartwarming.github.io/2019/05/07/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/heartwarming.github.io/2019/05/07/内存管理2/" rel="next" title="内存管理">
+                <i class="fa fa-chevron-left"></i> 内存管理
               </a>
             
           </div>
@@ -863,10 +863,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/heartwarming.github.io/2019/05/07/内存管理/" rel="prev" title="内存管理">
-                内存管理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -974,7 +970,7 @@ var jiathis_config={
               
                 <a href="/heartwarming.github.io/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
