@@ -86,13 +86,13 @@
 
 
 
-<meta name="description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  ArrayBuffers和SharedArrayBuffers的介绍在上一部分中，我解释了像JavaScript这样">
+<meta name="description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识： 内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  ArrayBuffers和SharedArrayBuffers的介绍在上一部分中，我解释了像JavaScript这样的内存管理语言如何处">
 <meta name="keywords" content="导航,分享">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存管理">
+<meta property="og:title" content="内存管理2">
 <meta property="og:url" content="http://heartwarming.github.io/2019/05/07/内存管理2/index.html">
 <meta property="og:site_name" content="付海秋">
-<meta property="og:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  ArrayBuffers和SharedArrayBuffers的介绍在上一部分中，我解释了像JavaScript这样">
+<meta property="og:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识： 内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  ArrayBuffers和SharedArrayBuffers的介绍在上一部分中，我解释了像JavaScript这样的内存管理语言如何处">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_13.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_14.png">
@@ -109,10 +109,10 @@
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_25.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_26.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_27.png">
-<meta property="og:updated_time" content="2019-05-10T10:36:32.803Z">
+<meta property="og:updated_time" content="2019-05-10T10:43:10.295Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存管理">
-<meta name="twitter:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  ArrayBuffers和SharedArrayBuffers的介绍在上一部分中，我解释了像JavaScript这样">
+<meta name="twitter:title" content="内存管理2">
+<meta name="twitter:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识： 内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  ArrayBuffers和SharedArrayBuffers的介绍在上一部分中，我解释了像JavaScript这样的内存管理语言如何处">
 <meta name="twitter:image" content="http://heartwarming.github.io/images/memory_13.png">
 
 
@@ -149,7 +149,7 @@
 
 
 
-  <title>内存管理 | 付海秋</title>
+  <title>内存管理2 | 付海秋</title>
   
 
 
@@ -359,7 +359,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">内存管理</h1>
+          <h1 class="post-title" itemprop="name headline">内存管理2</h1>
         
 
         <div class="post-meta">
@@ -477,9 +477,8 @@
       
 
       
-        <h1 id="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："><a href="#关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：" class="headerlink" title="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："></a>关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：</h1><p>本文分为三部分介绍</p>
-<ul>
-<li><a href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理/#more">内存管理的速成课程</a></li>
+        <h1 id="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："><a href="#关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：" class="headerlink" title="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："></a>关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：</h1><ul>
+<li><a href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理1/#more">内存管理的速成课程</a></li>
 <li>ArrayBuffers和SharedArrayBuffers的介绍</li>
 <li><a href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理3/#more">使用Atomics避免SharedArrayBuffers中的竞争条件</a></li>
 </ul>
@@ -601,8 +600,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/heartwarming.github.io/2019/05/07/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/heartwarming.github.io/2019/05/07/内存管理3/" rel="next" title="内存管理3">
+                <i class="fa fa-chevron-left"></i> 内存管理3
               </a>
             
           </div>
@@ -611,8 +610,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/heartwarming.github.io/2019/05/07/内存管理/" rel="prev" title="内存管理">
-                内存管理 <i class="fa fa-chevron-right"></i>
+              <a href="/heartwarming.github.io/2019/05/07/内存管理1/" rel="prev" title="内存管理1">
+                内存管理1 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
