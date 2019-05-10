@@ -104,9 +104,18 @@
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_08.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_09.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_10.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_11.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_12.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/memory_13.png">
-<meta property="og:updated_time" content="2019-05-10T05:03:31.906Z">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_14.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_15.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_16.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_17.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_18.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_19.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_20.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/memory_21.png">
+<meta property="og:updated_time" content="2019-05-10T05:12:58.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内存管理">
 <meta name="twitter:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  内存管理的速成课程要理解为什么将ArrayBuffer和SharedArrayBuffer添加到JavaScript">
@@ -437,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6.9k
+                  6.6k
                 </span>
               
 
@@ -453,7 +462,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  23
+                  22
                 </span>
               
             </div>
@@ -495,26 +504,26 @@
 <p>当我们想要将它从包装盒中取出时，我们必须通过解码器将其转换回H.</p>
 <p><strong>自动内存管理</strong><br>当你在JavaScript中工作时，你实际上并不需要考虑这个记忆。它被抽象出来了。这意味着您不要直接触摸内存。</p>
 <p>相反，JS引擎充当中介。它为您管理内存。</p>
-<p><img src="/images/memory_05.png" alt><br>一列盒子，前面有一根绳子，JS引擎就像弹跳器一样站在那根绳子上</p>
+<p><img src="/images/memory_05.png" alt></p>
 <p>所以让我们说一些JS代码，比如React，想要创建一个变量。</p>
 <p><img src="/images/memory_06.png" alt></p>
 <p>JS引擎所做的是通过编码器运行该值以获取值的二进制表示。</p>
-<p><img src="/images/memory_07.png" alt><br>JS引擎使用编码器环将字符串转换为二进制</p>
+<p><img src="/images/memory_07.png" alt></p>
 <p>它会在内存中找到可以将二进制表示放入的空间。此过程称为分配内存。</p>
-<p><img src="/images/memory_08.png" alt><br>JS引擎在框的列中查找二进制文件的空间</p>
+<p><img src="/images/memory_08.png" alt></p>
 <p>然后，引擎将跟踪该变量是否仍可从程序中的任何位置访问。如果无法再访问该变量，则将回收内存，以便JS引擎可以在其中放置新值。</p>
-<p><img src="/images/memory_09.png" alt><br>垃圾收集器清除内存</p>
+<p><img src="/images/memory_09.png" alt></p>
 <p>这个监视变量字符串，对象和其他类型值的过程在内存中进行，并在无法再访问它们时将其清除，称为垃圾回收。</p>
 <p>JavaScript之类的语言（代码不直接处理内存）称为内存管理语言。</p>
 <p>这种自动内存管理可以使开发人员更轻松。但它也增加了一些开销。而这种开销有时会使性能无法预测。</p>
 <p><strong>手动内存管理</strong><br>手动管理内存的语言不同。例如，让我们看看如果React是用C语言编写的，React将如何处理内存（现在可以  使用WebAssembly）。</p>
 <p>C没有JavaScript在内存上做的那个抽象层。相反，你直接在内存上运行。您可以从内存加载内容，并可以将内容存储到内存中。</p>
-<p><img src="/images/memory_10.png" alt><br>React的WebAssembly版本直接使用内存</p>
+<p><img src="/images/memory_10.png" alt></p>
 <p>当您将C或其他语言编译为WebAssembly时，您使用的工具会在WebAssembly中添加一些帮助程序代码。例如，它将添加执行编码和解码字节的代码。此代码称为运行时环境。运行时环境将帮助处理JS引擎为JS所做的一些事情。</p>
-<p><img src="/images/memory_12.png" alt><br>编码器环作为.wasm文件的一部分传送下来</p>
+<p><img src="/images/memory_11.png" alt></p>
 <p>但对于手动管理的语言，该运行时将不包括垃圾收集。</p>
 <p>这并不意味着你完全依靠自己。即使在具有手动内存管理的语言中，您通常也会从语言运行时获得一些帮助。例如，在C中，运行时将跟踪在称为空闲列表的内容中打开的内存地址。</p>
-<p><img src="/images/memory_13.png" alt><br>列框旁边的空闲列表，列出哪些框现在是免费的</p>
+<p><img src="/images/memory_12.png" alt></p>
 <p>您可以使用该函数malloc（内存分配的简称）来要求运行时查找一些适合您数据的内存地址。这将从免费列表中取出这些地址。当您完成该数据后，您必须调用free以释放内存。然后这些地址将被添加回空闲列表。</p>
 <p>你必须弄清楚何时调用这些功能。这就是为什么它被称为手动内存管理 - 你自己管理内存。</p>
 <p>作为开发人员，弄清楚何时清除内存的不同部分可能很困难。如果你在错误的时间进行，它可能会导致错误，甚至导致安全漏洞。如果你不这样做，你的内存就会耗尽。</p>
@@ -524,36 +533,36 @@
 <p>这是因为ArrayBuffers为您提供了一种手动处理某些数据的方法，即使您使用的是具有自动内存管理功能的JavaScript。</p>
 <p>为什么这是你想做的事情？</p>
 <p>正如我们在上一部分中所讨论的那样，在自动内存管理方面存在一种权衡。对开发人员来说更容易，但它增加了一些开销。在某些情况下，这种开销会导致性能问题。</p>
-<p><a href="/images/memory_12.png"></a><br>平衡量表显示自动内存管理更容易理解，但更难以快速进行</p>
+<p><img src="/images/memory_13.png" alt></p>
 <p>例如，当您在JS中创建变量时，引擎必须猜测这是什么类型的变量以及它应该如何在内存中表示。因为它在猜测，JS引擎通常会保留比变量真正需要的空间更多的空间。根据变量，内存插槽可能比它需要的大2-8倍，这可能导致大量浪费的内存。</p>
 <p>此外，某些创建和使用JS对象的模式可能会使收集垃圾变得更加困难。如果您正在进行手动内存管理，则可以选择适合您正在使用的用例的分配和取消分配策略。</p>
 <p>大多数时候，这不值得麻烦。大多数用例对性能不敏感，您需要担心手动内存管理。对于常见用例，手动内存管理可能会更慢。</p>
 <p>但是，当您需要在低级别工作以尽可能快地使代码时，ArrayBuffers和SharedArrayBuffers会为您提供一个选项。</p>
-<p><a href="/images/memory_13.png"></a><br>平衡秤显示手动内存管理为您提供了更多的性能微调控制，但需要更多的思考和规划</p>
+<p><img src="/images/memory_14.png" alt></p>
 <p><strong>那么ArrayBuffer是如何工作的呢？</strong><br>它基本上就像使用任何其他JavaScript数组一样。除了使用ArrayBuffer时，您不能将任何JavaScript类型放入其中，如对象或字符串。您可以添加的唯一内容是字节（您可以使用数字表示）。</p>
-<p><a href="/images/memory_14.png"></a><br>两个数组，一个可以包含数字，对象，字符串等的普通数组，以及一个只能包含字节的ArrayBuffer</p>
+<p><img src="/images/memory_15.png" alt></p>
 <p>我应该在这里说清楚的一点是，你实际上并没有将这个字节直接添加到ArrayBuffer中。就其本身而言，这个ArrayBuffer不知道该字节应该有多大，或者不应该将不同类型的数字转换为字节。</p>
 <p>ArrayBuffer本身只是一堆零和一行。ArrayBuffer不知道该数组中第一个元素和第二个元素之间的除法位置。</p>
-<p><a href="/images/memory_15.png"></a><br>一堆零和一行中的零</p>
+<p><img src="/images/memory_16.png" alt></p>
 <p>为了提供上下文，实际上将其分解为框，我们需要将其包装在所谓的视图中。可以使用类型化数组添加这些数据视图，并且可以使用许多不同类型的类型化数组。</p>
 <p>例如，您可以使用Int8类型的数组，将其分解为8位字节。</p>
-<p><a href="/images/memory_16.png"></a><br>那些零和零分成8个方框</p>
+<p><img src="/images/memory_17.png" alt></p>
 <p>或者你可以有一个无符号的Int16数组，它可以将它分解为16位的数据，并且还可以像处理无符号整数一样处理它。</p>
-<p><a href="/images/memory_17.png"></a><br>那些零和零被分成16个盒子</p>
+<p><img src="/images/memory_18.png" alt></p>
 <p>您甚至可以在同一个基本缓冲区上拥有多个视图。不同的视图将为您提供相同操作的不同结果。</p>
 <p>例如，如果我们从这个ArrayBuffer的Int8视图中获取元素0和1，它将在Uint16视图中给出与元素0不同的值，即使它们包含完全相同的位。</p>
-<p><a href="/images/memory_18.png"></a><br>那些零和零被分成16个盒子</p>
+<p><img src="/images/memory_19.png" alt></p>
 <p>通过这种方式，ArrayBuffer基本上就像原始内存一样。它模仿了像C这样的语言的直接内存访问。</p>
 <p>您可能想知道为什么我们不让程序员直接访问内存而不是添加这个抽象层。直接访问内存会打开一些安全漏洞。我将在以后的部分中详细解释这个问题。</p>
 <p>那么，什么是SharedArrayBuffer？<br>为了解释SharedArrayBuffers，我需要解释一下并行运行代码和JavaScript。</p>
 <p>您可以并行运行代码以使代码运行得更快，或使代码更快地响应用户事件。为此，您需要拆分工作。</p>
 <p>在一个典型的应用程序中，工作由一个人 - 主线程完成。我之前已经谈过这个……主线程就像一个全栈开发者。它负责JavaScript，DOM和布局。</p>
 <p>您可以采取任何措施从主线程的工作负载中删除工作。在某些情况下，ArrayBuffers可以减少主线程必须完成的工作量。</p>
-<p><a href="/images/memory_19.png"></a><br>主要线程站在它的办公桌与一堆文书工作。 该堆的顶部已被删除</p>
+<p><img src="/images/memory_20.png" alt></p>
 <p>但有时候减少主线程的工作量是不够的。有时你需要引进增援……你需要分开工作。</p>
 <p>在大多数编程语言中，通常使用称为线程的方法来分解工作。这基本上就像有多个人在一个项目上工作。如果您的任务彼此非常独立，则可以将它们分配给不同的线程。然后，这两个线程可以同时处理它们各自的任务。</p>
 <p>在JavaScript中，您执行此操作的方式是使用称为Web worker的东西。这些Web工作者与您在其他语言中使用的线程略有不同。默认情况下，它们不共享内存。</p>
-<p><a href="/images/memory_20.png"></a><br>书桌上的两个线程彼此相邻。 他们成堆的文书工作比以前高一半。 每个下面都有一块内存，但没有连接到另一个内存</p>
+<p><img src="/images/memory_21.png" alt></p>
 <p>这意味着如果要与其他线程共享某些数据，则必须将其复制。这是通过函数postMessage完成的。</p>
 <p>postMessage接受您放入其中的任何对象，对其进行序列化，将其发送给其他Web工作者，然后将其反序列化并放入内存中。</p>
 <p>线程1通过序列化它与线程2共享内存，将其发送到其中，然后将其复制到线程2的内存中</p>
