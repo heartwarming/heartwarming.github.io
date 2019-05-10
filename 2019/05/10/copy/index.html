@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="付海秋">
 <meta property="og:description" content="深拷贝，浅拷贝的概念简单点来说，就是假设B赋值了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 为什么拷贝有深浅之分我们来举个浅拷贝例子：12345let a=[0,1,2,3,4],    b=a;console.log(a===b);a[0]=1;console.log(a,b); 结果如下：  b赋值给了a，为啥修改数组a，数组b也跟着变了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://heartwarming.github.io/images/c1.jpg">
+<meta property="og:image" content="http://heartwarming.github.io/images/c1.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/c2.jpg">
 <meta property="og:image" content="http://heartwarming.github.io/images/c3.jpg">
 <meta property="og:image" content="http://heartwarming.github.io/images/c4.jpg">
@@ -106,11 +106,11 @@
 <meta property="og:image" content="http://heartwarming.github.io/images/c10.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/c11.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/c11.png">
-<meta property="og:updated_time" content="2019-05-10T13:30:39.066Z">
+<meta property="og:updated_time" content="2019-05-10T13:36:50.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深，浅拷贝">
 <meta name="twitter:description" content="深拷贝，浅拷贝的概念简单点来说，就是假设B赋值了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 为什么拷贝有深浅之分我们来举个浅拷贝例子：12345let a=[0,1,2,3,4],    b=a;console.log(a===b);a[0]=1;console.log(a,b); 结果如下：  b赋值给了a，为啥修改数组a，数组b也跟着变了。">
-<meta name="twitter:image" content="http://heartwarming.github.io/images/c1.jpg">
+<meta name="twitter:image" content="http://heartwarming.github.io/images/c1.png">
 
 
 
@@ -477,7 +477,7 @@
         <h1 id="深拷贝，浅拷贝的概念"><a href="#深拷贝，浅拷贝的概念" class="headerlink" title="深拷贝，浅拷贝的概念"></a>深拷贝，浅拷贝的概念</h1><p>简单点来说，就是假设B赋值了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。</p>
 <h2 id="为什么拷贝有深浅之分"><a href="#为什么拷贝有深浅之分" class="headerlink" title="为什么拷贝有深浅之分"></a>为什么拷贝有深浅之分</h2><p>我们来举个浅拷贝例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let a=[0,1,2,3,4],</span><br><span class="line">    b=a;</span><br><span class="line">console.log(a===b);</span><br><span class="line">a[0]=1;</span><br><span class="line">console.log(a,b);</span><br></pre></td></tr></table></figure></p>
 <p>结果如下：</p>
-<p><img src="/images/c1.jpg" alt></p>
+<p><img src="/images/c1.png" alt></p>
 <p>b赋值给了a，为啥修改数组a，数组b也跟着变了。</p>
 <p>那么这里，就得引入基本数据类型与引用数据类型的概念了</p>
 <p>基本数据类型有，number，string，boolean，null，undefined，symbol以及未来ES10新增的BigInt(任意精度整数)七类。</p>
