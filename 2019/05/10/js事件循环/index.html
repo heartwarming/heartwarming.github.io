@@ -86,31 +86,21 @@
 
 
 
-<meta name="description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  内存管理的速成课程要理解为什么将ArrayBuffer和SharedArrayBuffer添加到JavaScript">
+<meta name="description" content="这一次，彻底弄懂 JavaScript 执行机制因为javascript是一门单线程语言，所以我们可以得出结论：  javascript是按照语句出现的顺序执行的  所以我们以为js都是这样的：12345const a = &amp;apos;1&amp;apos;;console.log(a);const b = &amp;apos;2&amp;apos;;console.log(b); 然而实际上js是这样的：12345se">
 <meta name="keywords" content="导航,分享">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存管理1">
-<meta property="og:url" content="http://heartwarming.github.io/2019/05/07/内存管理1/index.html">
+<meta property="og:title" content="这一次，彻底弄懂JavaScript执行机制">
+<meta property="og:url" content="http://heartwarming.github.io/2019/05/10/js事件循环/index.html">
 <meta property="og:site_name" content="付海秋">
-<meta property="og:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  内存管理的速成课程要理解为什么将ArrayBuffer和SharedArrayBuffer添加到JavaScript">
+<meta property="og:description" content="这一次，彻底弄懂 JavaScript 执行机制因为javascript是一门单线程语言，所以我们可以得出结论：  javascript是按照语句出现的顺序执行的  所以我们以为js都是这样的：12345const a = &amp;apos;1&amp;apos;;console.log(a);const b = &amp;apos;2&amp;apos;;console.log(b); 然而实际上js是这样的：12345se">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_01.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_02.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_03.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_04.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_05.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_06.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_07.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_08.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_09.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_10.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_11.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_12.png">
-<meta property="og:updated_time" content="2019-05-10T10:45:39.625Z">
+<meta property="og:image" content="http://heartwarming.github.io/images/el_01.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/el_02.png">
+<meta property="og:updated_time" content="2019-05-10T12:21:27.580Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存管理1">
-<meta name="twitter:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  内存管理的速成课程要理解为什么将ArrayBuffer和SharedArrayBuffer添加到JavaScript">
-<meta name="twitter:image" content="http://heartwarming.github.io/images/memory_01.png">
+<meta name="twitter:title" content="这一次，彻底弄懂JavaScript执行机制">
+<meta name="twitter:description" content="这一次，彻底弄懂 JavaScript 执行机制因为javascript是一门单线程语言，所以我们可以得出结论：  javascript是按照语句出现的顺序执行的  所以我们以为js都是这样的：12345const a = &amp;apos;1&amp;apos;;console.log(a);const b = &amp;apos;2&amp;apos;;console.log(b); 然而实际上js是这样的：12345se">
+<meta name="twitter:image" content="http://heartwarming.github.io/images/el_01.png">
 
 
 
@@ -140,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://heartwarming.github.io/2019/05/07/内存管理1/">
+  <link rel="canonical" href="http://heartwarming.github.io/2019/05/10/js事件循环/">
 
 
 
 
 
-  <title>内存管理1 | 付海秋</title>
+  <title>这一次，彻底弄懂JavaScript执行机制 | 付海秋</title>
   
 
 
@@ -339,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理1/">
+    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/10/js事件循环/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fuhaiqiu">
@@ -356,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">内存管理1</h1>
+          <h1 class="post-title" itemprop="name headline">这一次，彻底弄懂JavaScript执行机制</h1>
         
 
         <div class="post-meta">
@@ -368,8 +358,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-07T21:55:45+08:00">
-                2019-05-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-10T19:06:45+08:00">
+                2019-05-10
               </time>
             
 
@@ -391,8 +381,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/heartwarming.github.io/categories/memory/" itemprop="url" rel="index">
-                    <span itemprop="name">memory</span>
+                  <a href="/heartwarming.github.io/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -409,8 +399,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/heartwarming.github.io/2019/05/07/内存管理1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/05/07/内存管理1/" itemprop="commentCount"></span>
+                <a href="/heartwarming.github.io/2019/05/10/js事件循环/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/05/10/js事件循环/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -437,7 +427,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  3.2k
                 </span>
               
 
@@ -453,7 +443,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  12
                 </span>
               
             </div>
@@ -474,51 +464,146 @@
       
 
       
-        <h1 id="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："><a href="#关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：" class="headerlink" title="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："></a>关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：</h1><p>本文分为三部分介绍</p>
+        <h1 id="这一次，彻底弄懂-JavaScript-执行机制"><a href="#这一次，彻底弄懂-JavaScript-执行机制" class="headerlink" title="这一次，彻底弄懂 JavaScript 执行机制"></a>这一次，彻底弄懂 JavaScript 执行机制</h1><p>因为javascript是一门单线程语言，所以我们可以得出结论：</p>
 <ul>
-<li>内存管理的速成课程</li>
-<li><a href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理2/#more">ArrayBuffers和SharedArrayBuffers的介绍</a></li>
-<li><a href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理3/#more">使用Atomics避免SharedArrayBuffers中的竞争条件</a></li>
+<li>javascript是按照语句出现的顺序执行的</li>
 </ul>
-<h2 id="内存管理的速成课程"><a href="#内存管理的速成课程" class="headerlink" title="内存管理的速成课程"></a>内存管理的速成课程</h2><p>要理解为什么将ArrayBuffer和SharedArrayBuffer添加到JavaScript中，您需要了解一些有关内存管理的知识。</p>
-<p>您可以将机器中的内存视为一堆盒子。我认为这些就像你在办公室里的邮箱，或学龄前儿童必须存放东西的小房间。</p>
-<p>如果您需要为其他孩子留下一些东西，可以将它放在一个盒子里。</p>
-<p><img src="/images/memory_01.png" alt></p>
-<p>在这些框的每一个旁边，您都有一个数字，即内存地址。这就是你如何告诉别人在哪里找到你留给他们的东西。</p>
-<p>这些盒子中的每一个都是相同的大小，可以容纳一定数量的信息。盒子的大小是机器特有的。该大小称为字大小。它通常类似于32位或64位。但是为了更容易显示，我将使用8位的字大小。</p>
-<p><img src="/images/memory_02.png" alt></p>
-<p>如果我们想将数字2放在其中一个框中，我们可以轻松完成。数字很容易用二进制表示。</p>
-<p><img src="/images/memory_03.png" alt></p>
-<p>如果我们想要一些不是数字的东西呢？喜欢字母H？</p>
-<p>我们需要有办法将其表示为数字。为此，我们需要一种编码，如UTF-8。我们需要一些东西把它变成那个数字……就像一个编码器环。然后我们可以存储它。</p>
-<p><img src="/images/memory_04.png" alt></p>
-<p>当我们想要将它从包装盒中取出时，我们必须通过解码器将其转换回H.</p>
-<p><strong>自动内存管理</strong><br>当你在JavaScript中工作时，你实际上并不需要考虑这个记忆。它被抽象出来了。这意味着您不要直接触摸内存。</p>
-<p>相反，JS引擎充当中介。它为您管理内存。</p>
-<p><img src="/images/memory_05.png" alt></p>
-<p>所以让我们说一些JS代码，比如React，想要创建一个变量。</p>
-<p><img src="/images/memory_06.png" alt></p>
-<p>JS引擎所做的是通过编码器运行该值以获取值的二进制表示。</p>
-<p><img src="/images/memory_07.png" alt></p>
-<p>它会在内存中找到可以将二进制表示放入的空间。此过程称为分配内存。</p>
-<p><img src="/images/memory_08.png" alt></p>
-<p>然后，引擎将跟踪该变量是否仍可从程序中的任何位置访问。如果无法再访问该变量，则将回收内存，以便JS引擎可以在其中放置新值。</p>
-<p><img src="/images/memory_09.png" alt></p>
-<p>这个监视变量字符串，对象和其他类型值的过程在内存中进行，并在无法再访问它们时将其清除，称为垃圾回收。</p>
-<p>JavaScript之类的语言（代码不直接处理内存）称为内存管理语言。</p>
-<p>这种自动内存管理可以使开发人员更轻松。但它也增加了一些开销。而这种开销有时会使性能无法预测。</p>
-<p><strong>手动内存管理</strong><br>手动管理内存的语言不同。例如，让我们看看如果React是用C语言编写的，React将如何处理内存（现在可以  使用WebAssembly）。</p>
-<p>C没有JavaScript在内存上做的那个抽象层。相反，你直接在内存上运行。您可以从内存加载内容，并可以将内容存储到内存中。</p>
-<p><img src="/images/memory_10.png" alt></p>
-<p>当您将C或其他语言编译为WebAssembly时，您使用的工具会在WebAssembly中添加一些帮助程序代码。例如，它将添加执行编码和解码字节的代码。此代码称为运行时环境。运行时环境将帮助处理JS引擎为JS所做的一些事情。</p>
-<p><img src="/images/memory_11.png" alt></p>
-<p>但对于手动管理的语言，该运行时将不包括垃圾收集。</p>
-<p>这并不意味着你完全依靠自己。即使在具有手动内存管理的语言中，您通常也会从语言运行时获得一些帮助。例如，在C中，运行时将跟踪在称为空闲列表的内容中打开的内存地址。</p>
-<p><img src="/images/memory_12.png" alt></p>
-<p>您可以使用该函数malloc（内存分配的简称）来要求运行时查找一些适合您数据的内存地址。这将从免费列表中取出这些地址。当您完成该数据后，您必须调用free以释放内存。然后这些地址将被添加回空闲列表。</p>
-<p>你必须弄清楚何时调用这些功能。这就是为什么它被称为手动内存管理 - 你自己管理内存。</p>
-<p>作为开发人员，弄清楚何时清除内存的不同部分可能很困难。如果你在错误的时间进行，它可能会导致错误，甚至导致安全漏洞。如果你不这样做，你的内存就会耗尽。</p>
-<p>这就是许多现代语言使用自动内存管理的原因 - 以避免人为错误。但这是以牺牲性能为代价的。我将在下一部分中详细解释这一点。</p>
+<p>所以我们以为js都是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = &apos;1&apos;;</span><br><span class="line">console.log(a);</span><br><span class="line"></span><br><span class="line">const b = &apos;2&apos;;</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure></p>
+<p>然而实际上js是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span><br><span class="line">    console.log(&apos;定时器开始啦&apos;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(&apos;代码执行结束&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>依照js是按照语句出现的顺序执行这个理念，我自信的写下输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//&quot;定时器开始啦&quot;</span><br><span class="line">//&quot;代码执行结束&quot;</span><br></pre></td></tr></table></figure></p>
+<p>去chrome上验证下，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//&quot;代码执行结束&quot;</span><br><span class="line">//&quot;定时器开始啦&quot;</span><br></pre></td></tr></table></figure></p>
+<p>结果是这样的,瞬间懵了，说好的一行一行执行的呢？<br>这回我们真的要彻底弄明白javascript的执行机制了。</p>
+<h2 id="为什么JavaScript是单线程？"><a href="#为什么JavaScript是单线程？" class="headerlink" title="为什么JavaScript是单线程？"></a>为什么JavaScript是单线程？</h2><p>JavaScript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。那么，为什么JavaScript不能有多个线程呢？这样能提高效率啊。</p>
+<p>JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？</p>
+<p>所以，为了避免复杂性，从一诞生，JavaScript就是单线程，这已经成了这门语言的核心特征，将来也不会改变。</p>
+<p>为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质。</p>
+<h2 id="javascript事件循环"><a href="#javascript事件循环" class="headerlink" title="javascript事件循环"></a>javascript事件循环</h2><p>既然js是单线程，那就像只有一个窗口的银行，客户需要排队一个一个办理业务，同理js任务也要一个一个顺序执行。如果一个任务耗时过长，那么后一个任务也必须等着。那么问题来了，假如我们想浏览新闻，但是新闻包含的超清图片加载很慢，难道我们的网页要一直卡着直到图片完全显示出来？因此聪明的程序员将任务分为两类：</p>
+<ul>
+<li>同步任务</li>
+<li>异步任务</li>
+</ul>
+<p>当我们打开网站时，网页的渲染过程就是一大堆同步任务，比如页面骨架和页面元素的渲染。而像加载图片音乐之类占用资源大耗时久的任务，就是异步任务。关于这部分有严格的文字定义，但本文的目的是用最小的学习成本彻底弄懂执行机制，所以我们用导图来说明：<br><img src="/images/el_01.png" alt><br>导图要表达的内容用文字来表述的话：</p>
+<ul>
+<li>同步和异步任务分别进入不同的执行”场所”，同步的进入主线程，异步的进入Event Table并注册函数。</li>
+<li>当指定的事情完成时，Event Table会将这个函数移入Event Queue。</li>
+<li>主线程内的任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程执行。</li>
+<li>上述过程会不断重复，也就是常说的Event Loop(事件循环)。</li>
+</ul>
+<p>我们不禁要问了，那怎么知道主线程执行栈为空啊？js引擎存在monitoring process进程，会持续不断的检查主线程执行栈是否为空，一旦为空，就会去Event Queue那里检查是否有等待被调用的函数。<br>说了这么多文字，不如直接一段代码更直白：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const data = [];</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url:www.javascript.com,</span><br><span class="line">    data:data,</span><br><span class="line">    success:() =&gt; &#123;</span><br><span class="line">        console.log(&apos;发送成功!&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(&apos;代码执行结束&apos;);</span><br></pre></td></tr></table></figure>
+<p>上面是一段简易的ajax请求代码：</p>
+<ul>
+<li>ajax进入Event Table，注册回调函数success。</li>
+<li>执行console.log(‘代码执行结束’)。</li>
+<li>ajax事件完成，回调函数success进入Event Queue。</li>
+<li>主线程从Event Queue读取回调函数success并执行。</li>
+</ul>
+<p>相信通过上面的文字和代码，你已经对js的执行顺序有了初步了解。接下来我们来研究进阶话题：setTimeout。</p>
+<h2 id="又爱又恨的setTimeout"><a href="#又爱又恨的setTimeout" class="headerlink" title="又爱又恨的setTimeout"></a>又爱又恨的setTimeout</h2><p>大名鼎鼎的setTimeout无需再多言，大家对他的第一印象就是异步可以延时执行，我们经常这么实现延时3秒执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    console.log(&apos;延时3秒&apos;);</span><br><span class="line">&#125;,3000)</span><br></pre></td></tr></table></figure></p>
+<p>渐渐的setTimeout用的地方多了，问题也出现了，有时候明明写的延时3秒，实际却5，6秒才执行函数，这又咋回事啊？<br>先看一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    task();</span><br><span class="line">&#125;,3000)</span><br><span class="line">console.log(&apos;执行console&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>根据前面我们的结论，setTimeout是异步的，应该先执行console.log这个同步任务，所以我们的结论是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//执行console</span><br><span class="line">//task()</span><br></pre></td></tr></table></figure></p>
+<p>去验证一下，结果正确！然后我们修改一下前面的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    task()</span><br><span class="line">&#125;,3000)</span><br><span class="line"></span><br><span class="line">sleep(10000000)</span><br></pre></td></tr></table></figure></p>
+<p>乍一看其实差不多嘛，但我们把这段代码在chrome执行一下，却发现控制台执行task()需要的时间远远超过3秒，说好的延时三秒，为啥现在需要这么长时间啊？<br>这时候我们需要重新理解setTimeout的定义。我们先说上述代码是怎么执行的：</p>
+<ul>
+<li>task()进入Event Table并注册,计时开始。</li>
+<li>执行sleep函数，很慢，非常慢，计时仍在继续。</li>
+<li>3秒到了，计时事件timeout完成，task()进入Event Queue，但是sleep也太慢了吧，还没执行完，只好等着。</li>
+<li>sleep终于执行完了，task()终于从Event Queue进入了主线程执行。</li>
+</ul>
+<p>上述的流程走完，我们知道setTimeout这个函数，是经过指定时间后，把要执行的任务(本例中为task())加入到Event Queue中，又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间远远大于3秒。<br>我们还经常遇到setTimeout(fn,0)这样的代码，0秒后执行又是什么意思呢？是不是可以立即执行呢？<br>答案是不会的，setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少秒了，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行。举例说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//代码1</span><br><span class="line">console.log(&apos;先执行这里&apos;);</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    console.log(&apos;执行啦&apos;)</span><br><span class="line">&#125;,0);复制代码//代码2</span><br><span class="line">console.log(&apos;先执行这里&apos;);</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    console.log(&apos;执行啦&apos;)</span><br><span class="line">&#125;,3000);</span><br></pre></td></tr></table></figure></p>
+<p>代码1的输出结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//先执行这里</span><br><span class="line">//执行啦复制代码代码2的输出结果是：</span><br><span class="line">//先执行这里</span><br><span class="line">// ... 3s later</span><br><span class="line">// 执行啦</span><br></pre></td></tr></table></figure></p>
+<p>关于setTimeout要补充的是，即便主线程为空，0毫秒实际上也是达不到的。根据HTML的标准，最低是4毫秒。有兴趣的同学可以自行了解。</p>
+<h2 id="又恨又爱的setInterval"><a href="#又恨又爱的setInterval" class="headerlink" title="又恨又爱的setInterval"></a>又恨又爱的setInterval</h2><p>上面说完了setTimeout，当然不能错过它的孪生兄弟setInterval。他俩差不多，只不过后者是循环的执行。对于执行顺序来说，setInterval会每隔指定的时间将注册的函数置入Event Queue，如果前面的任务耗时太久，那么同样需要等待。<br>唯一需要注意的一点是，对于setInterval(fn,ms)来说，我们已经知道不是每过ms秒会执行一次fn，而是每过ms秒，会有fn进入Event Queue。一旦setInterval的回调函数fn执行时间超过了延迟时间ms，那么就完全看不出来有时间间隔了。这句话请读者仔细品味。</p>
+<h2 id="Promise与process-nextTick-callback"><a href="#Promise与process-nextTick-callback" class="headerlink" title="Promise与process.nextTick(callback)"></a>Promise与process.nextTick(callback)</h2><p>传统的定时器我们已经研究过了，接着我们探究Promise与process.nextTick(callback)的表现。<br>Promise的定义和功能本文不再赘述，不了解的读者可以学习一下阮一峰老师的Promise。而process.nextTick(callback)类似node.js版的”setTimeout”，在事件循环的下一次循环中调用 callback 回调函数。<br>我们进入正题，除了广义的同步任务和异步任务，我们对任务有更精细的定义：</p>
+<ul>
+<li>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval</li>
+<li>micro-task(微任务)：Promise，process.nextTick</li>
+</ul>
+<p>不同类型的任务会进入对应的Event Queue，比如setTimeout和setInterval会进入相同的Event Queue。<br>事件循环的顺序，决定js代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。听起来有点绕，我们用文章最开始的一段代码说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&apos;setTimeout&apos;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Promise(function(resolve) &#123;</span><br><span class="line">    console.log(&apos;promise&apos;);</span><br><span class="line">&#125;).then(function() &#123;</span><br><span class="line">    console.log(&apos;then&apos;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(&apos;console&apos;);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>这段代码作为宏任务，进入主线程。</li>
+<li>先遇到setTimeout，那么将其回调函数注册后分发到宏任务Event Queue。(注册过程与上同，下文不再描述)</li>
+<li>接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。</li>
+<li>遇到console.log()，立即执行。</li>
+<li>好啦，整体代码script作为第一个宏任务执行结束，看看有哪些微任务？我们发现了then在微任务Event Queue里面，执行。</li>
+<li>ok，第一轮事件循环结束了，我们开始第二轮循环，当然要从宏任务Event Queue开始。我们发现了宏任务Event Queue中setTimeout对应的回调函数，立即执行。</li>
+<li>结束。</li>
+</ul>
+<p>事件循环，宏任务，微任务的关系如图所示：</p>
+<p><img src="/images/el_02.png" alt></p>
+<p>我们来分析一段较复杂的代码，看看你是否真的掌握了js的执行机制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;1&apos;);</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&apos;2&apos;);</span><br><span class="line">    process.nextTick(function() &#123;</span><br><span class="line">        console.log(&apos;3&apos;);</span><br><span class="line">    &#125;)</span><br><span class="line">    new Promise(function(resolve) &#123;</span><br><span class="line">        console.log(&apos;4&apos;);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(function() &#123;</span><br><span class="line">        console.log(&apos;5&apos;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">process.nextTick(function() &#123;</span><br><span class="line">    console.log(&apos;6&apos;);</span><br><span class="line">&#125;)</span><br><span class="line">new Promise(function(resolve) &#123;</span><br><span class="line">    console.log(&apos;7&apos;);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(function() &#123;</span><br><span class="line">    console.log(&apos;8&apos;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&apos;9&apos;);</span><br><span class="line">    process.nextTick(function() &#123;</span><br><span class="line">        console.log(&apos;10&apos;);</span><br><span class="line">    &#125;)</span><br><span class="line">    new Promise(function(resolve) &#123;</span><br><span class="line">        console.log(&apos;11&apos;);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(function() &#123;</span><br><span class="line">        console.log(&apos;12&apos;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>第一轮事件循环流程分析如下：</p>
+<ul>
+<li>整体script作为第一个宏任务进入主线程，遇到console.log，输出1。</li>
+<li>遇到setTimeout，其回调函数被分发到宏任务Event Queue中。我们暂且记为setTimeout1。</li>
+<li>遇到process.nextTick()，其回调函数被分发到微任务Event Queue中。我们记为process1。</li>
+<li>遇到Promise，new Promise直接执行，输出7。then被分发到微任务Event Queue中。我们记为then1。</li>
+<li>又遇到了setTimeout，其回调函数被分发到宏任务Event Queue中，我们记为setTimeout2。</li>
+</ul>
+<p><strong>宏任务Event Queue</strong></p>
+<ul>
+<li>setTimeout1</li>
+<li>process1</li>
+</ul>
+<p><strong>微任务Event Queue</strong></p>
+<ul>
+<li>setTimeout2</li>
+<li>then1</li>
+</ul>
+<p>上面是第一轮事件循环宏任务结束时各Event Queue的情况，此时已经输出了1和7。</p>
+<p>我们发现了process1和then1两个微任务。</p>
+<ul>
+<li>执行process1,输出6。</li>
+<li>执行then1，输出8。</li>
+</ul>
+<p>好了，第一轮事件循环正式结束，这一轮的结果是输出1，7，6，8。那么第二轮时间循环从setTimeout1宏任务开始：</p>
+<ul>
+<li>首先输出2。接下来遇到了process.nextTick()，同样将其分发到微任务Event Queue中，记为process2。new Promise立即执行输出4，then也分发到微任务Event Queue中，记为then2。</li>
+</ul>
+<p><strong>宏任务Event Queue</strong></p>
+<ul>
+<li>setTimeout2</li>
+</ul>
+<p><strong>微任务Event Queue</strong></p>
+<ul>
+<li>process2</li>
+<li><p>then2</p>
+</li>
+<li><p>第二轮事件循环宏任务结束，我们发现有process2和then2两个微任务可以执行。</p>
+</li>
+<li>输出3。</li>
+<li>输出5。</li>
+<li>第二轮事件循环结束，第二轮输出2，4，3，5。</li>
+<li>第三轮事件循环开始，此时只剩setTimeout2了，执行。</li>
+<li>直接输出9。</li>
+<li>将process.nextTick()分发到微任务Event Queue中。记为process3。</li>
+<li>直接执行new Promise，输出11。</li>
+<li>将then分发到微任务Event Queue中，记为then3。</li>
+</ul>
+<p><strong>宏任务Event Queue</strong></p>
+<ul>
+<li>无</li>
+</ul>
+<p><strong>微任务Event Queue</strong></p>
+<ul>
+<li>process3</li>
+<li><p>then3</p>
+</li>
+<li><p>第三轮事件循环宏任务执行结束，执行两个微任务process3和then3。</p>
+</li>
+<li>输出10。</li>
+<li>输出12。</li>
+<li>第三轮事件循环结束，第三轮输出9，11，10，12。</li>
+</ul>
+<p>整段代码，共进行了三次事件循环，完整的输出为1，7，6，8，2，4，3，5，9，11，10，12。</p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>Tips: js执行和运行是有很大区别的</p>
+<ul>
+<li>javascript在不同的环境下，比如node，浏览器，Ringo等等，执行方式是不同的。</li>
+<li>运行大多指javascript解析引擎，是统一的。</li>
+</ul>
+<blockquote>
+<p><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">https://juejin.im/post/59e85eebf265da430d571f89</a><br><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a></p>
+</blockquote>
 
       
     </div>
@@ -580,8 +665,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/heartwarming.github.io/2019/05/07/内存管理3/" rel="next" title="内存管理3">
-                <i class="fa fa-chevron-left"></i> 内存管理3
+              <a href="/heartwarming.github.io/2019/05/07/内存管理1/" rel="next" title="内存管理1">
+                <i class="fa fa-chevron-left"></i> 内存管理1
               </a>
             
           </div>
@@ -590,8 +675,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/heartwarming.github.io/2019/05/10/js事件循环/" rel="prev" title="这一次，彻底弄懂JavaScript执行机制">
-                这一次，彻底弄懂JavaScript执行机制 <i class="fa fa-chevron-right"></i>
+              <a href="/heartwarming.github.io/2019/05/10/copy/" rel="prev" title="深，浅拷贝">
+                深，浅拷贝 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -789,7 +874,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："><span class="nav-number">1.</span> <span class="nav-text">关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存管理的速成课程"><span class="nav-number">1.1.</span> <span class="nav-text">内存管理的速成课程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#这一次，彻底弄懂-JavaScript-执行机制"><span class="nav-number">1.</span> <span class="nav-text">这一次，彻底弄懂 JavaScript 执行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么JavaScript是单线程？"><span class="nav-number">1.1.</span> <span class="nav-text">为什么JavaScript是单线程？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript事件循环"><span class="nav-number">1.2.</span> <span class="nav-text">javascript事件循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#又爱又恨的setTimeout"><span class="nav-number">1.3.</span> <span class="nav-text">又爱又恨的setTimeout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#又恨又爱的setInterval"><span class="nav-number">1.4.</span> <span class="nav-text">又恨又爱的setInterval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise与process-nextTick-callback"><span class="nav-number">1.5.</span> <span class="nav-text">Promise与process.nextTick(callback)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尾声"><span class="nav-number">1.6.</span> <span class="nav-text">尾声</span></a></li></ol></li></ol></div>
             
 
           </div>

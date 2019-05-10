@@ -322,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/07/ES7-ES8-ES9-10新特性学习/">
+    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/10/copy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fuhaiqiu">
@@ -341,7 +341,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/heartwarming.github.io/2019/05/07/ES7-ES8-ES9-10新特性学习/" itemprop="url">ES7/ES8/ES9/10新特性介绍</a></h1>
+                <a class="post-title-link" href="/heartwarming.github.io/2019/05/10/copy/" itemprop="url">深，浅拷贝</a></h1>
         
 
         <div class="post-meta">
@@ -353,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-07T21:55:45+08:00">
-                2019-05-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-10T21:06:45+08:00">
+                2019-05-10
               </time>
             
 
@@ -394,8 +394,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/heartwarming.github.io/2019/05/07/ES7-ES8-ES9-10新特性学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/05/07/ES7-ES8-ES9-10新特性学习/" itemprop="commentCount"></span>
+                <a href="/heartwarming.github.io/2019/05/10/copy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/05/10/copy/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -417,7 +417,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  9.4k
+                  1.2k
                 </span>
               
 
@@ -433,7 +433,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  41
+                  5
                 </span>
               
             </div>
@@ -456,16 +456,205 @@
       
         
           
-          ES7新特性(ECMAScript 2016)ES7在ES6的基础上主要添加了两项内容：
-
-Array.prototype.includes()方法
-求幂运算符(**)
-
-Array.prototype.includes()方法includes() 方法用来判断一个数组是否包含一个指定的值，根据情况
+          深拷贝，浅拷贝的概念简单点来说，就是假设B赋值了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。
+为什么拷贝有深浅之分我们来举个浅拷贝例子：12345let a=[0,1,2,3,4],    b=a;console.log(a===b);a[0]=1
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/heartwarming.github.io/2019/05/07/ES7-ES8-ES9-10新特性学习/#more" rel="contents">
+            <a class="btn" href="/heartwarming.github.io/2019/05/10/copy/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/10/js事件循环/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fuhaiqiu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/heartwarming.github.io/images/user1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付海秋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/heartwarming.github.io/2019/05/10/js事件循环/" itemprop="url">这一次，彻底弄懂JavaScript执行机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-10T19:06:45+08:00">
+                2019-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/heartwarming.github.io/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/heartwarming.github.io/2019/05/10/js事件循环/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/05/10/js事件循环/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          这一次，彻底弄懂 JavaScript 执行机制因为javascript是一门单线程语言，所以我们可以得出结论：
+
+javascript是按照语句出现的顺序执行的
+
+所以我们以为js都是这样的：12345const a = &apos;1&apos;;console.log(a);const b =
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/heartwarming.github.io/2019/05/10/js事件循环/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -711,6 +900,200 @@ ArrayBuffers和SharedArrayBuffers的介绍
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fuhaiqiu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/heartwarming.github.io/images/user1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付海秋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/heartwarming.github.io/2019/05/07/内存管理3/" itemprop="url">内存管理3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-07T21:55:45+08:00">
+                2019-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/heartwarming.github.io/categories/memory/" itemprop="url" rel="index">
+                    <span itemprop="name">memory</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/heartwarming.github.io/2019/05/07/内存管理3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/05/07/内存管理3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：
+内存管理的速成课程
+ArrayBuffers和SharedArrayBuffers的介绍
+[使用Atomics避免SharedArrayBuffers中的竞争条件]
+
+使用Atomics避免Share
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/heartwarming.github.io/2019/05/07/内存管理3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -905,7 +1288,7 @@ ArrayBuffers和Share
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理3/">
+    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/07/ES7-ES8-ES9-10新特性学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fuhaiqiu">
@@ -924,7 +1307,7 @@ ArrayBuffers和Share
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/heartwarming.github.io/2019/05/07/内存管理3/" itemprop="url">内存管理3</a></h1>
+                <a class="post-title-link" href="/heartwarming.github.io/2019/05/07/ES7-ES8-ES9-10新特性学习/" itemprop="url">ES7/ES8/ES9/10新特性介绍</a></h1>
         
 
         <div class="post-meta">
@@ -936,7 +1319,7 @@ ArrayBuffers和Share
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-07T21:55:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-07T19:55:45+08:00">
                 2019-05-07
               </time>
             
@@ -959,8 +1342,8 @@ ArrayBuffers和Share
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/heartwarming.github.io/categories/memory/" itemprop="url" rel="index">
-                    <span itemprop="name">memory</span>
+                  <a href="/heartwarming.github.io/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -977,8 +1360,8 @@ ArrayBuffers和Share
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/heartwarming.github.io/2019/05/07/内存管理3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/05/07/内存管理3/" itemprop="commentCount"></span>
+                <a href="/heartwarming.github.io/2019/05/07/ES7-ES8-ES9-10新特性学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/05/07/ES7-ES8-ES9-10新特性学习/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1000,7 +1383,7 @@ ArrayBuffers和Share
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3k
+                  9.4k
                 </span>
               
 
@@ -1016,7 +1399,7 @@ ArrayBuffers和Share
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  41
                 </span>
               
             </div>
@@ -1039,16 +1422,16 @@ ArrayBuffers和Share
       
         
           
-          关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：
-内存管理的速成课程
-ArrayBuffers和SharedArrayBuffers的介绍
-[使用Atomics避免SharedArrayBuffers中的竞争条件]
+          ES7新特性(ECMAScript 2016)ES7在ES6的基础上主要添加了两项内容：
 
-使用Atomics避免Share
+Array.prototype.includes()方法
+求幂运算符(**)
+
+Array.prototype.includes()方法includes() 方法用来判断一个数组是否包含一个指定的值，根据情况
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/heartwarming.github.io/2019/05/07/内存管理3/#more" rel="contents">
+            <a class="btn" href="/heartwarming.github.io/2019/05/07/ES7-ES8-ES9-10新特性学习/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1301,7 +1684,7 @@ ArrayBuffers和SharedArrayBuffers的介绍
               
                 <a href="/heartwarming.github.io/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
