@@ -86,13 +86,13 @@
 
 
 
-<meta name="description" content="深拷贝，浅拷贝的概念简单点来说，就是假设B赋值了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 为什么拷贝有深浅之分我们来举个浅拷贝例子：12345let a=[0,1,2,3,4],    b=a;console.log(a===b);a[0]=1;console.log(a,b); 结果如下：  b赋值给了a，为啥修改数组a，数组b也跟着变了。">
+<meta name="description" content="深拷贝，浅拷贝的概念简单点来说，就是假设通过B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 为什么拷贝有深浅之分我们来举个浅拷贝例子：12345let a=[0,1,2,3,4],    b=a;console.log(a===b);a[0]=1;console.log(a,b); 结果如下：  b复制给了a，为啥修改数组a，数组b也跟着变">
 <meta name="keywords" content="导航,分享">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深，浅拷贝">
 <meta property="og:url" content="http://heartwarming.github.io/2019/05/10/copy/index.html">
 <meta property="og:site_name" content="付海秋">
-<meta property="og:description" content="深拷贝，浅拷贝的概念简单点来说，就是假设B赋值了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 为什么拷贝有深浅之分我们来举个浅拷贝例子：12345let a=[0,1,2,3,4],    b=a;console.log(a===b);a[0]=1;console.log(a,b); 结果如下：  b赋值给了a，为啥修改数组a，数组b也跟着变了。">
+<meta property="og:description" content="深拷贝，浅拷贝的概念简单点来说，就是假设通过B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 为什么拷贝有深浅之分我们来举个浅拷贝例子：12345let a=[0,1,2,3,4],    b=a;console.log(a===b);a[0]=1;console.log(a,b); 结果如下：  b复制给了a，为啥修改数组a，数组b也跟着变">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://heartwarming.github.io/images/c1.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/c2.jpg">
@@ -106,10 +106,10 @@
 <meta property="og:image" content="http://heartwarming.github.io/images/c10.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/c11.png">
 <meta property="og:image" content="http://heartwarming.github.io/images/c11.png">
-<meta property="og:updated_time" content="2019-05-10T13:54:08.241Z">
+<meta property="og:updated_time" content="2019-05-12T10:04:52.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深，浅拷贝">
-<meta name="twitter:description" content="深拷贝，浅拷贝的概念简单点来说，就是假设B赋值了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 为什么拷贝有深浅之分我们来举个浅拷贝例子：12345let a=[0,1,2,3,4],    b=a;console.log(a===b);a[0]=1;console.log(a,b); 结果如下：  b赋值给了a，为啥修改数组a，数组b也跟着变了。">
+<meta name="twitter:description" content="深拷贝，浅拷贝的概念简单点来说，就是假设通过B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 为什么拷贝有深浅之分我们来举个浅拷贝例子：12345let a=[0,1,2,3,4],    b=a;console.log(a===b);a[0]=1;console.log(a,b); 结果如下：  b复制给了a，为啥修改数组a，数组b也跟着变">
 <meta name="twitter:image" content="http://heartwarming.github.io/images/c1.png">
 
 
@@ -474,11 +474,11 @@
       
 
       
-        <h1 id="深拷贝，浅拷贝的概念"><a href="#深拷贝，浅拷贝的概念" class="headerlink" title="深拷贝，浅拷贝的概念"></a>深拷贝，浅拷贝的概念</h1><p>简单点来说，就是假设B赋值了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。</p>
+        <h1 id="深拷贝，浅拷贝的概念"><a href="#深拷贝，浅拷贝的概念" class="headerlink" title="深拷贝，浅拷贝的概念"></a>深拷贝，浅拷贝的概念</h1><p>简单点来说，就是假设通过B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。</p>
 <h2 id="为什么拷贝有深浅之分"><a href="#为什么拷贝有深浅之分" class="headerlink" title="为什么拷贝有深浅之分"></a>为什么拷贝有深浅之分</h2><p>我们来举个浅拷贝例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let a=[0,1,2,3,4],</span><br><span class="line">    b=a;</span><br><span class="line">console.log(a===b);</span><br><span class="line">a[0]=1;</span><br><span class="line">console.log(a,b);</span><br></pre></td></tr></table></figure></p>
 <p>结果如下：</p>
 <p><img src="/images/c1.png" alt></p>
-<p>b赋值给了a，为啥修改数组a，数组b也跟着变了。</p>
+<p>b复制给了a，为啥修改数组a，数组b也跟着变了。</p>
 <p>那么这里，就得引入基本数据类型与引用数据类型的概念了</p>
 <p>基本数据类型有，number，string，boolean，null，undefined，symbol以及未来ES10新增的BigInt(任意精度整数)七类。</p>
 <p>引用数据类型(Object类)有常规名值对的无序对象{a:1}，数组[1,2,3]，以及函数等。</p>
@@ -511,6 +511,8 @@
 <p><img src="/images/c9.png" alt></p>
 <p>浅拷贝<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;name:&quot;xixi&quot;,age:20&#125;;</span><br><span class="line">var obj_extend = $.extend(false,&#123;&#125;, obj); //extend方法，第一个参数为true，为深拷贝，为false，或者没有为浅拷贝。</span><br><span class="line">console.log(obj === obj_extend);</span><br><span class="line">obj.name = &quot;heihei&quot;;</span><br><span class="line">console.log(obj);</span><br><span class="line">console.log(obj_extend);</span><br></pre></td></tr></table></figure></p>
 <p><img src="/images/c10.png" alt></p>
+<h2 id="通过引入js的实用库-Lodash"><a href="#通过引入js的实用库-Lodash" class="headerlink" title="通过引入js的实用库 Lodash"></a>通过引入js的实用库 Lodash</h2><p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var objects = [&#123; &apos;a&apos;: 1 &#125;, &#123; &apos;b&apos;: 2 &#125;];</span><br><span class="line"> </span><br><span class="line">var deep = _.cloneDeep(objects);</span><br><span class="line">console.log(deep[0] === objects[0]);</span><br><span class="line">// =&gt; false</span><br></pre></td></tr></table></figure>
 <h1 id="实现浅拷贝的方法"><a href="#实现浅拷贝的方法" class="headerlink" title="实现浅拷贝的方法"></a>实现浅拷贝的方法</h1><h2 id="JSON-parse-JSON-stringify"><a href="#JSON-parse-JSON-stringify" class="headerlink" title="JSON.parse(JSON.stringify())"></a>JSON.parse(JSON.stringify())</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var syb = Symbol(&apos;obj&apos;);</span><br><span class="line">var person = &#123;</span><br><span class="line">   name :&apos;tino&apos;,</span><br><span class="line">   say: function()&#123;</span><br><span class="line">      console.log(&apos;hi&apos;);</span><br><span class="line">   &#125;,</span><br><span class="line">   ok: syb,</span><br><span class="line">   un: undefined</span><br><span class="line">&#125;</span><br><span class="line">var copy = JSON.parse(JSON.stringify(person))</span><br><span class="line">// copy</span><br><span class="line">// &#123;name: &quot;tino&quot;&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>ps</strong>: 当值为undefined、function、symbol 会在转换过程中被忽略。。。所以，对象值有这三种的话用这种方法会导致属性丢失。</p>
 <h2 id="Array-的-slice-和-concat-方法"><a href="#Array-的-slice-和-concat-方法" class="headerlink" title="Array 的 slice 和 concat 方法"></a>Array 的 slice 和 concat 方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = [[1,2,3],4,5];</span><br><span class="line">var b = a.slice();</span><br><span class="line">console.log(a === b);</span><br><span class="line">a[0][0] = 6;</span><br><span class="line">console.log(a);</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure>
@@ -771,6 +773,18 @@ var jiathis_config={
                     <a href="http://www.cnblogs.com/faith3" title="一直在寻" target="_blank">一直在寻</a>
                   </li>
                 
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhangxinxu.com" title="张鑫旭老师" target="_blank">张鑫旭老师</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/home.html" title="阮一峰老师" target="_blank">阮一峰老师</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://coolshell.cn" title="酷壳" target="_blank">酷壳</a>
+                  </li>
+                
               </ul>
             </div>
           
@@ -790,7 +804,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#深拷贝，浅拷贝的概念"><span class="nav-number">1.</span> <span class="nav-text">深拷贝，浅拷贝的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么拷贝有深浅之分"><span class="nav-number">1.1.</span> <span class="nav-text">为什么拷贝有深浅之分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现深拷贝的方法"><span class="nav-number">2.</span> <span class="nav-text">实现深拷贝的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用-递归-来实现深复制，对属性中所有引用类型的值，遍历到是基本类型的值为止"><span class="nav-number">2.1.</span> <span class="nav-text">利用 递归 来实现深复制，对属性中所有引用类型的值，遍历到是基本类型的值为止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery中的-extend-true-target-object1-objectN"><span class="nav-number">2.2.</span> <span class="nav-text">jQuery中的 extend(true, target, object1 [, objectN ])</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现浅拷贝的方法"><span class="nav-number">3.</span> <span class="nav-text">实现浅拷贝的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON-parse-JSON-stringify"><span class="nav-number">3.1.</span> <span class="nav-text">JSON.parse(JSON.stringify())</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-的-slice-和-concat-方法"><span class="nav-number">3.2.</span> <span class="nav-text">Array 的 slice 和 concat 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-assgin"><span class="nav-number">3.3.</span> <span class="nav-text">Object.assgin()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#深拷贝，浅拷贝的概念"><span class="nav-number">1.</span> <span class="nav-text">深拷贝，浅拷贝的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么拷贝有深浅之分"><span class="nav-number">1.1.</span> <span class="nav-text">为什么拷贝有深浅之分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现深拷贝的方法"><span class="nav-number">2.</span> <span class="nav-text">实现深拷贝的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用-递归-来实现深复制，对属性中所有引用类型的值，遍历到是基本类型的值为止"><span class="nav-number">2.1.</span> <span class="nav-text">利用 递归 来实现深复制，对属性中所有引用类型的值，遍历到是基本类型的值为止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery中的-extend-true-target-object1-objectN"><span class="nav-number">2.2.</span> <span class="nav-text">jQuery中的 extend(true, target, object1 [, objectN ])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过引入js的实用库-Lodash"><span class="nav-number">2.3.</span> <span class="nav-text">通过引入js的实用库 Lodash</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现浅拷贝的方法"><span class="nav-number">3.</span> <span class="nav-text">实现浅拷贝的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON-parse-JSON-stringify"><span class="nav-number">3.1.</span> <span class="nav-text">JSON.parse(JSON.stringify())</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-的-slice-和-concat-方法"><span class="nav-number">3.2.</span> <span class="nav-text">Array 的 slice 和 concat 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-assgin"><span class="nav-number">3.3.</span> <span class="nav-text">Object.assgin()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
