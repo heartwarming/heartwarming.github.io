@@ -86,20 +86,18 @@
 
 
 
-<meta name="description" content="微信公众号的大转盘抽奖效果 用到的资源可以去我的githup下载  实现后的效果如下图  html12345678910111213141516&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=utf-8">
+<meta name="description" content="数据驱动Vue.js 一个核心思想是数据驱动。所谓数据驱动，是指视图是由数据驱动生成的，我们对视图的修改，不会直接操作 DOM，而是通过修改数据。它相比我们传统的前端开发，如使用 jQuery 等前端库直接修改 DOM，大大简化了代码量。特别是当交互复杂的时候，只关心数据的修改会让代码的逻辑变的非常清晰，因为 DOM 变成了数据的映射，我们所有的逻辑都是对数据的修改，而不用碰触 DOM，这样的代码">
 <meta name="keywords" content="导航,分享">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery实现的轮盘抽奖">
-<meta property="og:url" content="http://heartwarming.github.io/2019/05/21/转盘抽奖/index.html">
+<meta property="og:title" content="数据驱动">
+<meta property="og:url" content="http://heartwarming.github.io/2019/06/28/数据驱动/index.html">
 <meta property="og:site_name" content="付海秋">
-<meta property="og:description" content="微信公众号的大转盘抽奖效果 用到的资源可以去我的githup下载  实现后的效果如下图  html12345678910111213141516&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=utf-8">
+<meta property="og:description" content="数据驱动Vue.js 一个核心思想是数据驱动。所谓数据驱动，是指视图是由数据驱动生成的，我们对视图的修改，不会直接操作 DOM，而是通过修改数据。它相比我们传统的前端开发，如使用 jQuery 等前端库直接修改 DOM，大大简化了代码量。特别是当交互复杂的时候，只关心数据的修改会让代码的逻辑变的非常清晰，因为 DOM 变成了数据的映射，我们所有的逻辑都是对数据的修改，而不用碰触 DOM，这样的代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://heartwarming.github.io/images/funny_01.png">
-<meta property="og:updated_time" content="2019-05-21T14:02:58.507Z">
+<meta property="og:updated_time" content="2019-06-28T01:36:46.153Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery实现的轮盘抽奖">
-<meta name="twitter:description" content="微信公众号的大转盘抽奖效果 用到的资源可以去我的githup下载  实现后的效果如下图  html12345678910111213141516&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=utf-8">
-<meta name="twitter:image" content="http://heartwarming.github.io/images/funny_01.png">
+<meta name="twitter:title" content="数据驱动">
+<meta name="twitter:description" content="数据驱动Vue.js 一个核心思想是数据驱动。所谓数据驱动，是指视图是由数据驱动生成的，我们对视图的修改，不会直接操作 DOM，而是通过修改数据。它相比我们传统的前端开发，如使用 jQuery 等前端库直接修改 DOM，大大简化了代码量。特别是当交互复杂的时候，只关心数据的修改会让代码的逻辑变的非常清晰，因为 DOM 变成了数据的映射，我们所有的逻辑都是对数据的修改，而不用碰触 DOM，这样的代码">
 
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://heartwarming.github.io/2019/05/21/转盘抽奖/">
+  <link rel="canonical" href="http://heartwarming.github.io/2019/06/28/数据驱动/">
 
 
 
 
 
-  <title>jQuery实现的轮盘抽奖 | 付海秋</title>
+  <title>数据驱动 | 付海秋</title>
   
 
 
@@ -328,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/21/转盘抽奖/">
+    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/06/28/数据驱动/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fuhaiqiu">
@@ -345,7 +343,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">jQuery实现的轮盘抽奖</h1>
+          <h1 class="post-title" itemprop="name headline">数据驱动</h1>
         
 
         <div class="post-meta">
@@ -357,8 +355,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T20:24:22+08:00">
-                2019-05-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-28T09:16:22+08:00">
+                2019-06-28
               </time>
             
 
@@ -380,8 +378,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/heartwarming.github.io/categories/funny/" itemprop="url" rel="index">
-                    <span itemprop="name">funny</span>
+                  <a href="/heartwarming.github.io/categories/vue2-x/" itemprop="url" rel="index">
+                    <span itemprop="name">vue2.x</span>
                   </a>
                 </span>
 
@@ -398,8 +396,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/heartwarming.github.io/2019/05/21/转盘抽奖/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/05/21/转盘抽奖/" itemprop="commentCount"></span>
+                <a href="/heartwarming.github.io/2019/06/28/数据驱动/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/06/28/数据驱动/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -426,7 +424,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  804
+                  980
                 </span>
               
 
@@ -442,7 +440,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  3
                 </span>
               
             </div>
@@ -463,17 +461,15 @@
       
 
       
-        <h1 id="微信公众号的大转盘抽奖效果"><a href="#微信公众号的大转盘抽奖效果" class="headerlink" title="微信公众号的大转盘抽奖效果"></a>微信公众号的大转盘抽奖效果</h1><blockquote>
-<p>用到的资源可以去我的githup<a href="https://github.com/heartwarming/pluginLibrary" target="_blank" rel="noopener">下载</a></p>
-</blockquote>
-<p><strong>实现后的效果如下图</strong></p>
-<p><img src="/images/funny_01.png" alt></p>
-<h2 id="html"><a href="#html" class="headerlink" title="html"></a>html</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</span><br><span class="line">&lt;title&gt;抽奖&lt;/title&gt;</span><br><span class="line">&lt;link href=&quot;style/index.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span><br><span class="line">&lt;script src=&quot;js/index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;lotteryBox&quot;&gt;</span><br><span class="line">	&lt;div class=&quot;plateBox&quot;&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div class=&quot;handBox&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@charset &quot;utf-8&quot;;</span><br><span class="line">/* CSS Document */</span><br><span class="line">.lotteryBox&#123; </span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.plateBox&#123; </span><br><span class="line">    width:500px; </span><br><span class="line">    height:500px; </span><br><span class="line">    background:url(../img/plate.png) no-repeat;</span><br><span class="line">&#125;</span><br><span class="line">.handBox&#123; </span><br><span class="line">    width:500px; </span><br><span class="line">    height:500px; </span><br><span class="line">    background:url(../img/hand.png) no-repeat; </span><br><span class="line">    position:absolute; </span><br><span class="line">    top:0px; </span><br><span class="line">    left:0px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">每天抽奖次数限制</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line">var haveprize=0;</span><br><span class="line">$(function()&#123;</span><br><span class="line">	$(&quot;.plateBox&quot;).css(&quot;transform-origin&quot;,&quot;50% 50%&quot;);</span><br><span class="line">	$(&quot;.plateBox&quot;).css(&quot;transform&quot;,&quot;rotate(0deg)&quot;);</span><br><span class="line">	//添加抽奖事件</span><br><span class="line">	addevent();</span><br><span class="line">	</span><br><span class="line">&#125;)</span><br><span class="line">/*开始抽奖函数，参数为中奖编号*/</span><br><span class="line">function plateBoxPlay(code)&#123;</span><br><span class="line">	deleteevent();//暂时删除抽奖事件</span><br><span class="line">	//设置角度间隔</span><br><span class="line">	var $plateBox=$(&quot;.plateBox&quot;);</span><br><span class="line">	var angle=360/8;</span><br><span class="line">	var thiscode=code-1;</span><br><span class="line">	//生成随机圈数</span><br><span class="line">	var number_turns=Math.ceil(Math.random()*5);</span><br><span class="line">	//获取修正角度</span><br><span class="line">	var thisspare=getdeg($plateBox)%360;</span><br><span class="line">	//计算旋转角度</span><br><span class="line">	var this_turns=parseInt(number_turns*360-thiscode*angle-thisspare);</span><br><span class="line">	//调用动画</span><br><span class="line">	play_animate($plateBox,this_turns,code);</span><br><span class="line">&#125;</span><br><span class="line">//获取当前转盘角度</span><br><span class="line">function getdeg($box)&#123;</span><br><span class="line">	var style=$box[0].style.transform;</span><br><span class="line">	console.log(style);</span><br><span class="line">	//角度取值</span><br><span class="line">	var thisdeg=parseInt(style.match(/rotate\(([^)]+)\)/)[1]);</span><br><span class="line">	return thisdeg;</span><br><span class="line">&#125;</span><br><span class="line">//抽奖动画</span><br><span class="line">function play_animate($box,turns,code)&#123;</span><br><span class="line">	//动画初始化</span><br><span class="line">	var thisdeg=getdeg($box);</span><br><span class="line">	var targetturns=thisdeg+turns;</span><br><span class="line">	</span><br><span class="line">	var timer=setInterval(function()&#123;</span><br><span class="line">			var thisdeg=getdeg($box);</span><br><span class="line">			//设置速度</span><br><span class="line">			var speed=Math.ceil((targetturns-thisdeg)/10);</span><br><span class="line">			//本次旋转角度</span><br><span class="line">			var playdeg=thisdeg+speed;</span><br><span class="line">			//设置角度</span><br><span class="line">			$box.css(&quot;transform&quot;,&quot;rotate(&quot;+playdeg+&quot;deg)&quot;);</span><br><span class="line">			//console.log(playdeg);</span><br><span class="line">			//判定结束</span><br><span class="line">			if(thisdeg&gt;=targetturns)&#123;</span><br><span class="line">				clearInterval(timer);</span><br><span class="line">				alert(&quot;您抽中了&quot;+code+&quot;等奖！&quot;);</span><br><span class="line">				addevent();//重新添加抽奖事件</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,100);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">//添加事件</span><br><span class="line">function addevent()&#123;</span><br><span class="line">	$(&quot;.handBox&quot;).on(&quot;click&quot;,function()&#123;</span><br><span class="line">		//设置抽奖次数，0为不限次</span><br><span class="line">		var runnumber=0;</span><br><span class="line">		if(runNumb(runnumber))&#123;</span><br><span class="line">			//执行抽奖函数</span><br><span class="line">			plateBoxPlay(prize());</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			alert(&quot;对不起！您今天已经抽了&quot;+runnumber+&quot;次了，请明天再试！&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line">//删除事件</span><br><span class="line">function deleteevent()&#123;</span><br><span class="line">	$(&quot;.handBox&quot;).off(&quot;click&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//每天限制次数函数，参数为限制的次数</span><br><span class="line">function runNumb(nmb)&#123;</span><br><span class="line">	//获取日期</span><br><span class="line">	var thisdate=getdate();</span><br><span class="line">	//返回值</span><br><span class="line">	var code=true;</span><br><span class="line">	//抽奖记录</span><br><span class="line">	var thisRuncode=&#123;date:thisdate,runcode:0&#125;</span><br><span class="line">	//判断是否有本地数据</span><br><span class="line">	if(window.localStorage[&quot;runcode&quot;])&#123;</span><br><span class="line">		//数据转换</span><br><span class="line">		var Runcode=JSON.parse(window.localStorage[&quot;runcode&quot;]);</span><br><span class="line">		//判断是否当天</span><br><span class="line">		if(Runcode.date==thisdate)&#123;</span><br><span class="line">			if(nmb==0)&#123;</span><br><span class="line">			&#125;else if(Runcode.runcode&gt;=nmb)&#123;</span><br><span class="line">				code=false;</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				thisRuncode=&#123;date:thisdate,runcode:Runcode.runcode+1&#125;;</span><br><span class="line">				addlocalStorage(thisRuncode);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			addlocalStorage(thisRuncode);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		</span><br><span class="line">		addlocalStorage(thisRuncode);</span><br><span class="line">	&#125;</span><br><span class="line">	return code;</span><br><span class="line">&#125;</span><br><span class="line">//本地存储函数</span><br><span class="line">function addlocalStorage(thisRuncode)&#123;</span><br><span class="line">	window.localStorage[&quot;runcode&quot;]=JSON.stringify(thisRuncode);</span><br><span class="line">&#125;</span><br><span class="line">//获取日期函数</span><br><span class="line">function getdate()&#123;</span><br><span class="line">	var thisdate=new Date();</span><br><span class="line">	var thisdy=thisdate.getYear()+thisdate.getMonth()+1+thisdate.getDate();</span><br><span class="line">	return thisdy;</span><br><span class="line">&#125;</span><br><span class="line">//随机抽奖刷新一次页面只能抽一次1等奖,返回值为奖项序号</span><br><span class="line">function prize()&#123;</span><br><span class="line">	var thisprize=Math.ceil(Math.random()*8);</span><br><span class="line">	if(thisprize==1)&#123;</span><br><span class="line">		if(haveprize==thisprize)&#123;</span><br><span class="line">			prize();</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			haveprize=thisprize;</span><br><span class="line">			return thisprize;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		return thisprize;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h1><blockquote>
-<p>如有问题欢迎留言，会及时回复</p>
-</blockquote>
+        <h1 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h1><p>Vue.js 一个核心思想是数据驱动。所谓数据驱动，是指视图是由数据驱动生成的，我们对视图的修改，不会直接操作 DOM，而是通过修改数据。它相比我们传统的前端开发，如使用 jQuery 等前端库直接修改 DOM，大大简化了代码量。特别是当交互复杂的时候，只关心数据的修改会让代码的逻辑变的非常清晰，因为 DOM 变成了数据的映射，我们所有的逻辑都是对数据的修改，而不用碰触 DOM，这样的代码非常利于维护。</p>
+<h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1><p>vue实现数据双向绑定主要是：采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty（）来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应监听回调。当把一个普通 Javascript 对象传给 Vue 实例来作为它的 data 选项时，Vue 将遍历它的属性，用 Object.defineProperty 将它们转为 getter/setter。用户看不到 getter/setter，但是在内部它们让 Vue 追踪依赖，在属性被访问和修改时通知变化。</p>
+<p>vue的数据双向绑定 将MVVM作为数据绑定的入口，整合Observer，Compile和Watcher三者，通过Observer来监听自己的model的数据变化，通过Compile来解析编译模板指令（vue中是用来解析模板字符串），最终利用watcher搭起observer和Compile之间的通信桥梁，达到数据变化 —&gt;视图更新；视图交互变化（input）—&gt;数据model变更双向绑定效果。</p>
+<h2 id="对getter-setter的理解？"><a href="#对getter-setter的理解？" class="headerlink" title="对getter/setter的理解？"></a>对getter/setter的理解？</h2><p>当打印出Vue实例下的data对象里的属性，它的每个属性都有两个相对应的get和set方法，顾名思义，get为取值，set为赋值，正常情况下，我们取值和赋值是用obj.prop的方式，但是这样做有一个问题，我如何知道对象的值改变了？所以就轮到set登场了。你可以把get和set理解为function，当我们调用对象的属性时，我们会进入到get.属性(){…}中，先判断对象是否有这个属性，如果没有，那麽就添加一个name属性，并给它赋值；如果有name属性，那就返回name属性。你可以把get看成一个取值的函数，函数的返回值就是它拿到的值。感觉比较重要的是set属性，当给实例赋值：此时，会进入set name(val){…}；形参val就是我赋给name属性的值，在这个函数里，就可以做很多事了，比如双向绑定！因为这个值的每次改变都必须经过set，其他方式是改变不了它的，相当于一个万能的监听器。ES5的对象原型有两个新的属性<strong>defineGetter</strong>和<strong>defineSetter</strong>，专门用来给对象绑定get和set。建议使用下面这种方式，因为是在原型上书写，所以可以继承和重用。</p>
+<h1 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h1><p>Vue.js的数据驱动就是通过MVVM这种框架来实现的。MVVM框架主要包含3个部分:model、view和 viewmodel。</p>
+<p>Model:指的是数据部分，对应到前端相当于javascript对象</p>
+<p>View:指的是视图部分，对应前端相当于dom</p>
+<p>Viewmodel:就是连接视图与数据的中间件通讯</p>
+<p>数据(Model)和视图(View)是不能直接通讯的，而是需要通过ViewModel来实现双方的通讯。当数据变化的时候，viewModel能够监听到这种变化，并及时的通知view做出修改。同样的，当页面有事件触发时，viewMOdel也能够监听到事件，并通知model进行响应。Viewmodel就相当于一个观察者，监控着双方的动作，并及时通知对方进行相应的操作。</p>
 
       
     </div>
@@ -535,8 +531,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/heartwarming.github.io/2019/05/15/深入理解 React JS 中的 setState/" rel="next" title="深入理解 React JS 中的 setState">
-                <i class="fa fa-chevron-left"></i> 深入理解 React JS 中的 setState
+              <a href="/heartwarming.github.io/2019/06/27/flow/" rel="next" title="认识 Flow">
+                <i class="fa fa-chevron-left"></i> 认识 Flow
               </a>
             
           </div>
@@ -544,10 +540,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/heartwarming.github.io/2019/05/22/冒泡排序/" rel="prev" title="冒泡排序">
-                冒泡排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -760,7 +752,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#微信公众号的大转盘抽奖效果"><span class="nav-number">1.</span> <span class="nav-text">微信公众号的大转盘抽奖效果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#html"><span class="nav-number">1.1.</span> <span class="nav-text">html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">1.2.</span> <span class="nav-text">css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js"><span class="nav-number">1.3.</span> <span class="nav-text">js</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#尾声"><span class="nav-number">2.</span> <span class="nav-text">尾声</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据驱动"><span class="nav-number">1.</span> <span class="nav-text">数据驱动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现原理"><span class="nav-number">2.</span> <span class="nav-text">实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对getter-setter的理解？"><span class="nav-number">2.1.</span> <span class="nav-text">对getter/setter的理解？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现方式"><span class="nav-number">3.</span> <span class="nav-text">实现方式</span></a></li></ol></div>
             
 
           </div>
