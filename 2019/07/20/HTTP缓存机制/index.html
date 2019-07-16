@@ -86,13 +86,13 @@
 
 
 
-<meta name="description" content="概要浏览器缓存（Browser Caching）是为了节约网络的资源加速浏览，浏览器在用户磁盘上对最近请求过的文档进行存储，当访问者再次请求这个页面时，浏览器就可以从本地磁盘显示文档，这样就可以加速页面的阅览。 缓存位置从缓存位置上来说分为四种，并且各自有优先级，当依次查找缓存且都没有命中的时候，才会去请求网络。  Service Worker Memory Cache Disk Cache Pu">
+<meta name="description" content="概要浏览器缓存（HTTP缓存机制）是为了节约网络的资源加速浏览，浏览器在用户磁盘上对最近请求过的文档进行存储，当访问者再次请求这个页面时，浏览器就可以从本地磁盘显示文档，这样就可以加速页面的阅览。 缓存位置从缓存位置上来说分为四种，并且各自有优先级，当依次查找缓存且都没有命中的时候，才会去请求网络。  Service Worker Memory Cache Disk Cache Push Cach">
 <meta name="keywords" content="导航,分享">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器缓存">
-<meta property="og:url" content="http://heartwarming.github.io/2019/07/12/浏览器缓存/index.html">
+<meta property="og:title" content="HTTP缓存机制">
+<meta property="og:url" content="http://heartwarming.github.io/2019/07/20/HTTP缓存机制/index.html">
 <meta property="og:site_name" content="付海秋">
-<meta property="og:description" content="概要浏览器缓存（Browser Caching）是为了节约网络的资源加速浏览，浏览器在用户磁盘上对最近请求过的文档进行存储，当访问者再次请求这个页面时，浏览器就可以从本地磁盘显示文档，这样就可以加速页面的阅览。 缓存位置从缓存位置上来说分为四种，并且各自有优先级，当依次查找缓存且都没有命中的时候，才会去请求网络。  Service Worker Memory Cache Disk Cache Pu">
+<meta property="og:description" content="概要浏览器缓存（HTTP缓存机制）是为了节约网络的资源加速浏览，浏览器在用户磁盘上对最近请求过的文档进行存储，当访问者再次请求这个页面时，浏览器就可以从本地磁盘显示文档，这样就可以加速页面的阅览。 缓存位置从缓存位置上来说分为四种，并且各自有优先级，当依次查找缓存且都没有命中的时候，才会去请求网络。  Service Worker Memory Cache Disk Cache Push Cach">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://heartwarming.github.io/images/cache08.webp">
 <meta property="og:image" content="http://heartwarming.github.io/images/cache09.webp">
@@ -104,10 +104,10 @@
 <meta property="og:image" content="http://heartwarming.github.io/images/cache06.webp">
 <meta property="og:image" content="http://heartwarming.github.io/images/cache07.webp">
 <meta property="og:image" content="http://heartwarming.github.io/images/cache10.png">
-<meta property="og:updated_time" content="2019-07-16T03:01:16.740Z">
+<meta property="og:updated_time" content="2019-07-16T05:40:51.471Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浏览器缓存">
-<meta name="twitter:description" content="概要浏览器缓存（Browser Caching）是为了节约网络的资源加速浏览，浏览器在用户磁盘上对最近请求过的文档进行存储，当访问者再次请求这个页面时，浏览器就可以从本地磁盘显示文档，这样就可以加速页面的阅览。 缓存位置从缓存位置上来说分为四种，并且各自有优先级，当依次查找缓存且都没有命中的时候，才会去请求网络。  Service Worker Memory Cache Disk Cache Pu">
+<meta name="twitter:title" content="HTTP缓存机制">
+<meta name="twitter:description" content="概要浏览器缓存（HTTP缓存机制）是为了节约网络的资源加速浏览，浏览器在用户磁盘上对最近请求过的文档进行存储，当访问者再次请求这个页面时，浏览器就可以从本地磁盘显示文档，这样就可以加速页面的阅览。 缓存位置从缓存位置上来说分为四种，并且各自有优先级，当依次查找缓存且都没有命中的时候，才会去请求网络。  Service Worker Memory Cache Disk Cache Push Cach">
 <meta name="twitter:image" content="http://heartwarming.github.io/images/cache08.webp">
 
 
@@ -138,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://heartwarming.github.io/2019/07/12/浏览器缓存/">
+  <link rel="canonical" href="http://heartwarming.github.io/2019/07/20/HTTP缓存机制/">
 
 
 
 
 
-  <title>浏览器缓存 | 付海秋</title>
+  <title>HTTP缓存机制 | 付海秋</title>
   
 
 
@@ -337,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/07/12/浏览器缓存/">
+    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/07/20/HTTP缓存机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fuhaiqiu">
@@ -354,7 +354,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浏览器缓存</h1>
+          <h1 class="post-title" itemprop="name headline">HTTP缓存机制</h1>
         
 
         <div class="post-meta">
@@ -366,8 +366,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-12T10:20:45+08:00">
-                2019-07-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-20T10:20:45+08:00">
+                2019-07-20
               </time>
             
 
@@ -407,8 +407,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/heartwarming.github.io/2019/07/12/浏览器缓存/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/07/12/浏览器缓存/" itemprop="commentCount"></span>
+                <a href="/heartwarming.github.io/2019/07/20/HTTP缓存机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/07/20/HTTP缓存机制/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -472,7 +472,7 @@
       
 
       
-        <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>浏览器缓存（Browser Caching）是为了节约网络的资源加速浏览，浏览器在用户磁盘上对最近请求过的文档进行存储，当访问者再次请求这个页面时，浏览器就可以从本地磁盘显示文档，这样就可以加速页面的阅览。</p>
+        <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>浏览器缓存（HTTP缓存机制）是为了节约网络的资源加速浏览，浏览器在用户磁盘上对最近请求过的文档进行存储，当访问者再次请求这个页面时，浏览器就可以从本地磁盘显示文档，这样就可以加速页面的阅览。</p>
 <h1 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h1><p>从缓存位置上来说分为四种，并且各自有优先级，当依次查找缓存且都没有命中的时候，才会去请求网络。</p>
 <ul>
 <li>Service Worker</li>
@@ -623,8 +623,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/heartwarming.github.io/2019/07/11/cookie/" rel="next" title="cookie">
-                <i class="fa fa-chevron-left"></i> cookie
+              <a href="/heartwarming.github.io/2019/07/14/token/" rel="next" title="Token">
+                <i class="fa fa-chevron-left"></i> Token
               </a>
             
           </div>
@@ -632,10 +632,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/heartwarming.github.io/2019/07/14/token/" rel="prev" title="Token">
-                Token <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -754,7 +750,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/heartwarming.github.io/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
