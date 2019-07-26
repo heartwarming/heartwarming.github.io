@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="导航,分享,">
 
 
 
@@ -86,13 +86,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="付海秋">
-<meta property="og:url" content="http://heartwarming.github.io/archives/2019/page/3/index.html">
+<meta name="description" content="数据传递转码数据在传输的过程中，浏览器会对数据进行编码，假如我现在有一条数据 {“name”: “测试”}。 如果我们通过get方法传递数据，这条数据会被拼接到 url 请求的后面，如：localhost:8080/src/text.html?name=测试。uri本身是采用ASCII编码的，所以如果是非 ASCII 编码集的字符在传输时都会被编码，编码方法和 encodeURI 的编码规则相同，">
+<meta name="keywords" content="导航,分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前后端数据传输不得不面对的转码问题">
+<meta property="og:url" content="http://heartwarming.github.io/2019/07/26/前后端数据传输不得不面对的转码问题/index.html">
 <meta property="og:site_name" content="付海秋">
+<meta property="og:description" content="数据传递转码数据在传输的过程中，浏览器会对数据进行编码，假如我现在有一条数据 {“name”: “测试”}。 如果我们通过get方法传递数据，这条数据会被拼接到 url 请求的后面，如：localhost:8080/src/text.html?name=测试。uri本身是采用ASCII编码的，所以如果是非 ASCII 编码集的字符在传输时都会被编码，编码方法和 encodeURI 的编码规则相同，">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-26T03:02:58.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="付海秋">
+<meta name="twitter:title" content="前后端数据传输不得不面对的转码问题">
+<meta name="twitter:description" content="数据传递转码数据在传输的过程中，浏览器会对数据进行编码，假如我现在有一条数据 {“name”: “测试”}。 如果我们通过get方法传递数据，这条数据会被拼接到 url 请求的后面，如：localhost:8080/src/text.html?name=测试。uri本身是采用ASCII编码的，所以如果是非 ASCII 编码集的字符在传输时都会被编码，编码方法和 encodeURI 的编码规则相同，">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://heartwarming.github.io/archives/2019/page/3/">
+  <link rel="canonical" href="http://heartwarming.github.io/2019/07/26/前后端数据传输不得不面对的转码问题/">
 
 
 
 
 
-  <title>归档 | 付海秋</title>
+  <title>前后端数据传输不得不面对的转码问题 | 付海秋</title>
   
 
 
@@ -147,7 +152,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/heartwarming" class="github-corner" aria-label="View source on GitHub">
         <svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
@@ -307,390 +312,286 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 32 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/07/26/前后端数据传输不得不面对的转码问题/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fuhaiqiu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/heartwarming.github.io/images/user1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付海秋">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">前后端数据传输不得不面对的转码问题</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-26T10:20:45+08:00">
+                2019-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/heartwarming.github.io/2019/05/14/JavaScript语言编程规范(ES6)/" itemprop="url">
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">JavaScript语言编程规范(ES6)</span>
+                <span class="post-meta-item-text">分类于</span>
               
-            </a>
-        
-      </h2>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/heartwarming.github.io/categories/ajax/" itemprop="url" rel="index">
+                    <span itemprop="name">ajax</span>
+                  </a>
+                </span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-14T07:20:13+08:00" content="2019-05-14">
-          05-14
-        </time>
-      </div>
+                
+                
+              
+            </span>
+          
 
-    </header>
-  </article>
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/heartwarming.github.io/2019/07/26/前后端数据传输不得不面对的转码问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/07/26/前后端数据传输不得不面对的转码问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
+          
+          
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本页总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/heartwarming.github.io/2019/05/13/React-UI/" itemprop="url">
-              
-                <span itemprop="name">React-UI</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-13T22:10:13+08:00" content="2019-05-13">
-          05-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/heartwarming.github.io/2019/05/13/React组件生命周期和钩子函数的介绍/" itemprop="url">
-              
-                <span itemprop="name">React组件生命周期和钩子函数的介绍</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-13T18:10:11+08:00" content="2019-05-13">
-          05-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1 id="数据传递转码"><a href="#数据传递转码" class="headerlink" title="数据传递转码"></a>数据传递转码</h1><p>数据在传输的过程中，浏览器会对数据进行编码，假如我现在有一条数据 {“name”: “测试”}。</p>
+<p>如果我们通过get方法传递数据，这条数据会被拼接到 url 请求的后面，如：<strong>localhost:8080/src/text.html?name=测试</strong>。uri本身是采用ASCII编码的，所以如果是非 ASCII 编码集的字符在传输时都会被编码，编码方法和 encodeURI 的编码规则相同，但是这里的编码规则是由浏览器控制的，不同的浏览器采用的编码方式 (UTF-8,GBK) 不一样，被编码的数据发送给服务器，服务器用 iso-8859-1 编码对数据解码，后端人员通过 request.getParameter(“name”) 获取参数数据，且获得的数据都是经过解码过的，而解码过程中程序里无法指定，对于 get 请求获得的数据 request.setCharacterEncoding(“字符集”) 指定解码规则无效。</p>
+<p>如果是post方法传递数据，浏览器也会对数据进行编码，如果我们在 ajax 请求头里面设置了 <strong>setRequestHeader(“ContentType”,”application/x-www-form-urlencoded;charset=UTF-8”)</strong>;浏览器就会以charset值进行编码，如果没有设置则由网页 meta 标签的 charset 属性决定，被编码过的数据发送给服务器，服务器用 iso-8859-1 编码对数据解码，对于post请求发来的数据后端人员可以使用<br>request.setCharacterEncoding(“字符集”) 指定解码规则。</p>
+<p>相信你已经找出了乱码的原因，由于 get 方法传的的数据，浏览器的转码规则和服务器的解码规则不一致出现了乱码，我们一般是怎么解决的呢？get 方式发送的数据如果有中文和特殊字符前端会先使用 encodeURI() 方法转码，这样 url 里面的就都是 ASCII 编码集的字符，省去了浏览器的转码，且 encodeURI() 的转码规则可控，受网页 meta 头的 charset 属性影响，</p>
+<p>标签的 charset 属性为 utf-8 时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = &apos;百度&amp;%$#@baidu&apos;;</span><br><span class="line">console.log(encodeURI(data));</span><br><span class="line">// %E7%99%BE%E5%BA%A6&amp;%25$#@baidu</span><br><span class="line">console.log(encodeURIComponent(data));</span><br><span class="line">// %E7%99%BE%E5%BA%A6%26%25%24%23%40baidu</span><br></pre></td></tr></table></figure>
+<p>标签的 charset 属性为 GBK 时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = &apos;百度&amp;%$#@baidu&apos;;</span><br><span class="line">console.log(encodeURI(data));</span><br><span class="line">// %E9%90%A7%E6%83%A7%E5%AE%B3&amp;%25$#@baidu</span><br><span class="line">console.log(encodeURIComponent(data));</span><br><span class="line">// %E9%90%A7%E6%83%A7%E5%AE%B3%26%25%24%23%40baidu</span><br></pre></td></tr></table></figure>
+<p>后端人员获取到用iso-8859-1解码后的数据一般先还原回字节码，然后用前后端协定的方式解码数据，还可以在服务器的配置文件里面进行配置解码规则。而post请求发送的数据可以使request.setCharacterEncoding(“字符集”)指定解码规则来达到前后端转码统一。当我们需要传递的数据量大，结构复杂，业务场景，技术实现需要的时候我们就又会发现，乱码的问题依然存在，比如json格式的数据由于特殊字符导致数据解析出现问题，xml格式数据由于特殊字符破坏xml格式导致数据解析出现问题，前后端一些语言自带的转码方法对一些特殊字符转码结果不一致，以及并非所有特殊字符都会被转码…</p>
+<p>如果我们使用 encodeURI 或者 encodeURIComponent 编码传输到后端，后端解码之后的数据总会因为一些特殊字符的转码不一致导致结果不一样，如果再加上 md5 校验之类的，前端传递的数据就会因为 md5 不同无法解析入库。</p>
+<p>那么这个时候我们就该考虑有没有一种转码规则可以解决以上所有的问题呢？base64 转码你值得拥有。</p>
+<h1 id="base64转码"><a href="#base64转码" class="headerlink" title="base64转码"></a>base64转码</h1><p>base64 编码是从二进制到字符的过程，编码受 html 页面头部 mate;标签的 charset 属性影响，charset 属性不同，编码转为二进制时，产生的二进制也是不一样的，所以最终产生的 base64 字符也不一样。<br>mate 标签的 charset 属性为 utf-8 时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;base64&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;script src=&quot;base64.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            var data = &apos;百度&amp;%$#@baidu&apos;;</span><br><span class="line">            console.log(base64encode(data));</span><br><span class="line">            // fqYmJSQjQGJhaWR1</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>mate 标签的 charset 属性为 GBK 时：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;GBK&quot;&gt;</span><br><span class="line">        &lt;title&gt;base64&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;script src=&quot;base64.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            var data = &apos;百度&amp;%$#@baidu&apos;;</span><br><span class="line">            console.log(base64encode(data));</span><br><span class="line">            // J+ezJiUkI0BiYWlkdQ==</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>所以工作中如果涉及到文本框输入等复杂的内容数据传递为了避免中文乱码以及各种特殊符号带来的困扰就使用 base64 转码传递。如果只是URL里面的传递简单的参数可以使用 encodeURI 和 encodeURIComponent 等转码。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/heartwarming.github.io/2019/05/13/React概览/" itemprop="url">
-              
-                <span itemprop="name">React概览</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-13T12:09:22+08:00" content="2019-05-13">
-          05-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/heartwarming.github.io/2019/05/11/vue2.x组件生命周期和钩子函数的介绍/" itemprop="url">
-              
-                <span itemprop="name">vue2.x组件生命周期和钩子函数的介绍</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-11T21:09:22+08:00" content="2019-05-11">
-          05-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/heartwarming.github.io/2019/05/10/深，浅拷贝/" itemprop="url">
-              
-                <span itemprop="name">深，浅拷贝</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-10T21:06:45+08:00" content="2019-05-10">
-          05-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/heartwarming.github.io/2019/05/09/这一次，彻底弄懂JavaScript执行机制/" itemprop="url">
-              
-                <span itemprop="name">这一次，彻底弄懂JavaScript执行机制</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-09T19:06:45+08:00" content="2019-05-09">
-          05-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/heartwarming.github.io/2019/05/08/使用Atomics避免SharedArrayBuffers中的竞争条件/" itemprop="url">
-              
-                <span itemprop="name">使用Atomics避免SharedArrayBuffers中的竞争条件</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-08T22:55:45+08:00" content="2019-05-08">
-          05-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/heartwarming.github.io/2019/05/08/ArrayBuffers和SharedArrayBuffers的介绍/" itemprop="url">
-              
-                <span itemprop="name">ArrayBuffers和SharedArrayBuffers的介绍</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-08T21:35:10+08:00" content="2019-05-08">
-          05-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/heartwarming.github.io/2019/05/08/内存管理的速成课程/" itemprop="url">
-              
-                <span itemprop="name">内存管理的速成课程</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-08T19:35:10+08:00" content="2019-05-08">
-          05-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="fuhaiqiu 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="fuhaiqiu 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/heartwarming.github.io/tags/导航/" rel="tag"><i class="fa fa-google"></i> 导航</a>
+          
+            <a href="/heartwarming.github.io/tags/分享/" rel="tag"><i class="fa fa-google"></i> 分享</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/heartwarming.github.io/2019/07/23/http基础知识/" rel="next" title="http基础知识">
+                <i class="fa fa-chevron-left"></i> http基础知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/heartwarming.github.io/archives/2019/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/heartwarming.github.io/archives/2019/">1</a><a class="page-number" href="/heartwarming.github.io/archives/2019/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/heartwarming.github.io/archives/2019/page/4/">4</a><a class="extend next" rel="next" href="/heartwarming.github.io/archives/2019/page/4/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -698,6 +599,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -718,8 +626,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -831,6 +748,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据传递转码"><span class="nav-number">1.</span> <span class="nav-text">数据传递转码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#base64转码"><span class="nav-number">2.</span> <span class="nav-text">base64转码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -998,6 +931,10 @@
 
 
   
+  <script type="text/javascript" src="/heartwarming.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/heartwarming.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
