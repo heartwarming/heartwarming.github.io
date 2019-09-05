@@ -86,31 +86,22 @@
 
 
 
-<meta name="description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  内存管理的速成课程要理解为什么将ArrayBuffer和SharedArrayBuffer添加到JavaScript">
+<meta name="description" content="前言本文主要是基础知识的深化，内容包括：数据类型：判断方法、变量类型与数据类型、数据在堆栈空间中的储存细节对象：对象是多个（种）数据的容器，两种访问内部数据的方法函数：函数也是对象，也有属性和方法。IIEF、this指向问题 数据类型基本（值）类型 对象（引用）类型 数据、内存、变量数据存储在内存中的信息，以二进制（0101101）的形式保存，可传递 内存内存条通电后产生的临时储存空间  一块“内">
 <meta name="keywords" content="导航,分享">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存管理的速成课程">
-<meta property="og:url" content="http://heartwarming.github.io/2019/05/08/内存管理的速成课程/index.html">
+<meta property="og:title" content="js基础">
+<meta property="og:url" content="http://heartwarming.github.io/2019/09/05/js基础/index.html">
 <meta property="og:site_name" content="付海秋">
-<meta property="og:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  内存管理的速成课程要理解为什么将ArrayBuffer和SharedArrayBuffer添加到JavaScript">
+<meta property="og:description" content="前言本文主要是基础知识的深化，内容包括：数据类型：判断方法、变量类型与数据类型、数据在堆栈空间中的储存细节对象：对象是多个（种）数据的容器，两种访问内部数据的方法函数：函数也是对象，也有属性和方法。IIEF、this指向问题 数据类型基本（值）类型 对象（引用）类型 数据、内存、变量数据存储在内存中的信息，以二进制（0101101）的形式保存，可传递 内存内存条通电后产生的临时储存空间  一块“内">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_01.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_02.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_03.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_04.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_05.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_06.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_07.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_08.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_09.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_10.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_11.png">
-<meta property="og:image" content="http://heartwarming.github.io/images/memory_12.png">
-<meta property="og:updated_time" content="2019-07-25T02:20:32.520Z">
+<meta property="og:image" content="http://heartwarming.github.io/images/js_1.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/js_2.png">
+<meta property="og:image" content="http://heartwarming.github.io/images/js_1.png">
+<meta property="og:updated_time" content="2019-09-05T06:51:54.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存管理的速成课程">
-<meta name="twitter:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：本文分为三部分介绍  内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  内存管理的速成课程要理解为什么将ArrayBuffer和SharedArrayBuffer添加到JavaScript">
-<meta name="twitter:image" content="http://heartwarming.github.io/images/memory_01.png">
+<meta name="twitter:title" content="js基础">
+<meta name="twitter:description" content="前言本文主要是基础知识的深化，内容包括：数据类型：判断方法、变量类型与数据类型、数据在堆栈空间中的储存细节对象：对象是多个（种）数据的容器，两种访问内部数据的方法函数：函数也是对象，也有属性和方法。IIEF、this指向问题 数据类型基本（值）类型 对象（引用）类型 数据、内存、变量数据存储在内存中的信息，以二进制（0101101）的形式保存，可传递 内存内存条通电后产生的临时储存空间  一块“内">
+<meta name="twitter:image" content="http://heartwarming.github.io/images/js_1.png">
 
 
 
@@ -140,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://heartwarming.github.io/2019/05/08/内存管理的速成课程/">
+  <link rel="canonical" href="http://heartwarming.github.io/2019/09/05/js基础/">
 
 
 
 
 
-  <title>内存管理的速成课程 | 付海秋</title>
+  <title>js基础 | 付海秋</title>
   
 
 
@@ -339,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/05/08/内存管理的速成课程/">
+    <link itemprop="mainEntityOfPage" href="http://heartwarming.github.io/heartwarming.github.io/2019/09/05/js基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fuhaiqiu">
@@ -356,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">内存管理的速成课程</h1>
+          <h1 class="post-title" itemprop="name headline">js基础</h1>
         
 
         <div class="post-meta">
@@ -368,8 +359,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-08T19:35:10+08:00">
-                2019-05-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-05T14:36:45+08:00">
+                2019-09-05
               </time>
             
 
@@ -391,8 +382,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/heartwarming.github.io/categories/memory/" itemprop="url" rel="index">
-                    <span itemprop="name">memory</span>
+                  <a href="/heartwarming.github.io/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -409,8 +400,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/heartwarming.github.io/2019/05/08/内存管理的速成课程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/05/08/内存管理的速成课程/" itemprop="commentCount"></span>
+                <a href="/heartwarming.github.io/2019/09/05/js基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/heartwarming.github.io/2019/09/05/js基础/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -437,7 +428,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  722
                 </span>
               
 
@@ -453,7 +444,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  2
                 </span>
               
             </div>
@@ -474,51 +465,38 @@
       
 
       
-        <h1 id="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："><a href="#关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：" class="headerlink" title="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："></a>关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：</h1><p>本文分为三部分介绍</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文主要是基础知识的深化，内容包括：<br>数据类型：判断方法、变量类型与数据类型、数据在堆栈空间中的储存细节<br>对象：对象是多个（种）数据的容器，两种访问内部数据的方法<br>函数：函数也是对象，也有属性和方法。IIEF、this指向问题</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="基本（值）类型"><a href="#基本（值）类型" class="headerlink" title="基本（值）类型"></a>基本（值）类型</h2><p><img src="/images/js_1.png" alt></p>
+<h2 id="对象（引用）类型"><a href="#对象（引用）类型" class="headerlink" title="对象（引用）类型"></a>对象（引用）类型</h2><p><img src="/images/js_2.png" alt></p>
+<h1 id="数据、内存、变量"><a href="#数据、内存、变量" class="headerlink" title="数据、内存、变量"></a>数据、内存、变量</h1><h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>存储在内存中的信息，以二进制（0101101）的形式保存，可传递</p>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>内存条通电后产生的临时储存空间</p>
 <ul>
-<li>内存管理的速成课程</li>
-<li><a href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理2/#more">ArrayBuffers和SharedArrayBuffers的介绍</a></li>
-<li><a href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/内存管理3/#more">使用Atomics避免SharedArrayBuffers中的竞争条件</a></li>
+<li>一块“内存”（一个字节）包含两部分信息<ul>
+<li>内部储存的数据</li>
+<li>该内存的地址值</li>
 </ul>
-<h2 id="内存管理的速成课程"><a href="#内存管理的速成课程" class="headerlink" title="内存管理的速成课程"></a>内存管理的速成课程</h2><p>要理解为什么将ArrayBuffer和SharedArrayBuffer添加到JavaScript中，您需要了解一些有关内存管理的知识。</p>
-<p>您可以将机器中的内存视为一堆盒子。我认为这些就像你在办公室里的邮箱，或学龄前儿童必须存放东西的小房间。</p>
-<p>如果您需要为其他孩子留下一些东西，可以将它放在一个盒子里。</p>
-<p><img src="/images/memory_01.png" alt></p>
-<p>在这些框的每一个旁边，您都有一个数字，即内存地址。这就是你如何告诉别人在哪里找到你留给他们的东西。</p>
-<p>这些盒子中的每一个都是相同的大小，可以容纳一定数量的信息。盒子的大小是机器特有的。该大小称为字大小。它通常类似于32位或64位。但是为了更容易显示，我将使用8位的字大小。</p>
-<p><img src="/images/memory_02.png" alt></p>
-<p>如果我们想将数字2放在其中一个框中，我们可以轻松完成。数字很容易用二进制表示。</p>
-<p><img src="/images/memory_03.png" alt></p>
-<p>如果我们想要一些不是数字的东西呢？喜欢字母H？</p>
-<p>我们需要有办法将其表示为数字。为此，我们需要一种编码，如UTF-8。我们需要一些东西把它变成那个数字……就像一个编码器环。然后我们可以存储它。</p>
-<p><img src="/images/memory_04.png" alt></p>
-<p>当我们想要将它从包装盒中取出时，我们必须通过解码器将其转换回H.</p>
-<p><strong>自动内存管理</strong><br>当你在JavaScript中工作时，你实际上并不需要考虑这个记忆。它被抽象出来了。这意味着您不要直接触摸内存。</p>
-<p>相反，JS引擎充当中介。它为您管理内存。</p>
-<p><img src="/images/memory_05.png" alt></p>
-<p>所以让我们说一些JS代码，比如React，想要创建一个变量。</p>
-<p><img src="/images/memory_06.png" alt></p>
-<p>JS引擎所做的是通过编码器运行该值以获取值的二进制表示。</p>
-<p><img src="/images/memory_07.png" alt></p>
-<p>它会在内存中找到可以将二进制表示放入的空间。此过程称为分配内存。</p>
-<p><img src="/images/memory_08.png" alt></p>
-<p>然后，引擎将跟踪该变量是否仍可从程序中的任何位置访问。如果无法再访问该变量，则将回收内存，以便JS引擎可以在其中放置新值。</p>
-<p><img src="/images/memory_09.png" alt></p>
-<p>这个监视变量字符串，对象和其他类型值的过程在内存中进行，并在无法再访问它们时将其清除，称为垃圾回收。</p>
-<p>JavaScript之类的语言（代码不直接处理内存）称为内存管理语言。</p>
-<p>这种自动内存管理可以使开发人员更轻松。但它也增加了一些开销。而这种开销有时会使性能无法预测。</p>
-<p><strong>手动内存管理</strong><br>手动管理内存的语言不同。例如，让我们看看如果React是用C语言编写的，React将如何处理内存（现在可以  使用WebAssembly）。</p>
-<p>C没有JavaScript在内存上做的那个抽象层。相反，你直接在内存上运行。您可以从内存加载内容，并可以将内容存储到内存中。</p>
-<p><img src="/images/memory_10.png" alt></p>
-<p>当您将C或其他语言编译为WebAssembly时，您使用的工具会在WebAssembly中添加一些帮助程序代码。例如，它将添加执行编码和解码字节的代码。此代码称为运行时环境。运行时环境将帮助处理JS引擎为JS所做的一些事情。</p>
-<p><img src="/images/memory_11.png" alt></p>
-<p>但对于手动管理的语言，该运行时将不包括垃圾收集。</p>
-<p>这并不意味着你完全依靠自己。即使在具有手动内存管理的语言中，您通常也会从语言运行时获得一些帮助。例如，在C中，运行时将跟踪在称为空闲列表的内容中打开的内存地址。</p>
-<p><img src="/images/memory_12.png" alt></p>
-<p>您可以使用该函数malloc（内存分配的简称）来要求运行时查找一些适合您数据的内存地址。这将从免费列表中取出这些地址。当您完成该数据后，您必须调用free以释放内存。然后这些地址将被添加回空闲列表。</p>
-<p>你必须弄清楚何时调用这些功能。这就是为什么它被称为手动内存管理 - 你自己管理内存。</p>
-<p>作为开发人员，弄清楚何时清除内存的不同部分可能很困难。如果你在错误的时间进行，它可能会导致错误，甚至导致安全漏洞。如果你不这样做，你的内存就会耗尽。</p>
-<p>这就是许多现代语言使用自动内存管理的原因 - 以避免人为错误。但这是以牺牲性能为代价的。我将在下一部分中详细解释这一点。</p>
+</li>
+<li>内存空间分类<ul>
+<li>栈空间    全局变量/局部变量，表示对象名的变量，空间较小    </li>
+<li>堆空间  储存对象，空间较大</li>
+</ul>
+</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>变量名，用来查找到对应的内存<br>变量值，内存中保存的数据</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>数据类型和变量类型不同，变量类型分为两种，一种保存值，一种保存地址</p>
+<ul>
+<li>基本类型（保存值）：保存基本类型的数据</li>
+<li>引用类型（保存地址)：保存对象类型的数据的地址</li>
+</ul>
+<h1 id="对象的理解与使用"><a href="#对象的理解与使用" class="headerlink" title="对象的理解与使用"></a>对象的理解与使用</h1><h2 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h2><p>保存多个数据（多种数据类型）的容器。这些数据每一个都有键名（key）和值（value）</p>
+<h2 id="对象的属性和方法"><a href="#对象的属性和方法" class="headerlink" title="对象的属性和方法"></a>对象的属性和方法</h2><p>对象的属性和方法都是对象内部的数据，根据数据类型的不同划分为两类。<br>属性：保存的数据类型是基本类型、普通对象Object、数组类型Array<br>方法：保存的数据类型是函数类型Function</p>
+<h2 id="访问对象内部的数据"><a href="#访问对象内部的数据" class="headerlink" title="访问对象内部的数据"></a>访问对象内部的数据</h2><p>方法一（有时候不管用）：.数据键名<br>方法二(通用方法）：[‘数据键名’]，数据键名有特殊字符/或者是一个变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;</span><br><span class="line">var key = &apos;Server&apos;</span><br><span class="line">obj[&apos;content-type&apos;] = &apos;JSON&apos;</span><br><span class="line">obj[key] = &apos;nginx&apos;</span><br><span class="line">console.log(obj)</span><br></pre></td></tr></table></figure>
+<h1 id="函数的理解与使用"><a href="#函数的理解与使用" class="headerlink" title="函数的理解与使用"></a>函数的理解与使用</h1><h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>用来实现特定功能的, n条语句的封装体，可以执行</p>
+<h2 id="函数是对象，也有属性和方法"><a href="#函数是对象，也有属性和方法" class="headerlink" title="函数是对象，也有属性和方法"></a>函数是对象，也有属性和方法</h2><p>属性：test.prototype<br>方法：<strong>test.call/apply(obj)</strong>。这个方法可以让test临时成为obj的方法</p>
+<h2 id="IIEF"><a href="#IIEF" class="headerlink" title="IIEF"></a>IIEF</h2><p>全名：Immediately-Invoked Function Expression立即调用函数表达，<br>别名：匿名函数自调用<br>作用：隐藏实现，不污染外部（全局）命名空间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(function (i) &#123;</span><br><span class="line">  var a = 4</span><br><span class="line">  function fn() &#123;</span><br><span class="line">    console.log(&apos;fn &apos;, i+a)</span><br><span class="line">  &#125;</span><br><span class="line">  fn()</span><br><span class="line">&#125;)(3)</span><br></pre></td></tr></table></figure></p>
+<h2 id="函数中的this"><a href="#函数中的this" class="headerlink" title="函数中的this"></a>函数中的this</h2><p>this是什么：<br>一个内置的引用变量，代表调用函数的当前对象，既然如此，那么this具体指的是谁，只有当函数执行才知道，谁调用，this就是谁。<br>如何确定this的值？这里假设已定义了函数test</p>
+<p><img src="/images/js_1.png" alt></p>
 
       
     </div>
@@ -580,8 +558,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/heartwarming.github.io/2019/05/07/ES7,8,9,10新特性介绍/" rel="next" title="ES7,8,9,10新特性介绍">
-                <i class="fa fa-chevron-left"></i> ES7,8,9,10新特性介绍
+              <a href="/heartwarming.github.io/2019/09/04/package-lock/" rel="next" title="package-lock.json需要写进.gitignore吗?">
+                <i class="fa fa-chevron-left"></i> package-lock.json需要写进.gitignore吗?
               </a>
             
           </div>
@@ -589,10 +567,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/heartwarming.github.io/2019/05/08/ArrayBuffers和SharedArrayBuffers的介绍/" rel="prev" title="ArrayBuffers和SharedArrayBuffers的介绍">
-                ArrayBuffers和SharedArrayBuffers的介绍 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -805,7 +779,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："><span class="nav-number">1.</span> <span class="nav-text">关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存管理的速成课程"><span class="nav-number">1.1.</span> <span class="nav-text">内存管理的速成课程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本（值）类型"><span class="nav-number">2.1.</span> <span class="nav-text">基本（值）类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象（引用）类型"><span class="nav-number">2.2.</span> <span class="nav-text">对象（引用）类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据、内存、变量"><span class="nav-number">3.</span> <span class="nav-text">数据、内存、变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据"><span class="nav-number">3.1.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存"><span class="nav-number">3.2.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象的理解与使用"><span class="nav-number">4.</span> <span class="nav-text">对象的理解与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是对象"><span class="nav-number">4.1.</span> <span class="nav-text">什么是对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的属性和方法"><span class="nav-number">4.2.</span> <span class="nav-text">对象的属性和方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问对象内部的数据"><span class="nav-number">4.3.</span> <span class="nav-text">访问对象内部的数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数的理解与使用"><span class="nav-number">5.</span> <span class="nav-text">函数的理解与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是函数"><span class="nav-number">5.1.</span> <span class="nav-text">什么是函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数是对象，也有属性和方法"><span class="nav-number">5.2.</span> <span class="nav-text">函数是对象，也有属性和方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IIEF"><span class="nav-number">5.3.</span> <span class="nav-text">IIEF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数中的this"><span class="nav-number">5.4.</span> <span class="nav-text">函数中的this</span></a></li></ol></li></ol></div>
             
 
           </div>

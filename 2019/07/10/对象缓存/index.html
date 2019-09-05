@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="局部对象缓存">
+<meta name="description" content="局部对象缓存方法定义 123456789let cache = &amp;#123;&amp;#125;export default &amp;#123;  save (key, val) &amp;#123;    cache[key] = val  &amp;#125;,  load (key) &amp;#123;    return cache[key]  &amp;#125;&amp;#125; 使用方法 1234567891011121314151">
 <meta name="keywords" content="导航,分享">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对象缓存">
 <meta property="og:url" content="http://heartwarming.github.io/2019/07/10/对象缓存/index.html">
 <meta property="og:site_name" content="付海秋">
-<meta property="og:description" content="局部对象缓存">
+<meta property="og:description" content="局部对象缓存方法定义 123456789let cache = &amp;#123;&amp;#125;export default &amp;#123;  save (key, val) &amp;#123;    cache[key] = val  &amp;#125;,  load (key) &amp;#123;    return cache[key]  &amp;#125;&amp;#125; 使用方法 1234567891011121314151">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-25T02:19:34.324Z">
+<meta property="og:updated_time" content="2019-09-04T02:46:53.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对象缓存">
-<meta name="twitter:description" content="局部对象缓存">
+<meta name="twitter:description" content="局部对象缓存方法定义 123456789let cache = &amp;#123;&amp;#125;export default &amp;#123;  save (key, val) &amp;#123;    cache[key] = val  &amp;#125;,  load (key) &amp;#123;    return cache[key]  &amp;#125;&amp;#125; 使用方法 1234567891011121314151">
 
 
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6
+                  84
                 </span>
               
 
@@ -461,8 +461,10 @@
       
 
       
-        <h1 id="局部对象缓存"><a href="#局部对象缓存" class="headerlink" title="局部对象缓存"></a>局部对象缓存</h1><blockquote>
-</blockquote>
+        <h1 id="局部对象缓存"><a href="#局部对象缓存" class="headerlink" title="局部对象缓存"></a>局部对象缓存</h1><p>方法定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let cache = &#123;&#125;</span><br><span class="line">export default &#123;</span><br><span class="line">  save (key, val) &#123;</span><br><span class="line">    cache[key] = val</span><br><span class="line">  &#125;,</span><br><span class="line">  load (key) &#123;</span><br><span class="line">    return cache[key]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import cache from &apos;../cache&apos;;</span><br><span class="line">data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        cachelist: cache.load(CACHE_LIST_KEY) || [],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">methods: &#123;</span><br><span class="line">    ajax(&#123;</span><br><span class="line">        url:,</span><br><span class="line">        method:,</span><br><span class="line">        data: &#123;&#125;,</span><br><span class="line">        success: function(res, status) &#123;</span><br><span class="line">            //存数据</span><br><span class="line">            cache.save(CACHE_LIST_KEY, info.obj[0].applist)</span><br><span class="line">        &#125;,</span><br><span class="line">        error:function()&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -644,7 +646,7 @@ var jiathis_config={
               
                 <a href="/heartwarming.github.io/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
