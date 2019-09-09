@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="付海秋">
 <meta property="og:description" content="vue项目实现按需加载的3种方式： vue异步组件、 es提案的import() webpack的require.ensure()  vue异步组件技术在使用vue-router配置路由时，使用vue的异步组件技术，可以实现按需加载。 但是，这种情况下一个组件生成一个js文件。 举例如下：12345&amp;#123;    path: &amp;apos;/promisedemo&amp;apos;,    name:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-09T05:50:12.006Z">
+<meta property="og:updated_time" content="2019-09-09T07:34:30.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组件的按需加载">
 <meta name="twitter:description" content="vue项目实现按需加载的3种方式： vue异步组件、 es提案的import() webpack的require.ensure()  vue异步组件技术在使用vue-router配置路由时，使用vue的异步组件技术，可以实现按需加载。 但是，这种情况下一个组件生成一个js文件。 举例如下：12345&amp;#123;    path: &amp;apos;/promisedemo&amp;apos;,    name:">
@@ -475,7 +475,7 @@
 <p>这种情况下，多个路由指定相同的chunkName，会合并打包成一个js文件。</p>
 <p>举例如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path: &apos;/promisedemo&apos;,</span><br><span class="line">    name: &apos;PromiseDemo&apos;,</span><br><span class="line">    component: resolve =&gt; require.ensure([], () =&gt; resolve(require(&apos;../components/PromiseDemo&apos;)), &apos;demo&apos;)</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">    path: &apos;/hello&apos;,</span><br><span class="line">    name: &apos;Hello&apos;,</span><br><span class="line">    // component: Hello</span><br><span class="line">    component: resolve =&gt; require.ensure([], () =&gt; resolve(require(&apos;../components/Hello&apos;)), &apos;demo&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>webpack提供的require.ensure()异步加载的原理请看</p>
+<p><a href="https://heartwarming.github.io/heartwarming.github.io/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/#more">webpack提供的require.ensure()异步加载的原理请看</a></p>
 
       
     </div>
