@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>ArrayBuffers和SharedArrayBuffers的介绍 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识： 内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  ArrayBuffers和SharedArrayBuffers的介绍在上一部分中，我解释了像JavaScript这样的内存管理语言如何处">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArrayBuffers和SharedArrayBuffers的介绍">
+<meta property="og:url" content="http://example.com/2019/05/08/ArrayBuffers%E5%92%8CSharedArrayBuffers%E7%9A%84%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识： 内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 使用Atomics避免SharedArrayBuffers中的竞争条件  ArrayBuffers和SharedArrayBuffers的介绍在上一部分中，我解释了像JavaScript这样的内存管理语言如何处">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/memory_13.png">
+<meta property="og:image" content="http://example.com/images/memory_14.png">
+<meta property="og:image" content="http://example.com/images/memory_15.png">
+<meta property="og:image" content="http://example.com/images/memory_16.png">
+<meta property="og:image" content="http://example.com/images/memory_17.png">
+<meta property="og:image" content="http://example.com/images/memory_18.png">
+<meta property="og:image" content="http://example.com/images/memory_19.png">
+<meta property="og:image" content="http://example.com/images/memory_20.png">
+<meta property="og:image" content="http://example.com/images/memory_21.png">
+<meta property="og:image" content="http://example.com/images/memory_22.png">
+<meta property="og:image" content="http://example.com/images/memory_23.png">
+<meta property="og:image" content="http://example.com/images/memory_24.png">
+<meta property="og:image" content="http://example.com/images/memory_25.png">
+<meta property="og:image" content="http://example.com/images/memory_26.png">
+<meta property="og:image" content="http://example.com/images/memory_27.png">
+<meta property="article:published_time" content="2019-05-08T13:35:10.000Z">
+<meta property="article:modified_time" content="2020-11-27T06:47:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="导航">
+<meta property="article:tag" content="分享">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/memory_13.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ArrayBuffers和SharedArrayBuffers的介绍" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/05/08/ArrayBuffers%E5%92%8CSharedArrayBuffers%E7%9A%84%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time class="dt-published" datetime="2019-05-08T13:35:10.000Z" itemprop="datePublished">2019-05-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/memory/">memory</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      ArrayBuffers和SharedArrayBuffers的介绍
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："><a href="#关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：" class="headerlink" title="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："></a>关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%861/#more">内存管理的速成课程</a></li>
+<li>ArrayBuffers和SharedArrayBuffers的介绍</li>
+<li><a target="_blank" rel="noopener" href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%863/#more">使用Atomics避免SharedArrayBuffers中的竞争条件</a></li>
+</ul>
+<h2 id="ArrayBuffers和SharedArrayBuffers的介绍"><a href="#ArrayBuffers和SharedArrayBuffers的介绍" class="headerlink" title="ArrayBuffers和SharedArrayBuffers的介绍"></a>ArrayBuffers和SharedArrayBuffers的介绍</h2><p>在上一部分中，我解释了像JavaScript这样的内存管理语言如何处理内存。我还解释了手动内存管理如何在C语言中工作。</p>
+<p>当我们谈论ArrayBuffers和SharedArrayBuffers时，为什么这很重要？</p>
+<p>这是因为ArrayBuffers为您提供了一种手动处理某些数据的方法，即使您使用的是具有自动内存管理功能的JavaScript。</p>
+<p>为什么这是你想做的事情？</p>
+<p>正如我们在上一部分中所讨论的那样，在自动内存管理方面存在一种权衡。对开发人员来说更容易，但它增加了一些开销。在某些情况下，这种开销会导致性能问题。</p>
+<p><img src="/images/memory_13.png"></p>
+<p>例如，当您在JS中创建变量时，引擎必须猜测这是什么类型的变量以及它应该如何在内存中表示。因为它在猜测，JS引擎通常会保留比变量真正需要的空间更多的空间。根据变量，内存插槽可能比它需要的大2-8倍，这可能导致大量浪费的内存。</p>
+<p>此外，某些创建和使用JS对象的模式可能会使收集垃圾变得更加困难。如果您正在进行手动内存管理，则可以选择适合您正在使用的用例的分配和取消分配策略。</p>
+<p>大多数时候，这不值得麻烦。大多数用例对性能不敏感，您需要担心手动内存管理。对于常见用例，手动内存管理可能会更慢。</p>
+<p>但是，当您需要在低级别工作以尽可能快地使代码时，ArrayBuffers和SharedArrayBuffers会为您提供一个选项。</p>
+<p><img src="/images/memory_14.png"></p>
+<p><strong>那么ArrayBuffer是如何工作的呢？</strong><br>它基本上就像使用任何其他JavaScript数组一样。除了使用ArrayBuffer时，您不能将任何JavaScript类型放入其中，如对象或字符串。您可以添加的唯一内容是字节（您可以使用数字表示）。</p>
+<p><img src="/images/memory_15.png"></p>
+<p>我应该在这里说清楚的一点是，你实际上并没有将这个字节直接添加到ArrayBuffer中。就其本身而言，这个ArrayBuffer不知道该字节应该有多大，或者不应该将不同类型的数字转换为字节。</p>
+<p>ArrayBuffer本身只是一堆零和一行。ArrayBuffer不知道该数组中第一个元素和第二个元素之间的除法位置。</p>
+<p><img src="/images/memory_16.png"></p>
+<p>为了提供上下文，实际上将其分解为框，我们需要将其包装在所谓的视图中。可以使用类型化数组添加这些数据视图，并且可以使用许多不同类型的类型化数组。</p>
+<p>例如，您可以使用Int8类型的数组，将其分解为8位字节。</p>
+<p><img src="/images/memory_17.png"></p>
+<p>或者你可以有一个无符号的Int16数组，它可以将它分解为16位的数据，并且还可以像处理无符号整数一样处理它。</p>
+<p><img src="/images/memory_18.png"></p>
+<p>您甚至可以在同一个基本缓冲区上拥有多个视图。不同的视图将为您提供相同操作的不同结果。</p>
+<p>例如，如果我们从这个ArrayBuffer的Int8视图中获取元素0和1，它将在Uint16视图中给出与元素0不同的值，即使它们包含完全相同的位。</p>
+<p><img src="/images/memory_19.png"></p>
+<p>通过这种方式，ArrayBuffer基本上就像原始内存一样。它模仿了像C这样的语言的直接内存访问。</p>
+<p>您可能想知道为什么我们不让程序员直接访问内存而不是添加这个抽象层。直接访问内存会打开一些安全漏洞。我将在以后的部分中详细解释这个问题。</p>
+<p><strong>那么，什么是SharedArrayBuffer？</strong><br>为了解释SharedArrayBuffers，我需要解释一下并行运行代码和JavaScript。</p>
+<p>您可以并行运行代码以使代码运行得更快，或使代码更快地响应用户事件。为此，您需要拆分工作。</p>
+<p>在一个典型的应用程序中，工作由一个人 - 主线程完成。我之前已经谈过这个……主线程就像一个全栈开发者。它负责JavaScript，DOM和布局。</p>
+<p>您可以采取任何措施从主线程的工作负载中删除工作。在某些情况下，ArrayBuffers可以减少主线程必须完成的工作量。</p>
+<p><img src="/images/memory_20.png"></p>
+<p>但有时候减少主线程的工作量是不够的。有时你需要引进增援……你需要分开工作。</p>
+<p>在大多数编程语言中，通常使用称为线程的方法来分解工作。这基本上就像有多个人在一个项目上工作。如果您的任务彼此非常独立，则可以将它们分配给不同的线程。然后，这两个线程可以同时处理它们各自的任务。</p>
+<p>在JavaScript中，您执行此操作的方式是使用称为Web worker的东西。这些Web工作者与您在其他语言中使用的线程略有不同。默认情况下，它们不共享内存。</p>
+<p><img src="/images/memory_21.png"></p>
+<p>这意味着如果要与其他线程共享某些数据，则必须将其复制。这是通过函数postMessage完成的。</p>
+<p>postMessage接受您放入其中的任何对象，对其进行序列化，将其发送给其他Web工作者，然后将其反序列化并放入内存中。</p>
+<p><img src="/images/memory_22.png"></p>
+<p>这是一个非常缓慢的过程。</p>
+<p>对于某些类型的数据，如ArrayBuffers，您可以执行所谓的传输内存。这意味着移动特定的内存块，以便其他Web工作者可以访问它。</p>
+<p>但是第一个Web工作者再也无法访问它了。</p>
+<p><img src="/images/memory_23.png"></p>
+<p>这适用于某些用例，但对于许多需要具有此类高性能并行性的用例，您真正需要的是拥有共享内存。</p>
+<p>这就是SharedArrayBuffers为您提供的。</p>
+<p><img src="/images/memory_24.png"></p>
+<p>使用SharedArrayBuffer，两个Web工作者（两个线程）都可以写入数据并从同一块内存中读取数据。</p>
+<p>这意味着他们没有使用postMessage的通信开销和延迟。两个Web工作人员都可以立即访问数据。</p>
+<p>但是，同时从两个线程立即访问存在一些危险。它可以导致所谓的竞争条件。</p>
+<p><img src="/images/memory_25.png"></p>
+<p>我将在下一部分中详细解释这些内容。</p>
+<p><strong>SharedArrayBuffers的当前状态是什么？</strong><br>SharedArrayBuffers将很快出现在所有主流浏览器中。</p>
+<p><img src="/images/memory_26.png"></p>
+<p>它们已经在Safari中运行（在Safari 10.1中）。Firefox和Chrome都将在7月/ 8月的版本中发布它们。Edge计划在秋季Windows更新中发布它们。</p>
+<p>即使它们在所有主流浏览器中都可用，我们也不希望应用程序开发人员直接使用它们。事实上，我们建议不要这样做。您应该使用可用的最高级别的抽象。</p>
+<p>我们所期望的是JavaScript库开发人员将创建库，使您可以更轻松，更安全地使用SharedArrayBuffers。</p>
+<p>此外，一旦SharedArrayBuffers内置到平台中，WebAssembly就可以使用它们来实现对线程的支持。一旦到位，您就可以使用像Rust这样的语言的并发抽象，它将无畏并发作为其主要目标之一。</p>
+<p>在接下来的部分中，我们将看看工具（原子能），这些库作者会使用来建立这些抽象，同时避免竞争条件。<br><img src="/images/memory_27.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/05/08/ArrayBuffers%E5%92%8CSharedArrayBuffers%E7%9A%84%E4%BB%8B%E7%BB%8D/" data-id="ckw8thuj30001e4d8cc1oa0x5" data-title="ArrayBuffers和SharedArrayBuffers的介绍" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/08/%E4%BD%BF%E7%94%A8Atomics%E9%81%BF%E5%85%8DSharedArrayBuffers%E4%B8%AD%E7%9A%84%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用Atomics避免SharedArrayBuffers中的竞争条件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/08/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E9%80%9F%E6%88%90%E8%AF%BE%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">内存管理的速成课程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ngnix/">Ngnix</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ajax/">ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css2-1/">css2.1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/funny/">funny</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memory/">memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/storage/">storage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue2-x/">vue2.x</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/tags/%E5%AF%BC%E8%88%AA/" style="font-size: 10px;">导航</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/">软件的兼容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/">webpack异步加载组件原理.md</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">组件的按需加载</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

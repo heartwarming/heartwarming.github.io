@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>utils | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ArrayDate时间戳 转 年-月-日 时:分1234567891011let YMD &#x3D; (now)  &#x3D;&gt; &amp;#123;    if(now &#x3D;&#x3D; null) return null;    now &#x3D; Number(now);    var date &#x3D; new Date(now);    Y &#x3D; date.getFullYear();    M &#x3D; (date.getMonth()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="utils">
+<meta property="og:url" content="http://example.com/2019/07/03/utils/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ArrayDate时间戳 转 年-月-日 时:分1234567891011let YMD &#x3D; (now)  &#x3D;&gt; &amp;#123;    if(now &#x3D;&#x3D; null) return null;    now &#x3D; Number(now);    var date &#x3D; new Date(now);    Y &#x3D; date.getFullYear();    M &#x3D; (date.getMonth()">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-03T06:10:11.000Z">
+<meta property="article:modified_time" content="2020-11-27T06:47:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="导航">
+<meta property="article:tag" content="分享">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-utils" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/03/utils/" class="article-date">
+  <time class="dt-published" datetime="2019-07-03T06:10:11.000Z" itemprop="datePublished">2019-07-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/utils/">utils</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      utils
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h1><h1 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h1><h2 id="时间戳-转-年-月-日-时-分"><a href="#时间戳-转-年-月-日-时-分" class="headerlink" title="时间戳 转 年-月-日 时:分"></a>时间戳 转 年-月-日 时:分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let YMD = (now)  =&gt; &#123;</span><br><span class="line">    if(now == null) return null;</span><br><span class="line">    now = Number(now);</span><br><span class="line">    var date = new Date(now);</span><br><span class="line">    Y = date.getFullYear();</span><br><span class="line">    M = (date.getMonth() + 1 &lt; 10 ? &#x27;0&#x27; + (date.getMonth() + 1) : date.getMonth() + 1);</span><br><span class="line">    D = date.getDate() &lt; 10 ? &#x27;0&#x27; + (date.getDate()) : date.getDate();</span><br><span class="line">    H = date.getHours() &lt; 10 ? &#x27;0&#x27; +  (date.getHours()): date.getHours() ;</span><br><span class="line">    F = date.getMinutes() &lt; 10 ? &#x27;0&#x27; + (date.getMinutes()) : date.getMinutes();</span><br><span class="line">    return  Y + &#x27;-&#x27; + M + &#x27;-&#x27; + D + &#x27;&#x27; + H + &#x27;:&#x27; + F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="日期-年-月-日-时-分-转成-时间戳"><a href="#日期-年-月-日-时-分-转成-时间戳" class="headerlink" title="日期 年/月/日 时:分 转成 时间戳"></a>日期 年/月/日 时:分 转成 时间戳</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let unix = (args) =&gt; &#123;</span><br><span class="line">    var arr = args.split(&quot; &quot;);</span><br><span class="line">    var time = (new Date(arr)).getTime();</span><br><span class="line">    console.log(time); // 1496909520000  单位:ms</span><br><span class="line">    return time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="根据时间戳判断不同的时间段显示今天，昨天，前天，具体日期"><a href="#根据时间戳判断不同的时间段显示今天，昨天，前天，具体日期" class="headerlink" title="根据时间戳判断不同的时间段显示今天，昨天，前天，具体日期"></a>根据时间戳判断不同的时间段显示今天，昨天，前天，具体日期</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">let format = (time) =&gt; &#123;</span><br><span class="line">    const oneDay = 24*60*60*1000; // 一天的毫秒数</span><br><span class="line">    var today = new Date();</span><br><span class="line">    var param = new Date(time);</span><br><span class="line">    var d = Math.floor(today.getTime()/oneDay) - Math.floor(time/oneDay);</span><br><span class="line">    if (d == 0) &#123;</span><br><span class="line">        // 今天</span><br><span class="line">        return &#x27;今天&#x27;;</span><br><span class="line">    &#125; else if (d == 1) &#123;</span><br><span class="line">        // 昨天</span><br><span class="line">        return &#x27;昨天&#x27;;</span><br><span class="line">    &#125; else if (d == 2) &#123;</span><br><span class="line">        // 前天</span><br><span class="line">        return &#x27;前天&#x27;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // 显示具体日期</span><br><span class="line">        if (today.getFullYear() == param.getFullYear()) &#123;</span><br><span class="line">            // 不显示年</span><br><span class="line">            return param.getMonth()+1 + &#x27;-&#x27; + param.getDate();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // 显示年</span><br><span class="line">            return param.getFullYear() + &#x27;-&#x27; + (param.getMonth()+1) + &#x27;-&#x27; + param.getDate();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h1><h1 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h1><h1 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h1><h2 id="百分数转换成小数"><a href="#百分数转换成小数" class="headerlink" title="百分数转换成小数"></a>百分数转换成小数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let percentTodecimal = (percent) = &#123;</span><br><span class="line">    var decimal = (String(percent).replace(/%/, &quot;&quot;))/100 ;</span><br><span class="line">    //保留两位</span><br><span class="line">    return decimal.toFixed(2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数字转换成百分数"><a href="#数字转换成百分数" class="headerlink" title="数字转换成百分数"></a>数字转换成百分数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let toPercent = (point) =&gt; &#123;</span><br><span class="line">    var str=Number(point*100).toFixed(1);</span><br><span class="line">    str+=&quot;%&quot;;</span><br><span class="line">    return str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数字加单位"><a href="#数字加单位" class="headerlink" title="数字加单位"></a>数字加单位</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数字转整数 如 100000 转为10万</span><br><span class="line"> * @param &#123;需要转化的数&#125; num</span><br><span class="line"> * @param &#123;需要保留的小数位数&#125; point</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">let browseNumber = (num, point) =&gt; &#123;</span><br><span class="line">    let numStr = num.toString()</span><br><span class="line">    // 万以内直接返回</span><br><span class="line">    if (numStr.length &lt; 5) &#123;</span><br><span class="line">        return numStr;</span><br><span class="line">    &#125;</span><br><span class="line">    //大于8位数是亿</span><br><span class="line">    else if (numStr.length &gt; 8) &#123;</span><br><span class="line">        let decimal = numStr.substring(numStr.length - 8, numStr.length - 8 + parseInt(point));</span><br><span class="line">        return parseFloat(parseInt(num / 100000000) + &#x27;.&#x27; + decimal) + &#x27;亿&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    //大于4位数是万</span><br><span class="line">    else if (numStr.length &gt; 4 &amp;&amp; numStr.length &lt;= 5) &#123;</span><br><span class="line">        let decimal = numStr.substring(numStr.length - 4, numStr.length - 4 + parseInt(point))</span><br><span class="line">        return parseFloat(parseInt(num / 10000) + &#x27;.&#x27; + decimal) + &#x27;万&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    //大于5位数是十万+</span><br><span class="line">    else if (numStr.length &gt; 5) &#123;</span><br><span class="line">        let decimal = numStr.substring(numStr.length - 4, numStr.length - 4 + parseInt(point))</span><br><span class="line">        return parseFloat(parseInt(10)) + &#x27;万+&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h1><h2 id="判断对象的数据类型"><a href="#判断对象的数据类型" class="headerlink" title="判断对象的数据类型"></a>判断对象的数据类型</h2><p>使用 Object.prototype.toString 配合闭包，通过传入不同的判断类型来返回不同的判断函数（注意传入 type 参数时首字母大写）</p>
+<blockquote>
+<p>不推荐将这个函数用来检测可能会产生包装类型的基本数据类型上,因为 call 会将第一个参数进行装箱操作</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function dataType()&#123;</span><br><span class="line">    // 预置目前已知的数据类型</span><br><span class="line">    var is =&#123;</span><br><span class="line">            types : [ &quot;String&quot;,&quot;Boolean&quot;, &quot;Number&quot;,  &quot;Array&quot;, &quot;Object&quot;, &quot;Date&quot;, &quot;RegExp&quot;,&quot;Window&quot;, &quot;HTMLDocument&quot;]</span><br><span class="line">        &#125;;</span><br><span class="line">    for(var i = 0, c; c = is.types[ i++ ]; )&#123;</span><br><span class="line">        is[c] = (function(type)&#123;</span><br><span class="line">            return function(obj)&#123;</span><br><span class="line">               return Object.prototype.toString.call(obj) == &quot;[object &quot; + type + &quot;]&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)(c);</span><br><span class="line">    &#125;</span><br><span class="line">    // 利用return返回值,提供给外面调用</span><br><span class="line">    return is ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var is = dataType(); </span><br><span class="line">//检测是否是字符串对象</span><br><span class="line">console.log(is.String(&#x27;11&#x27;)); </span><br><span class="line">// true</span><br></pre></td></tr></table></figure>
+
+<p>ES6的写法(推荐)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const isType = type =&gt; target =&gt; &#x27;[object $&#123;type&#125;]&#x27; === Object.prototype.toString.call(target);</span><br><span class="line">const isArray = isType(&#x27;Array&#x27;);</span><br><span class="line">console.log(isArray([]));</span><br><span class="line">&gt; true</span><br></pre></td></tr></table></figure>
+
+<h2 id="检测对象-不仅指Object-是否存在并且检测对象是否为空"><a href="#检测对象-不仅指Object-是否存在并且检测对象是否为空" class="headerlink" title="检测对象(不仅指Object)是否存在并且检测对象是否为空"></a>检测对象(不仅指Object)是否存在并且检测对象是否为空</h2><p><strong>方式一：jq $.isEmptyObject(obj); 空ture 非空false</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function isEmptyObject_1(obj)&#123;</span><br><span class="line">    if (typeof obj === &quot;undefined&quot;) &#123;</span><br><span class="line">        console.log(&quot;该对象不存在&quot;);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        if($.isEmptyObject(obj)==true)&#123;</span><br><span class="line">            console.log(&quot;空对象&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            console.log(&quot;非空对象&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>方式二：利用JSON.stringify(obj)方法检测</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function isEmptyObject_2(obj)&#123;</span><br><span class="line">    if (typeof obj === &quot;undefined&quot;) &#123;</span><br><span class="line">        console.log(&quot;该对象不存在&quot;);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        if(JSON.stringify(obj) == &quot;&#123;&#125;&quot;)&#123;</span><br><span class="line">            console.log(&quot;空对象&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            console.log(&quot;非空对象&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h2 id="indexOf查找字符串中是否有某个特殊字符"><a href="#indexOf查找字符串中是否有某个特殊字符" class="headerlink" title="indexOf查找字符串中是否有某个特殊字符"></a>indexOf查找字符串中是否有某个特殊字符</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// indexOf的用法: 含有这个字符返回索引位置，没有返回-1</span><br><span class="line">let indexOf = (str,character) =&gt; &#123;</span><br><span class="line">    return str.indexOf(character);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析url的参数组装成对象返回"><a href="#解析url的参数组装成对象返回" class="headerlink" title="解析url的参数组装成对象返回"></a>解析url的参数组装成对象返回</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let parseQueryString = (url) =&gt; &#123;</span><br><span class="line">    let reg_url = /^[^\?]+\?([\w\W]+)$/,</span><br><span class="line">    reg_para = /([^&amp;=]+)=([\w\W]*?)(&amp;|$|#)/g,</span><br><span class="line">    arr_url = reg_url.exec(url),</span><br><span class="line">    ret = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    if (arr_url &amp;&amp; arr_url[1]) &#123;</span><br><span class="line">        var str_para = arr_url[1], result;</span><br><span class="line">        while ((result = reg_para.exec(str_para)) != null) &#123;</span><br><span class="line">            ret[result[1]] = result[2];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ret</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="根据姓氏选取数组中预置的背景颜色"><a href="#根据姓氏选取数组中预置的背景颜色" class="headerlink" title="根据姓氏选取数组中预置的背景颜色"></a>根据姓氏选取数组中预置的背景颜色</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">let getColor = (name) =&gt; &#123;</span><br><span class="line">    var color= [&#x27;#eead10&#x27;,&#x27;#f99a2b&#x27;,&#x27;#f38134&#x27;,&#x27;#6495ed&#x27;,&#x27;#3ab1aa&#x27;,&#x27;#0abfb5&#x27;,&#x27;#06aae1&#x27;,&#x27;#00bfff&#x27;,&#x27;#96bc53&#x27;,&#x27;#00ced1&#x27;,&#x27;#89a8e0&#x27;];</span><br><span class="line">    var newName = encodeURI(name).replace(/%/g, &quot;&quot;);</span><br><span class="line">    var lastName, hexadecimal, tenBinary;</span><br><span class="line">    //长度大于等于6位，取后六位</span><br><span class="line">    if(newName.length &gt;= 6) &#123;</span><br><span class="line">      lastName = newName.substr(0,6);</span><br><span class="line">      hexadecimal = parseInt(lastName,16);</span><br><span class="line">      //能转成数字</span><br><span class="line">      if(hexadecimal) &#123;</span><br><span class="line">        tenBinary = hexadecimal%10;</span><br><span class="line">        return color[tenBinary];</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        //不能转数字</span><br><span class="line">        return color[10];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return color[10]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="表单获取焦点时placeholder的提示语消失，提升用户体验。"><a href="#表单获取焦点时placeholder的提示语消失，提升用户体验。" class="headerlink" title="表单获取焦点时placeholder的提示语消失，提升用户体验。"></a>表单获取焦点时placeholder的提示语消失，提升用户体验。</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let placeholder = () =&gt; &#123;</span><br><span class="line">    $(document).on(&#x27;focus&#x27;,&#x27;textarea&#x27;,function()&#123;</span><br><span class="line">        $(this).attr(&#x27;placeholder&#x27;,&#x27;&#x27;);</span><br><span class="line">        if(!$.trim(this.value))&#123;</span><br><span class="line">            this.value = &#x27;&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).on(&#x27;blur&#x27;,&#x27;textarea&#x27;,function()&#123;</span><br><span class="line">        var salf = this;</span><br><span class="line">        $(salf).attr(&#x27;placeholder&#x27;,&#x27;请输入说明文字&#x27;);</span><br><span class="line">        if(!$.trim(salf.value))&#123;</span><br><span class="line">            this.value = &#x27;&#x27;;</span><br><span class="line">            setTimeout(function()&#123;salf.value = &#x27;&#x27;;&#125;,100);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/03/utils/" data-id="ckw8thuk6001re4d8ehzi93sg" data-title="utils" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/05/%E6%97%A5%E6%B4%BB%E7%9A%84%E5%90%84%E7%A7%8D%E6%8C%87%E6%A0%87/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          日活的各种指标
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/28/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数据驱动</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ngnix/">Ngnix</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ajax/">ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css2-1/">css2.1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/funny/">funny</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memory/">memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/storage/">storage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue2-x/">vue2.x</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/tags/%E5%AF%BC%E8%88%AA/" style="font-size: 10px;">导航</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/">软件的兼容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/">webpack异步加载组件原理.md</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">组件的按需加载</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

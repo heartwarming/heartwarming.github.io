@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>前后端数据传输不得不面对的转码问题 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="数据传递转码数据在传输的过程中，浏览器会对数据进行编码，假如我现在有一条数据 {“name”: “测试”}。 如果我们通过get方法传递数据，这条数据会被拼接到 url 请求的后面，如：localhost:8080&#x2F;src&#x2F;text.html?name&#x3D;测试。uri本身是采用ASCII编码的，所以如果是非 ASCII 编码集的字符在传输时都会被编码，编码方法和 encodeURI 的编码规则相同，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前后端数据传输不得不面对的转码问题">
+<meta property="og:url" content="http://example.com/2019/07/26/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E4%B8%8D%E5%BE%97%E4%B8%8D%E9%9D%A2%E5%AF%B9%E7%9A%84%E8%BD%AC%E7%A0%81%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="数据传递转码数据在传输的过程中，浏览器会对数据进行编码，假如我现在有一条数据 {“name”: “测试”}。 如果我们通过get方法传递数据，这条数据会被拼接到 url 请求的后面，如：localhost:8080&#x2F;src&#x2F;text.html?name&#x3D;测试。uri本身是采用ASCII编码的，所以如果是非 ASCII 编码集的字符在传输时都会被编码，编码方法和 encodeURI 的编码规则相同，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-26T02:20:45.000Z">
+<meta property="article:modified_time" content="2020-11-27T06:47:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="导航">
+<meta property="article:tag" content="分享">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-前后端数据传输不得不面对的转码问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/26/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E4%B8%8D%E5%BE%97%E4%B8%8D%E9%9D%A2%E5%AF%B9%E7%9A%84%E8%BD%AC%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2019-07-26T02:20:45.000Z" itemprop="datePublished">2019-07-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ajax/">ajax</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      前后端数据传输不得不面对的转码问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="数据传递转码"><a href="#数据传递转码" class="headerlink" title="数据传递转码"></a>数据传递转码</h1><p>数据在传输的过程中，浏览器会对数据进行编码，假如我现在有一条数据 {“name”: “测试”}。</p>
+<p>如果我们通过get方法传递数据，这条数据会被拼接到 url 请求的后面，如：<strong>localhost:8080/src/text.html?name=测试</strong>。uri本身是采用ASCII编码的，所以如果是非 ASCII 编码集的字符在传输时都会被编码，编码方法和 encodeURI 的编码规则相同，但是这里的编码规则是由浏览器控制的，不同的浏览器采用的编码方式 (UTF-8,GBK) 不一样，被编码的数据发送给服务器，服务器用 iso-8859-1 编码对数据解码，后端人员通过 request.getParameter(“name”) 获取参数数据，且获得的数据都是经过解码过的，而解码过程中程序里无法指定，对于 get 请求获得的数据 request.setCharacterEncoding(“字符集”) 指定解码规则无效。</p>
+<p>如果是post方法传递数据，浏览器也会对数据进行编码，如果我们在 ajax 请求头里面设置了 <strong>setRequestHeader(“ContentType”,”application/x-www-form-urlencoded;charset=UTF-8”)</strong>;浏览器就会以charset值进行编码，如果没有设置则由网页 meta 标签的 charset 属性决定，被编码过的数据发送给服务器，服务器用 iso-8859-1 编码对数据解码，对于post请求发来的数据后端人员可以使用<br>request.setCharacterEncoding(“字符集”) 指定解码规则。</p>
+<p>相信你已经找出了乱码的原因，由于 get 方法传的的数据，浏览器的转码规则和服务器的解码规则不一致出现了乱码，我们一般是怎么解决的呢？get 方式发送的数据如果有中文和特殊字符前端会先使用 encodeURI() 方法转码，这样 url 里面的就都是 ASCII 编码集的字符，省去了浏览器的转码，且 encodeURI() 的转码规则可控，受网页 meta 头的 charset 属性影响，</p>
+<p>标签的 charset 属性为 utf-8 时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = &#x27;百度&amp;%$#@baidu&#x27;;</span><br><span class="line">console.log(encodeURI(data));</span><br><span class="line">// %E7%99%BE%E5%BA%A6&amp;%25$#@baidu</span><br><span class="line">console.log(encodeURIComponent(data));</span><br><span class="line">// %E7%99%BE%E5%BA%A6%26%25%24%23%40baidu</span><br></pre></td></tr></table></figure>
+
+<p>标签的 charset 属性为 GBK 时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = &#x27;百度&amp;%$#@baidu&#x27;;</span><br><span class="line">console.log(encodeURI(data));</span><br><span class="line">// %E9%90%A7%E6%83%A7%E5%AE%B3&amp;%25$#@baidu</span><br><span class="line">console.log(encodeURIComponent(data));</span><br><span class="line">// %E9%90%A7%E6%83%A7%E5%AE%B3%26%25%24%23%40baidu</span><br></pre></td></tr></table></figure>
+
+<p>后端人员获取到用iso-8859-1解码后的数据一般先还原回字节码，然后用前后端协定的方式解码数据，还可以在服务器的配置文件里面进行配置解码规则。而post请求发送的数据可以使request.setCharacterEncoding(“字符集”)指定解码规则来达到前后端转码统一。当我们需要传递的数据量大，结构复杂，业务场景，技术实现需要的时候我们就又会发现，乱码的问题依然存在，比如json格式的数据由于特殊字符导致数据解析出现问题，xml格式数据由于特殊字符破坏xml格式导致数据解析出现问题，前后端一些语言自带的转码方法对一些特殊字符转码结果不一致，以及并非所有特殊字符都会被转码…</p>
+<p>如果我们使用 encodeURI 或者 encodeURIComponent 编码传输到后端，后端解码之后的数据总会因为一些特殊字符的转码不一致导致结果不一样，如果再加上 md5 校验之类的，前端传递的数据就会因为 md5 不同无法解析入库。</p>
+<p>那么这个时候我们就该考虑有没有一种转码规则可以解决以上所有的问题呢？base64 转码你值得拥有。</p>
+<h1 id="base64转码"><a href="#base64转码" class="headerlink" title="base64转码"></a>base64转码</h1><p>base64 编码是从二进制到字符的过程，编码受 html 页面头部 mate;标签的 charset 属性影响，charset 属性不同，编码转为二进制时，产生的二进制也是不一样的，所以最终产生的 base64 字符也不一样。<br>mate 标签的 charset 属性为 utf-8 时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;base64&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;script src=&quot;base64.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            var data = &#x27;百度&amp;%$#@baidu&#x27;;</span><br><span class="line">            console.log(base64encode(data));</span><br><span class="line">            // fqYmJSQjQGJhaWR1</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>mate 标签的 charset 属性为 GBK 时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;GBK&quot;&gt;</span><br><span class="line">        &lt;title&gt;base64&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;script src=&quot;base64.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            var data = &#x27;百度&amp;%$#@baidu&#x27;;</span><br><span class="line">            console.log(base64encode(data));</span><br><span class="line">            // J+ezJiUkI0BiYWlkdQ==</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>所以工作中如果涉及到文本框输入等复杂的内容数据传递为了避免中文乱码以及各种特殊符号带来的困扰就使用 base64 转码传递。如果只是URL里面的传递简单的参数可以使用 encodeURI 和 encodeURIComponent 等转码。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/26/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E4%B8%8D%E5%BE%97%E4%B8%8D%E9%9D%A2%E5%AF%B9%E7%9A%84%E8%BD%AC%E7%A0%81%E9%97%AE%E9%A2%98/" data-id="ckw8thuki002ee4d8bo4796vf" data-title="前后端数据传输不得不面对的转码问题" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/08/21/CSS%E4%B8%96%E7%95%8C%E7%9A%84%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSS世界的专业术语
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/23/http%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">http基础知识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ngnix/">Ngnix</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ajax/">ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css2-1/">css2.1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/funny/">funny</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memory/">memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/storage/">storage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue2-x/">vue2.x</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/tags/%E5%AF%BC%E8%88%AA/" style="font-size: 10px;">导航</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/">软件的兼容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/">webpack异步加载组件原理.md</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">组件的按需加载</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

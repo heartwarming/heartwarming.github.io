@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>浏览器端数据储存机制 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="概述Storage 接口用于脚本在浏览器保存数据。两个对象部署了这个接口：  window.sessionStorage window.localStorage。  sessionStorage保存的数据用于浏览器的一次会话（session），当会话结束（通常是窗口关闭），数据被清空； localStorage保存的数据长期存在，下一次访问该网站的时候，网页可以直接读取以前保存的数据。除了保存期限">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器端数据储存机制">
+<meta property="og:url" content="http://example.com/2019/07/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%82%A8%E5%AD%98%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="概述Storage 接口用于脚本在浏览器保存数据。两个对象部署了这个接口：  window.sessionStorage window.localStorage。  sessionStorage保存的数据用于浏览器的一次会话（session），当会话结束（通常是窗口关闭），数据被清空； localStorage保存的数据长期存在，下一次访问该网站的时候，网页可以直接读取以前保存的数据。除了保存期限">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-16T06:20:45.000Z">
+<meta property="article:modified_time" content="2020-11-27T06:47:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="导航">
+<meta property="article:tag" content="分享">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-浏览器端数据储存机制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%82%A8%E5%AD%98%E6%9C%BA%E5%88%B6/" class="article-date">
+  <time class="dt-published" datetime="2019-07-16T06:20:45.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/storage/">storage</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      浏览器端数据储存机制
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Storage 接口用于脚本在浏览器保存数据。两个对象部署了这个接口：</p>
+<ul>
+<li>window.sessionStorage</li>
+<li>window.localStorage。</li>
+</ul>
+<p><strong>sessionStorage</strong>保存的数据用于浏览器的一次会话（session），当会话结束（通常是窗口关闭），数据被清空；</p>
+<p><strong>localStorage</strong>保存的数据长期存在，下一次访问该网站的时候，网页可以直接读取以前保存的数据。除了保存期限的长短不同，这两个对象的其他方面都一致。保存的数据都以“键值对”的形式存在。也就是说，每一项数据都有一个键名和对应的值。所有的数据都是以文本格式保存。这个接口很像 Cookie 的强化版，能够使用大得多的存储空间。目前，每个域名的存储上限视浏览器而定，Chrome 是 2.5MB，Firefox 和 Opera 是 5MB，IE 是 10MB。其中，Firefox 的存储空间由一级域名决定，而其他浏览器没有这个限制。也就是说，Firefox 中，a.example.com和b.example.com共享 5MB 的存储空间。另外，与 Cookie 一样，它们也受同域限制。某个网页存入的数据，只有同域下的网页才能读取，如果跨域操作会报错。</p>
+<h1 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h1><blockquote>
+<p>Storage 接口只有一个属性。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Storage.length：返回保存的数据项个数。</span><br><span class="line">window.localStorage.setItem(&#x27;foo&#x27;, &#x27;a&#x27;);</span><br><span class="line">window.localStorage.setItem(&#x27;bar&#x27;, &#x27;b&#x27;);</span><br><span class="line">window.localStorage.setItem(&#x27;baz&#x27;, &#x27;c&#x27;);</span><br><span class="line"></span><br><span class="line">window.localStorage.length // 3</span><br></pre></td></tr></table></figure>
+
+<p>该接口提供5个方法。</p>
+<h2 id="Storage-setItem"><a href="#Storage-setItem" class="headerlink" title="Storage.setItem()"></a>Storage.setItem()</h2><p>Storage.setItem()方法用于存入数据。它接受两个参数，第一个是键名，第二个是保存的数据。如果键名已经存在，该方法会更新已有的键值。该方法没有返回值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.setItem(&#x27;key&#x27;, &#x27;value&#x27;);</span><br><span class="line">window.localStorage.setItem(&#x27;key&#x27;, &#x27;value&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>注意，Storage.setItem()两个参数都是字符串。如果不是字符串，会自动转成字符串，再存入浏览器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.setItem(3, &#123; foo: 1 &#125;);</span><br><span class="line">window.sessionStorage.getItem(&#x27;3&#x27;) // &quot;[object Object]&quot;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，setItem方法的两个参数都不是字符串，但是存入的值都是字符串。</p>
+<p>如果储存空间已满，该方法会抛错。</p>
+<p>写入不一定要用这个方法，直接赋值也是可以的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 下面三种写法等价</span><br><span class="line">window.localStorage.foo = &#x27;123&#x27;;</span><br><span class="line">window.localStorage[&#x27;foo&#x27;] = &#x27;123&#x27;;</span><br><span class="line">window.localStorage.setItem(&#x27;foo&#x27;, &#x27;123&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Storage-getItem"><a href="#Storage-getItem" class="headerlink" title="Storage.getItem()"></a>Storage.getItem()</h2><p>Storage.getItem()方法用于读取数据。它只有一个参数，就是键名。如果键名不存在，该方法返回null。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.getItem(&#x27;key&#x27;)</span><br><span class="line">window.localStorage.getItem(&#x27;key&#x27;)</span><br></pre></td></tr></table></figure>
+<p>键名应该是一个字符串，否则会被自动转为字符串。</p>
+<h2 id="Storage-removeItem"><a href="#Storage-removeItem" class="headerlink" title="Storage.removeItem()"></a>Storage.removeItem()</h2><p>Storage.removeItem()方法用于清除某个键名对应的键值。它接受键名作为参数，如果键名不存在，该方法不会做任何事情。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.removeItem(&#x27;key&#x27;);</span><br><span class="line">localStorage.removeItem(&#x27;key&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Storage-clear"><a href="#Storage-clear" class="headerlink" title="Storage.clear()"></a>Storage.clear()</h2><p>Storage.clear()方法用于清除所有保存的数据。该方法的返回值是undefined。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.clear()</span><br><span class="line">window.localStorage.clear()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Storage-key"><a href="#Storage-key" class="headerlink" title="Storage.key()"></a>Storage.key()</h2><p>Storage.key()接受一个整数作为参数（从零开始），返回该位置对应的键值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.setItem(&#x27;key&#x27;, &#x27;value&#x27;);</span><br><span class="line">window.sessionStorage.key(0) // &quot;key&quot;</span><br></pre></td></tr></table></figure>
+<p>结合使用Storage.length属性和Storage.key()方法，可以遍历所有的键。</p>
+<p>for (var i = 0; i &lt; window.localStorage.length; i++) {<br>  console.log(localStorage.key(i));<br>}</p>
+<h1 id="storage-事件"><a href="#storage-事件" class="headerlink" title="storage 事件"></a>storage 事件</h1><p>Storage 接口储存的数据发生变化时，会触发 storage 事件，可以指定这个事件的监听函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&#x27;storage&#x27;, onStorageChange);</span><br></pre></td></tr></table></figure>
+<p>监听函数接受一个event实例对象作为参数。这个实例对象继承了 StorageEvent 接口，有几个特有的属性，都是只读属性。</p>
+<ul>
+<li>StorageEvent.key：字符串，表示发生变动的键名。如果 storage 事件是由clear()方法引起，该属性返回null。</li>
+<li>StorageEvent.newValue：字符串，表示新的键值。如果 storage 事件是由clear()方法或删除该键值对引发的，该属性返回null。</li>
+<li>Storage.oldValue：字符串，表示旧的键值。如果该键值对是新增的，该属性返回null。</li>
+<li>Storage.storageArea：对象，返回键值对所在的整个对象。也说是说，可以从这个属性上面拿到当前域名储存的所有键值对。</li>
+<li>Storage.url：字符串，表示原始触发 storage 事件的那个网页的网址。</li>
+</ul>
+<p>下面是StorageEvent.key属性的例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function onStorageChange(e) &#123;</span><br><span class="line">  console.log(e.key);</span><br><span class="line">&#125;</span><br><span class="line">window.addEventListener(&#x27;storage&#x27;, onStorageChange);</span><br></pre></td></tr></table></figure>
+
+<p>注意，该事件有一个很特别的地方，就是它不在导致数据变化的当前页面触发，而是在同一个域名的其他窗口触发。也就是说，如果浏览器只打开一个窗口，可能观察不到这个事件。比如同时打开多个窗口，当其中的一个窗口导致储存的数据发生改变时，只有在其他窗口才能观察到监听函数的执行。可以通过这种机制，实现多个窗口之间的通信。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%82%A8%E5%AD%98%E6%9C%BA%E5%88%B6/" data-id="ckw8thukp002ze4d837999hd6" data-title="浏览器端数据储存机制" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/18/storage%E5%AE%9E%E4%BE%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          storage实例
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/14/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前后端分离</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ngnix/">Ngnix</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ajax/">ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css2-1/">css2.1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/funny/">funny</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memory/">memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/storage/">storage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue2-x/">vue2.x</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/tags/%E5%AF%BC%E8%88%AA/" style="font-size: 10px;">导航</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/">软件的兼容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/">webpack异步加载组件原理.md</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">组件的按需加载</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

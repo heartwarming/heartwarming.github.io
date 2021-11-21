@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>git基础 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Git安装安装完成后，用以下命令将用户信息全局初始化。 12$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot;  因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。你也许会担心，如果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git基础">
+<meta property="og:url" content="http://example.com/2019/09/03/git%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Git安装安装完成后，用以下命令将用户信息全局初始化。 12$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot;  因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。你也许会担心，如果">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/git_1.png">
+<meta property="og:image" content="http://example.com/images/git_2.png">
+<meta property="og:image" content="http://example.com/images/git_3.png">
+<meta property="og:image" content="http://example.com/images/git_4.png">
+<meta property="og:image" content="http://example.com/images/git_5.png">
+<meta property="og:image" content="http://example.com/images/git_6.png">
+<meta property="og:image" content="http://example.com/images/git_7.png">
+<meta property="og:image" content="http://example.com/images/git_8.png">
+<meta property="og:image" content="http://example.com/images/git_9.png">
+<meta property="article:published_time" content="2019-09-03T08:20:45.000Z">
+<meta property="article:modified_time" content="2020-11-27T06:47:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="导航">
+<meta property="article:tag" content="分享">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/git_1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-git基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/09/03/git%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2019-09-03T08:20:45.000Z" itemprop="datePublished">2019-09-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      git基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h1><p>安装完成后，用以下命令将用户信息全局初始化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your Name&quot;</span><br><span class="line">$ git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。你也许会担心，如果有人故意冒充别人怎么办？这个不必担心，首先我们相信大家都是善良无知的群众，其次，真的有冒充的也是有办法可查的。</p>
+<p>**注意: **git config命令的–global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</p>
+<h1 id="创建版本库并初始化"><a href="#创建版本库并初始化" class="headerlink" title="创建版本库并初始化"></a>创建版本库并初始化</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir learngit</span><br><span class="line">$ cd learngit</span><br><span class="line">$ pwd</span><br></pre></td></tr></table></figure>
+
+<p>以上三行命令分别为创建目录、进入目录以及查看当前目录位置。<br><strong>注意：</strong> 路径中最好不要有中文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in /Users/michael/learngit/.git/</span><br></pre></td></tr></table></figure>
+<p>初始化，会在此目录下建立一个隐藏的.git文件夹，用来跟踪管理版本库。<br>言归正传，现在我们编写一个readme.txt文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt</span><br></pre></td></tr></table></figure>
+<p>添加文件，可连续多次添加。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;wrote a readme file&quot;</span><br></pre></td></tr></table></figure>
+<p>提交文件，把添加的所有文件一次提交，-m后面是提交信息，最好写有意义的描述。然后可以看到修改信息。</p>
+<h1 id="时光机穿梭"><a href="#时光机穿梭" class="headerlink" title="时光机穿梭"></a>时光机穿梭</h1><h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>先将原文件的第7行加入单词distributed ，然后在第8行后面添加一行Very Good!<br>显示当前库的状态，会提示变动过哪些文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+
+<h2 id="版本对比"><a href="#版本对比" class="headerlink" title="版本对比"></a>版本对比</h2><p>查看和上一版本的具体变动内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff test.txt</span><br></pre></td></tr></table></figure>
+
+<p>显示内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/test.txt b/test.txt</span><br><span class="line">index 629d9c8..3d98a7f 100644</span><br><span class="line">--- a/test.txt</span><br><span class="line">+++ b/test.txt</span><br><span class="line">@@ -4,8 +4,9 @@ test line3.</span><br><span class="line"> test line4.</span><br><span class="line"> test line5.</span><br><span class="line"> test line6.</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br><span class="line">+Very Good!</span><br><span class="line"> test line7.</span><br><span class="line"> test line8.</span><br><span class="line"> test line9.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>详解：</strong></p>
+<ul>
+<li>diff –git a/test.txt b/test.txt ——对比两个文件，其中a改动前，b是改动后，以git的diff格式显示；</li>
+<li>index 629d9c8..3d98a7f 100644 ——两个版本的git哈希值，index区域（add之后）的 629d9c8 对象和工作区域的 3d98a7f 对象， 100表示普通文件，644表示权限控制；</li>
+<li>— a/test.txt +++ b/test.txt ——减号表示变动前，加号表示变动后；</li>
+<li>@@ -4,8 +4,9 @@ test line3. ——@@表示文件变动描述合并显示的开始和结束，一般在变动前后多显示3行，其中-+表示变动前后，逗号前是起始行位置，逗号后为从起始行往后几行。合起来变动前后都是从第4行开始，变动前文件往后数8行对应变动后文件往后数9行。</li>
+<li>变动内容 ——+表示增加了这一行，-表示删除了这一行，没符号表示此行没有变动。</li>
+</ul>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br></pre></td></tr></table></figure>
+<p>用来查看最近三次提交的记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br></pre></td></tr></table></figure>
+<p>合并每条记录到一行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+<p>向前回退版本，其中HEAD后面跟几个^就是往回退几个版本，如果回退100个版本，可以写成 HEAD~100 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard 07e0</span><br></pre></td></tr></table></figure>
+<p>向后恢复版本，首先要查找到对应版本的哈希id前4位，如果提交窗口找不到，可以使用以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
+<p>这个命令记录了每一次版本相关的操作。git回退的速度非常快，因为在git内部有一个指向当前版本的HEAD指针，回退到某个版本，实际上是git把指针移动指向某个版本</p>
+<h1 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h1><ul>
+<li>工作区（Working Directory）：.git所在的目录下，除了.git之外的其他文件都是在工作区内</li>
+<li>版本库（Repository）：.git目录内所存的记录，有暂存区和Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</li>
+<li>stage（或者叫index）的暂存区：用add命令放进来文件的位置</li>
+</ul>
+<p><img src="/images/git_1.png"></p>
+<ul>
+<li>如果文件在工作区被编辑，对应的status状态就是 Changes not staged for commit </li>
+<li>如果工作区新增文件，则对应的status状态就是 Untracked files </li>
+<li>如果文件被add后，对应的status状态就是 Changes to be committed </li>
+<li>多次add后的文件都放在暂存区，最后一次性全部提交。提交后的status状态就是 nothing to commit, working tree clean这时候工作区就是干净的，暂存区就没有任何内容了。</li>
+</ul>
+<h1 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h1><h2 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h2><p>如果一个文件，修改一次后，add，再修改一次后直接commit，然后status则显示还有一次修改没有被提交，因为提交只对暂存区生效。所以要么每改动一次后都add，最后一次性提交；要么add一次就提交一次。<br>比较工作区与暂存区<br>　　git diff 不加参数即默认比较工作区与暂存区<br>比较暂存区与最新本地版本库（本地库中最近一次commit的内容）<br>　　git diff –cached  [<path>…]<br>比较工作区与最新本地版本库<br>　　git diff HEAD [<path>…]  如果HEAD指向的是master分支，那么HEAD还可以换成master</p>
+<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><p>如果在工作区修改了文件后的status，会提示，下一步可以add到暂存区，或者从暂存区恢复修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br></pre></td></tr></table></figure>
+
+<p>想要撤销，就用第3行的命令<br>$ git checkout – test.txt</p>
+<p>如果已经add到暂存区了，这时想要撤销操作，这时可以从status中的提示——从HEAD中恢复修改。<br>$ git reset HEAD</p>
+<p>但这时候暂存区的修改撤销了，工作区还是修改后的内容，此时再使用上面提交的 $ git checkout – test.txt 来撤销工作区修改，世界终于变得清净了！</p>
+<h1 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm test2.txt</span><br></pre></td></tr></table></figure>
+<p>此命令可以从工作区删掉文件。如果要从版本库中删除，则add后提交即可，如果是误删了，则通过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- test2.txt</span><br></pre></td></tr></table></figure>
+<p>从版本库里恢复。<br>如果已经将删除提交，则像前面一样先恢复版本库，然后在checkout出要恢复的文件。</p>
+<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p>##概述</p>
+<p>假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。这种情况下需要分支来管理。自己在创建的新分支上进行开发，完成后一次性提交合并即可。<br>Git对于分支的创建、切换和删除都能非常快的实现，而SVN就很慢。</p>
+<h2 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h2><p>git单分支的结构是这样的，master是指向最新提交的指针，HEAD是指向master的指针，每做一次提交，指针就向前移动一步：</p>
+<p><img src="/images/git_2.png"></p>
+<p>现在增加一个dev分支并切换到这个分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git -b checkout dev</span><br></pre></td></tr></table></figure>
+<p>这个代码可以写成两步，本别是创建新分支 $ git branch dev ，切换到目标分支 $ git checkout dev ，之后变成这样：<br><img src="/images/git_3.png"></p>
+<p>这时可以用命令查看分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">* dev</span><br><span class="line">  master</span><br></pre></td></tr></table></figure>
+<p>其中带星号的是当前所在分支。然后再新分支上做一些更改，再add并提交，这是结构变成了这样：<br><img src="/images/git_4.png"></p>
+<p>切换回master（$ git checkout master ）分支后，发现刚才所做的改动不见了，是因为改动在dev分支上。<br><img src="/images/git_5.png"></p>
+<p>这时使用合并命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge dev</span><br></pre></td></tr></table></figure>
+<p>即把目标分支合并到当前分支上。完成后提示 Fast-forward ，说明系统用了快进模式进行合并，此时的结构为：</p>
+<p><img src="/images/git_6.png"><br>master分支上也成了最新版。这时不需要dev分支了，可以删除：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d dev</span><br></pre></td></tr></table></figure>
+<p>这时再查看分支，已经没有dev了。</p>
+<h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>当两个分支上对同一个文件有修改并分别有提交，最后Git无法自动合并，就会产生冲突。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge &#x27;feature2&#x27;</span><br><span class="line">Auto-merging test2.txt</span><br><span class="line">CONFLICT (content): Merge conflict in test2.txt</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure>
+<p>如果你不服气再执行一次合并，就会看到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git merge feature2</span><br><span class="line">error: Merging is not possible because you have unmerged files.</span><br><span class="line">hint: Fix them up in the work tree, and then use &#x27;git add/rm &lt;file&gt;&#x27;</span><br><span class="line">hint: as appropriate to mark resolution and make a commit.</span><br><span class="line">fatal: Exiting because of an unresolved conflict.</span><br></pre></td></tr></table></figure>
+<p>这时候可以通过 git status  查看冲突信息，找到描述中冲突的文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">f4 in master</span><br><span class="line">=======</span><br><span class="line">f4 is new</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; f4</span><br></pre></td></tr></table></figure>
+
+<p>其中 &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 和  =======  之间是当前分支的最新版，  =======  和 &gt;&gt;&gt;&gt;&gt;&gt;&gt; f4  之间是目标分支内容，手动修改后删掉这些符号，然后提交，结构如图：</p>
+<p><img src="/images/git_7.png"></p>
+<p>可以用以下代码看到图形化流程：<br>$ git log –graph –pretty=oneline –abbrev-commit</p>
+<p>其中，  –graph 是图形化，  –pretty=oneline 是一行显示， –abbrev-commit 是只显示每次提交id的前几位，显示效果如下：</p>
+<p><img src="/images/git_8.png"></p>
+<h2 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h2><p>默认情况下，如果情况允许，Git会自动用快进模式合并分支，但这样合并后不会留下分支存在过的痕迹。删除分支后就会丢失相应信息。如果不想这样做，则在合并时加上参数 –no-ff  ，Git则会生成一个提交，所以同时再加上一个提交信息（如果不加则会进入vim模式让编辑提交信息），代码如下：<br> $ git merge –no-ff -m “merge with no-ff” dev</p>
+<p>这样合并后还能看到对应的分支信息，如图，<br><img src="/images/git_9.png"><br>实际开发中的分支策略：<br>首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；<br>平时大家在dev分支上干活，需要发布时合并到master分支即可。</p>
+<h2 id="Bug分支"><a href="#Bug分支" class="headerlink" title="Bug分支"></a>Bug分支</h2><p>假设正在dev上开发，突然接到修复master上一个bug，就可以用如下命令把现场保存起来（这个命令比其他命令要执行的慢）：<br>$ git stash</p>
+<p>这时工作区就是干净的，刚才的改动不见了。然后把分支切换到master，并在此基础上新建并切换到bug分支issue-101，在这里修复bug。修复完成后回到master分支，进行非快速合并后删除bug分支，再切换回dev分支，可以通过加list参数看到 stash 的列表：<br>$ git stash list<br>stash@{0}: WIP on d3: 820373a 合并d2, Merge branch ‘d2’</p>
+<p>通过如下命令恢复现场：<br>$ git stash apply</p>
+<p>这时stash区的内容还存在，可以用list查看，如果要清理掉，就用<br>$ git stash drop</p>
+<p>这时stash区什么都没了。如果将工作区内容多次保存到stash，则可以加 stash@{0} 这样的编号来指定恢复哪个（可用list参数查看编号）。<br>$ git stash apply stash@{0}</p>
+<p>也可以用如下命令弹出最后一次保存的工作区内容，这个命令会将对应的stash内容清除掉。<br>$ git stash pop</p>
+<h2 id="Feature分支——强行删除分支"><a href="#Feature分支——强行删除分支" class="headerlink" title="Feature分支——强行删除分支"></a>Feature分支——强行删除分支</h2><p>如果在master分支上删除一个已经提交但没有合并的其它分支，则会报错：<br>$ git branch -d f5<br>error: The branch ‘f5’ is not fully merged.<br>If you are sure you want to delete it, run ‘git branch -D f5’.</p>
+<p>这时可以用参数 -D 强制删除：<br>$ git branch -D f5</p>
+<p>需要注意的是，由于分支未合并，删除之后就没有任何记录了，分支上所有的修改也会丢失。</p>
+<h2 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h2><p>先来两个命令：<br>$ git remote</p>
+<p>查看远程仓库名称<br>$ git remote -v</p>
+<p>查看远程仓库更详细的信息<br>场景：我本地有master和dev两个分支，但我只把master推送到远程仓库中。然后我的小伙伴从远程的master分支上克隆了一份，他是看不到我本地dev分支的。然后自己在本地新建dev分支进行开发，完了之后推送到远程仓库。同时我在本地 的dev分支修改了跟他一样的文件。这时我准备推送代码，就会报错，提示先pull同步代码， 但拉取的时候又报错，说没有指定本地dev和远程origin/dev之间的连接（ There is no tracking information for the current branch. ）。可通过以下代码进行关联：<br>$ git branch –set-upstream-to=origin/dev dev</p>
+<p>然后再pull，解决冲突，再提交，再push，跟前面一样。</p>
+<p>补充 ：从远程git仓库里的指定分支拉取到本地（本地不存在的分支）<br>git checkout -b 本地分支名 origin/远程分支名</p>
+<p>然后再 pull </p>
+<h2 id="Rebase"><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h2><p>Rebase用来整理提交记录，把多条分叉合并成一条直线。</p>
+<p>假设有代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">* 582d922 (HEAD -&gt; master) add author</span><br><span class="line">* 8875536 add comment</span><br><span class="line">* d1be385 (origin/master) init hello</span><br><span class="line">*   e5e69f1 Merge branch &#x27;dev&#x27;</span><br><span class="line">|\  </span><br><span class="line">| *   57c53ab (origin/dev, dev) fix env conflict</span><br><span class="line">| |\  </span><br><span class="line">| | * 7a5e5dd add env</span><br><span class="line">| * | 7bd91f1 add new env</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>Git用(HEAD -&gt; master)和(origin/master)标识出当前分支的HEAD和远程origin的位置分别是582d922 add author和d1be385 init hello，本地分支比远程分支快两个提交。假设推送时发现有人改了同样文件导致冲突，pull下来解决后再提交，这时本地分支会比远程超前3个提交。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">*   e0ea545 (HEAD -&gt; master) Merge branch &#x27;master&#x27; of github.com:michaelliao/learngit</span><br><span class="line">|\  </span><br><span class="line">| * f005ed4 (origin/master) set exit=1</span><br><span class="line">* | 582d922 add author</span><br><span class="line">* | 8875536 add comment</span><br><span class="line">|/  </span><br><span class="line">* d1be385 init hello</span><br></pre></td></tr></table></figure>
+
+<p>如果觉得这种分叉的图形看起来乱，可以用如下命令整理一下：<br>$ git rebase</p>
+<p>整理后查看到的记录为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">* 7e61ed4 (HEAD -&gt; master) add author</span><br><span class="line">* 3611cfe add comment</span><br><span class="line">* f005ed4 (origin/master) set exit=1</span><br><span class="line">* d1be385 init hello</span><br></pre></td></tr></table></figure>
+
+<p>发现Git把我们本地的提交“挪动”了位置，放到了f005ed4 (origin/master) set exit=1之后，这样，整个提交历史就成了一条直线。修改不再基于d1be385 init hello，而是基于f005ed4 (origin/master) set exit=1，但最后的提交7e61ed4内容是一致的。推送之后如图：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">* 7e61ed4 (HEAD -&gt; master, origin/master) add author</span><br><span class="line">* 3611cfe add comment</span><br><span class="line">* f005ed4 set exit=1</span><br><span class="line">* d1be385 init hello</span><br></pre></td></tr></table></figure>
+
+<p>远程和本地都成了一条直线。<br>Rebase的缺点是会更改我们的本地提交，但合并后的内容是一致的。</p>
+<h1 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h1><p>Git的标签就是版本库的快照，但其实它就是指向某个commit的指针。</p>
+<h2 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag v1.0</span><br></pre></td></tr></table></figure>
+
+<p>给当前的commit打上标签 v1.0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag</span><br></pre></td></tr></table></figure>
+
+<p>查看所有标签，经测试在dev分支上能看到master上所有标签，尽管dev上面的commit要少很多。<br>注意，标签不是按时间顺序列出，而是按字母排序的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag v0.9 f52c633</span><br></pre></td></tr></table></figure>
+
+<p>可以给历史commit打上标签，最后一个参数是commit的前几位（通过git log查看）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -a v0.1 -m &quot;version 0.1 released&quot; 1094adb</span><br></pre></td></tr></table></figure>
+
+<p>创建带有注释的标签，-a后面是标签名，-m后面是注释内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git show v0.1</span><br></pre></td></tr></table></figure>
+
+<p>查看标签名为 v0.1的详细内容</p>
+<h2 id="操作标签"><a href="#操作标签" class="headerlink" title="操作标签"></a>操作标签</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -d v0.1</span><br></pre></td></tr></table></figure>
+
+<p>删除本地标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin v1.0</span><br></pre></td></tr></table></figure>
+<p>将标签 v1.0 推送到远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure>
+<p>将尚未推送的标签全部推送到远程仓库<br>如果要删除远程仓库的标签，有以下两个步骤：</p>
+<ul>
+<li>删除本地标签，见上</li>
+<li>删除远程仓库对应标签 $ git push origin :refs/tags/v0.9</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/03/git%E5%9F%BA%E7%A1%80/" data-id="ckw8thuju0011e4d8hwmu5ual" data-title="git基础" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/04/package-lock/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          package-lock.json需要写进.gitignore吗?
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/21/CSS%E4%B8%96%E7%95%8C%E7%9A%84%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS世界的专业术语</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ngnix/">Ngnix</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ajax/">ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css2-1/">css2.1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/funny/">funny</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memory/">memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/storage/">storage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue2-x/">vue2.x</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/tags/%E5%AF%BC%E8%88%AA/" style="font-size: 10px;">导航</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/">软件的兼容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/">webpack异步加载组件原理.md</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">组件的按需加载</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

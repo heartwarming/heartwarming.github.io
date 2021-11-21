@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>webpack异步加载组件原理.md | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="按需加载的好处单页spa应用大行其道，但是我们往往开发过程中需要配置很多的路由引入。当打包构建的时候，javascript包会变得非常大，影响加载。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应的组件，这样就更加高效了。这样会大大提高首屏显示的速度，但是可能其他的页面的速度就会降下来。结合Vue的异步组件和webpackde code splitting fea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack异步加载组件原理.md">
+<meta property="og:url" content="http://example.com/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="按需加载的好处单页spa应用大行其道，但是我们往往开发过程中需要配置很多的路由引入。当打包构建的时候，javascript包会变得非常大，影响加载。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应的组件，这样就更加高效了。这样会大大提高首屏显示的速度，但是可能其他的页面的速度就会降下来。结合Vue的异步组件和webpackde code splitting fea">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/vue2.x_06.png">
+<meta property="og:image" content="http://example.com/images/vue2.x_07.png">
+<meta property="og:image" content="http://example.com/images/vue2.x_08.png">
+<meta property="og:image" content="http://example.com/images/vue2.x_09.png">
+<meta property="article:published_time" content="2019-09-09T08:09:22.000Z">
+<meta property="article:modified_time" content="2020-11-27T06:47:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="导航">
+<meta property="article:tag" content="分享">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/vue2.x_06.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-webpack异步加载组件原理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2019-09-09T08:09:22.000Z" itemprop="datePublished">2019-09-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue2-x/">vue2.x</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      webpack异步加载组件原理.md
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="按需加载的好处"><a href="#按需加载的好处" class="headerlink" title="按需加载的好处"></a>按需加载的好处</h1><p>单页spa应用大行其道，但是我们往往开发过程中需要配置很多的路由引入。当打包构建的时候，javascript包会变得非常大，影响加载。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应的组件，这样就更加高效了。这样会大大提高首屏显示的速度，但是可能其他的页面的速度就会降下来。结合Vue的异步组件和webpackde code splitting feature,轻松实现路由组件的懒加载。</p>
+<p>就像图片的懒加载一样，如果客户根本就没有看到那些图片，而我们却在打开页面的时候全部给加载完了，这样会大大的增加请求的时间，降低用户的体验程度。懒加载在很多的网站都有用到，比如淘宝、京东等等这样的购物网站，上面的图片链接等等都很多，如果你把滚轴迅速的往下拉的时候，你可能会看到图片加载的情况。</p>
+<p>单页应用也是一样，用户可能没有通过点击跳转到其他的的页面，而是只在主页面进行了停留，那么我们就没有必要把其他页面的资源全部加载过来。如果用户点进去再加载。这样就可以大大提高请求时间，提高用户的体验程度。</p>
+<p>webpack中提供了require.ensure()来实现按需加载。以前引入路由是通过import 这样的方式引入，改为const定义的方式进行引入。</p>
+<p>不进行页面按需加载引入方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import  home   from &#x27;../../common/home.vue&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>进行页面按需加载的引入方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const  home = r =&gt; require.ensure( [], () =&gt; r (require(&#x27;../../common/home.vue&#x27;))</span><br></pre></td></tr></table></figure>
+
+<p>webpack ensure相信大家都听过。有人称它为异步加载，也有人说做代码切割，那这个家伙到底是用来干嘛的？其实说白了，它就是把js模块给独立导出一个.js文件的，然后使用这个模块的时候，webpack会构造script dom元素，由浏览器发起异步请求这个js文件。</p>
+<h1 id="需求场景分析"><a href="#需求场景分析" class="headerlink" title="需求场景分析:"></a>需求场景分析:</h1><p>比如应用的首页里面有个按钮，点击后可以打开某个地图。打开地图的话就要利用百度地图的js,于是我们不得不在首页中把百度地图的js一起打包进去首页,一个百度地图的js文件是非常大的，假设为1m，于是就造成了我们首页打包的js非常大，用户打开首页的时间就比较长了。有没有什么好的解决方法呢？</p>
+<p>当然还是有的！我们细想，百度地图是用户点击了才弹出来的，也就是说，这个功能是可选的。那么解决方案就来了，能不能在用户点击的时候，我在去下载百度地图的js.当然可以。那如何实现用户点击的时候再去下载百度地图的js呢？于是，我们可以写一<br>个按钮的监听器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mapBtn.click(function() &#123;</span><br><span class="line">  //获取 文档head对象</span><br><span class="line">  var head = document.getElementsByTagName(&#x27;head&#x27;)[0];</span><br><span class="line">  //构建 &lt;script&gt;</span><br><span class="line">  var script = document.createElement(&#x27;script&#x27;);</span><br><span class="line">  //设置src属性</span><br><span class="line">  script.async = true;</span><br><span class="line">  script.src = &quot;http://map.baidu.com/.js&quot;</span><br><span class="line">  //加入到head对象中</span><br><span class="line">  head.appendChild(script);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>上面的几行代码对大家来说都不难。可以在点击的时候，才加载百度地图，等百度地图加载完成后，在利用百度地图的对象去执行我们的操作。ok，讲到这里webpack.ensure的原理也就讲了一大半了。它就是把一些js模块给独立出一个个js文件，然后需要用到的时候，在创建一个script对象，加入到document.head对象中即可，浏览器会自动帮我们发起请求，去请求这个js文件，在写个回调，去定义得到这个js文件后，需要做什么业务逻辑操作。</p>
+<p>ok,那么我们就利用webpack的api去帮我们完成这样一件事情。点击后才进行异步加载百度地图js，上面的click加载js时我们自己写的，webpack可以轻松帮我们搞定这样的事情，而不用我们手写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mapBtn.click(function() &#123;</span><br><span class="line">  require.ensure([], function() &#123;</span><br><span class="line">    var baidumap = require(&#x27;./baidumap.js&#x27;) //baidumap.js放在我们当前目录下</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>搞定！当然还是分析一下。require.ensure这个函数是一个代码分离的分割线，表示 回调里面的require是我们想要进行分割出去的，即require(’./baidumap.js’)，把baidumap.js分割出去，形成一个webpack打包的单独js文件。当然ensure里面也是可以写一些同步的require的，比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var sync = require(&#x27;syncdemo.js&#x27;)   //下面ensure里面也用到</span><br><span class="line"> </span><br><span class="line">mapBtn.click(function() &#123;</span><br><span class="line">  require.ensure([], function() &#123;</span><br><span class="line">    var baidumap = require(&#x27;./baidumap.js&#x27;) //baidumap.js放在我们当前目录下</span><br><span class="line">    var sync = require(&#x27;syncdemo.js&#x27;)  //这个不会独立出去，因为它已经加载到模块缓存中了</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>也就是说，ensure会把没有使用过的require资源进行独立分成成一个js文件. require.ensure的第一个参数是什么意思呢？[], 其实就是 当前这个 require.ensure所依赖的其他 异步加载的模块。你想啊？如果A 和 B都是异步加载的，B中需要A，那么B下载之前，是不是先要下载A啊？，所以ensure的第一个参数[]是它依赖的异步模块，但是这里需要注意的是，webpack会把参数里面的依赖异步模块和当前的需要分离出去的异步模块给一起打包成同一个js文件，这里可能会出现一个重复打包的问题， 假设A 和 B都是异步的， ensure A 中依赖B，ensure B中 依赖A，那么会生成两个文件，都包含A和B模块。 如果想加载A require.ensure([‘A.js’],function) 即可</p>
+<p>说完了上面的原理。下面就实践一下</p>
+<p><img src="/images/vue2.x_06.png"></p>
+<p>entry.js 依赖三个 js。</p>
+<p>Abtn-work.js 是封装了 abtn按钮点击后，才执行的业务逻辑<br>Bbtn-work.js 是封装了 bbtn按钮点击后，才执行的业务逻辑<br>util.js 是封装了 entry.js需要利用的工具箱<br>针对上面的需求，优化方案</p>
+<p>假设 Abtn-work.js Bbtn-work.js util.js都是非常大的文件因为 Abtn-work.js Bbtn-work.js 都不是entry.js必须有的，即可能发生的操作，那么我们把他们利用异步加载，当发生的时候再去加载就行了</p>
+<p>util.js是entry.js立即马上依赖的工具箱。但是它又非常的大，所以将其配置打包成一个公共模块，利用浏览器的并发加载，加快下载速度。ok,构思完成，开始实现</p>
+<p>index.html</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;index&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;aBtn&quot;&gt;Abtn&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;bBtn&quot;&gt;Bbtn&lt;/div&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">定义了两个buttom</span><br><span class="line"></span><br><span class="line">然后看看 entry.js</span><br><span class="line"></span><br><span class="line">var util_sync = require(&#x27;./util-sync.js&#x27;)</span><br><span class="line"> </span><br><span class="line">alert(util_sync.data)</span><br><span class="line"> </span><br><span class="line">document.getElementById(&quot;aBtn&quot;).onclick = function() &#123;</span><br><span class="line"> </span><br><span class="line">  require.ensure([], function() &#123;</span><br><span class="line">    var awork = require(&#x27;./workA-async.js&#x27;)</span><br><span class="line">    alert(awork.data)</span><br><span class="line">    //异步里面再导入同步模块--实际是使用同步中的模块</span><br><span class="line">    var util1 = require(&#x27;./util-sync.js&#x27;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">document.getElementById(&quot;bBtn&quot;).onclick = function() &#123;</span><br><span class="line"> </span><br><span class="line">  require.ensure([], function() &#123;</span><br><span class="line">    var bwork = require(&#x27;./workB-async.js&#x27;)</span><br><span class="line">    alert(bwork.data)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，workA-async.js， workB-async.js 都是点击后才ensure进来的。什么时候加载完成呢？就是 require.ensure() 第二个函数参数，即回调函数，它表示当下载js完成后，发生的因为逻辑</p>
+<p>webpack打包后，形成</p>
+<p><img src="/images/vue2.x_07.png"></p>
+<p>其实， 1.1… 2.2…就是我们ensure导出来的js文件</p>
+<p>我们看看代码是如何加载的执行的，点击打包插入js后的html</p>
+<p><img src="/images/vue2.x_08.png"></p>
+<p>发现浏览器下载并加载了 1.1…js</p>
+<p>点击 bbtn</p>
+<p><img src="/images/vue2.x_09.png"></p>
+<p>发现浏览器下载并加载了 2.2…js</p>
+<p>其实项目优化，还有通过减少向服务器请求的次数来减少等待的时间。比如，一个页面的数据包括图片、文字等用户都已经加载完了，然后用户通过点击跳转到了另外一个界面。然后从另外一个界面通过返回又回到了原先的界面。如果没有设置的话，那么原先界面的信息就要重新向服务器请求得到。而通过vue提供的keep-alive可以是页面的已经请求的数据得以保存，减少请求的次数，提高用户的体验程度。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/" data-id="ckw8thuk9001ye4d8brrx82lf" data-title="webpack异步加载组件原理.md" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          软件的兼容
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">组件的按需加载</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ngnix/">Ngnix</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ajax/">ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css2-1/">css2.1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/funny/">funny</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memory/">memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/storage/">storage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue2-x/">vue2.x</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/tags/%E5%AF%BC%E8%88%AA/" style="font-size: 10px;">导航</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/">软件的兼容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/">webpack异步加载组件原理.md</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">组件的按需加载</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

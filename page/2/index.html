@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-CSS世界的专业术语" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/21/CSS%E4%B8%96%E7%95%8C%E7%9A%84%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/" class="article-date">
+  <time class="dt-published" datetime="2019-08-21T08:20:45.000Z" itemprop="datePublished">2019-08-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/css2-1/">css2.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/21/CSS%E4%B8%96%E7%95%8C%E7%9A%84%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/">CSS世界的专业术语</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS世界的专业术语"><a href="#CSS世界的专业术语" class="headerlink" title="CSS世界的专业术语"></a>CSS世界的专业术语</h1><p>现在有如下一段常见的 CSS 代码：\</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.vocabulary &#123;</span><br><span class="line">height: 99px;</span><br><span class="line">color: transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面就针对这段代码，逐一引出其涉及的专业术语。</p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>属性对应的是平常我们书面或交谈时对 CSS 的中文称谓。例如，上面示意 CSS 代码中的height 和 color 就是属性。当我们聊天或者分享时说起 CSS 的时候，嘴里冒出来的都是“这个元素高度 99 像素”，或者“这个文字颜色透明”，对吧？这里提到的“高度”和“颜色”就是CSS 世界的属性，感觉有点儿像现实世界里人的姓氏。</p>
+<h2 id="值"><a href="#值" class="headerlink" title="值"></a>值</h2><p>“值”大多与数字挂钩。例如，上面的 99px 就是典型的值。在 CSS 世界中，值的分类非常广泛，下面是一些常用的类型。</p>
+<ul>
+<li>整数值，如 z-index:1 中的 1，属于<integer>，同时也属于<number>。</li>
+<li>数值，如 line-height:1.5 中的 1.5，属于<number>。</li>
+<li>百分比值，如 padding:50%中的 50%，属于<percent>。</li>
+<li>长度值，如 99px。</li>
+<li>颜色值，如#999。</li>
+</ul>
+<p>此外，还有字符串值、位置值等类型。在 CSS3 新世界中，还有角度值、频率值、时间值<br>等类型，这里就不全部展示了。</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>顾名思义，关键字指的是 CSS 里面很关键的单词，这里的单词特指英文单词，abc 是单词吗？不是，因此，如果 CSS 中出现它，一定不是关键字。上面示例 CSS 代码中的 transparent<br>就是典型的关键字，还有常见的 solid、inherit 等都是关键字，其中 inherit 也称作“泛关键字”，所谓泛关键字，可以理解为“公交车关键字”，就是“所有 CSS 属性都可以使用的关<br>键字”的意思。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>CSS 中目前可以称为变量的比较有限，CSS3 中的 currentColor 就是变量，非常有用。不过，这属于SS3的内容，这不会详细阐述</p>
+<h2 id="长度单位"><a href="#长度单位" class="headerlink" title="长度单位"></a>长度单位</h2><p>CSS 中的单位有时间单位（如 s、ms），还有角度单位（如 deg、rad 等），但最常见的自然还是长度单位（如 px、em 等）。需要注意的是，诸如 2%后面的百分号%不是长度单位。再说一遍，%不是长度单位！因为 2%就是一个完整的值，就是一个整体，我想你一定认为 0.02 是值，没错，2%也同样是值。有人可能会有疑问，我就认为%是单位，有什么关系，页面还是长那样，有必要这么较真吗？问的很在理，如果大家平时没有看原始文档的习惯，没必要较真，知道怎么使用就好了。但是，如果经常去 MDN 或 W3C 看一些 CSS 技术文档，搞清楚概念，看文档的时候就不容易犯迷糊，就不会看不懂具体说些什么，尤其都是英文的候。可能有人会有疑问，“值”那里提到的<length>，貌似和这里的“长度单位”比较暧昧啊？好眼力！没错，确实暧昧，但暧昧是不好的，我们必须把它们之间的关系搞清楚。一句话：<br>number + 长度单位 = length</p>
+<p>如果继续细分，长度单位又可以分为相对长度单位和绝对长度单位。<br>（1）相对长度单位。相对长度单位又分为相对字体长度单位和相对视区长度单位。</p>
+<ul>
+<li>相对字体长度单位，如 em 和 ex，还有 CSS3 新世界的 rem 和 ch（字符 0 的宽度）。</li>
+<li>相对视区长度单位，如 vh、vw、vmin 和 vmax。<br>（2）绝对长度单位：最常见的就是 px，还有 pt、cm、mm、pc 等了解一下就可以，在我<br>看来，它们实用性近乎零，至少我这么多年一次都没用过。</li>
+</ul>
+<h2 id="功能符"><a href="#功能符" class="headerlink" title="功能符"></a>功能符</h2><p>值以函数的形式指定（就是被括号括起来的那种），主要用来表示颜色（rgba 和 hsla）、背景图片地址（url）、元素属性值、计算（calc）和过渡效果等，如 rgba(0,0,0,.5)、url(‘css-world.png’)、attr(‘href’)和 scale(-1)。</p>
+<h2 id="属性值"><a href="#属性值" class="headerlink" title="属性值"></a>属性值</h2><p>属性冒号后面的所有内容统一称为属性值。例如，1px solid rgb(0,0,0)就可以称为属性值，它是由“值+关键字+功能符”构成的。属性值也可以由单一内容构成。例如，z-index:1的 1 也是属性值。</p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>属性名加上属性值就是声明，例如：color: transparent;</p>
+<h2 id="声明块"><a href="#声明块" class="headerlink" title="声明块"></a>声明块</h2><p>声明块是花括号（{}）包裹的一系列声明，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">height: 99px;</span><br><span class="line">color: transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="规则或规则集"><a href="#规则或规则集" class="headerlink" title="规则或规则集"></a>规则或规则集</h2><p>出现了选择器，而且后面还跟着声明块，比如本小节一开始的那个例子，就是一个规则集：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.vocabulary &#123;</span><br><span class="line">height: 99px;</span><br><span class="line">color: transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p>选择器是用来瞄准目标元素的东西，例如，上面的.vocabulary 就是一个选择器。</p>
+<ul>
+<li>类选择器：指以“.”这个点号开头的选择器。很多元素可以应用同一个类选择器。 “类”，天生就是被公用的命。</li>
+<li>ID 选择器：“#”打头，权重相当高。ID 一般指向唯一元素。但是，在 CSS 中，ID样式出现在多个不同的元素上并不会只渲染第一个，而是雨露均沾。但显然不推荐这么做。</li>
+<li>属性选择器：指含有[]的选择器，形如[title]{}、[title= “css-world”]{}、[title~=”css-world”]{}、[title^= “css-world”]{}和[title$=”css-world”]{}等。</li>
+<li>伪类选择器：一般指前面有个英文冒号（:）的选择器，如:first-child 或:last-child 等。</li>
+<li>伪元素选择器：就是有连续两个冒号的选择器，如::first-line::first-letter、::before 和::after。</li>
+</ul>
+<h2 id="关系选择器"><a href="#关系选择器" class="headerlink" title="关系选择器"></a>关系选择器</h2><p>关系选择器是指根据与其他元素的关系选择元素的选择器，常见的符号有空格、&gt;、~，还有+等，这些都是非常常用的选择器。</p>
+<ul>
+<li>后代选择器：选择所有合乎规则的后代元素。空格连接。</li>
+<li>相邻后代选择器：仅仅选择合乎规则的儿子元素，孙子、重孙元素忽略，因此又称“子选择器”。&gt;连接。适用于 IE7 以上版本。</li>
+<li>兄弟选择器：选择当前元素后面的所有合乎规则的兄弟元素。~连接。适用于 IE7 以上版本。</li>
+<li>相邻兄弟选择器：仅仅选择当前元素相邻的那个合乎规则的兄弟元素。+连接。适用于IE7 以上版本。</li>
+</ul>
+<h2 id="规则"><a href="#规则" class="headerlink" title="@规则"></a>@规则</h2><p>@规则指的是以@字符开始的一些规则，像@media、@font-face、@page 或者@support，诸如此类。</p>
+<h2 id="未定义行为"><a href="#未定义行为" class="headerlink" title="未定义行为"></a>未定义行为</h2><p>当某个浏览器中出现与其他浏览器不一样的行为或样式表现的时候，我们总会习惯把这种不一样的表现认为是浏览器的 bug。但在 CSS 世界，这种认识是狭隘的。在现实世界中，有法律来约束我们的行为，如果越界，就称为违法；同样地，在 CSS 世界里，有 Web 标准来约束元素的行为，如果越界，就称为 bug。但是，法律总是人制定的，世间万象是不可能面面俱到的，会存在法律空白；同样地，Web 应用场景千变万化，Web 标准也是不可能面面俱到的，也会存在规范描述以外的场景，此时，各大浏览器厂家只能根据自己的理解与喜好去实现，一旦个性化就会出现差异，就会遇到“火狐火狐，你怎么啦？平时表现挺好的，今天怎么被 IE 带坏了？”的情景。实际上，此时遇到的表现差异并不是浏览器的 bug，用计算机领域的专业术语描述应该是“未定义行为”（undefined behavior）。像这种规范顾及不到的细枝末节的实现，就称为“未定义行为”。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/21/CSS%E4%B8%96%E7%95%8C%E7%9A%84%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/" data-id="ckw8thuj60003e4d82un5hpha" data-title="CSS世界的专业术语" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-前后端数据传输不得不面对的转码问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/26/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E4%B8%8D%E5%BE%97%E4%B8%8D%E9%9D%A2%E5%AF%B9%E7%9A%84%E8%BD%AC%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2019-07-26T02:20:45.000Z" itemprop="datePublished">2019-07-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ajax/">ajax</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/26/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E4%B8%8D%E5%BE%97%E4%B8%8D%E9%9D%A2%E5%AF%B9%E7%9A%84%E8%BD%AC%E7%A0%81%E9%97%AE%E9%A2%98/">前后端数据传输不得不面对的转码问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="数据传递转码"><a href="#数据传递转码" class="headerlink" title="数据传递转码"></a>数据传递转码</h1><p>数据在传输的过程中，浏览器会对数据进行编码，假如我现在有一条数据 {“name”: “测试”}。</p>
+<p>如果我们通过get方法传递数据，这条数据会被拼接到 url 请求的后面，如：<strong>localhost:8080/src/text.html?name=测试</strong>。uri本身是采用ASCII编码的，所以如果是非 ASCII 编码集的字符在传输时都会被编码，编码方法和 encodeURI 的编码规则相同，但是这里的编码规则是由浏览器控制的，不同的浏览器采用的编码方式 (UTF-8,GBK) 不一样，被编码的数据发送给服务器，服务器用 iso-8859-1 编码对数据解码，后端人员通过 request.getParameter(“name”) 获取参数数据，且获得的数据都是经过解码过的，而解码过程中程序里无法指定，对于 get 请求获得的数据 request.setCharacterEncoding(“字符集”) 指定解码规则无效。</p>
+<p>如果是post方法传递数据，浏览器也会对数据进行编码，如果我们在 ajax 请求头里面设置了 <strong>setRequestHeader(“ContentType”,”application/x-www-form-urlencoded;charset=UTF-8”)</strong>;浏览器就会以charset值进行编码，如果没有设置则由网页 meta 标签的 charset 属性决定，被编码过的数据发送给服务器，服务器用 iso-8859-1 编码对数据解码，对于post请求发来的数据后端人员可以使用<br>request.setCharacterEncoding(“字符集”) 指定解码规则。</p>
+<p>相信你已经找出了乱码的原因，由于 get 方法传的的数据，浏览器的转码规则和服务器的解码规则不一致出现了乱码，我们一般是怎么解决的呢？get 方式发送的数据如果有中文和特殊字符前端会先使用 encodeURI() 方法转码，这样 url 里面的就都是 ASCII 编码集的字符，省去了浏览器的转码，且 encodeURI() 的转码规则可控，受网页 meta 头的 charset 属性影响，</p>
+<p>标签的 charset 属性为 utf-8 时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = &#x27;百度&amp;%$#@baidu&#x27;;</span><br><span class="line">console.log(encodeURI(data));</span><br><span class="line">// %E7%99%BE%E5%BA%A6&amp;%25$#@baidu</span><br><span class="line">console.log(encodeURIComponent(data));</span><br><span class="line">// %E7%99%BE%E5%BA%A6%26%25%24%23%40baidu</span><br></pre></td></tr></table></figure>
+
+<p>标签的 charset 属性为 GBK 时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = &#x27;百度&amp;%$#@baidu&#x27;;</span><br><span class="line">console.log(encodeURI(data));</span><br><span class="line">// %E9%90%A7%E6%83%A7%E5%AE%B3&amp;%25$#@baidu</span><br><span class="line">console.log(encodeURIComponent(data));</span><br><span class="line">// %E9%90%A7%E6%83%A7%E5%AE%B3%26%25%24%23%40baidu</span><br></pre></td></tr></table></figure>
+
+<p>后端人员获取到用iso-8859-1解码后的数据一般先还原回字节码，然后用前后端协定的方式解码数据，还可以在服务器的配置文件里面进行配置解码规则。而post请求发送的数据可以使request.setCharacterEncoding(“字符集”)指定解码规则来达到前后端转码统一。当我们需要传递的数据量大，结构复杂，业务场景，技术实现需要的时候我们就又会发现，乱码的问题依然存在，比如json格式的数据由于特殊字符导致数据解析出现问题，xml格式数据由于特殊字符破坏xml格式导致数据解析出现问题，前后端一些语言自带的转码方法对一些特殊字符转码结果不一致，以及并非所有特殊字符都会被转码…</p>
+<p>如果我们使用 encodeURI 或者 encodeURIComponent 编码传输到后端，后端解码之后的数据总会因为一些特殊字符的转码不一致导致结果不一样，如果再加上 md5 校验之类的，前端传递的数据就会因为 md5 不同无法解析入库。</p>
+<p>那么这个时候我们就该考虑有没有一种转码规则可以解决以上所有的问题呢？base64 转码你值得拥有。</p>
+<h1 id="base64转码"><a href="#base64转码" class="headerlink" title="base64转码"></a>base64转码</h1><p>base64 编码是从二进制到字符的过程，编码受 html 页面头部 mate;标签的 charset 属性影响，charset 属性不同，编码转为二进制时，产生的二进制也是不一样的，所以最终产生的 base64 字符也不一样。<br>mate 标签的 charset 属性为 utf-8 时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;base64&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;script src=&quot;base64.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            var data = &#x27;百度&amp;%$#@baidu&#x27;;</span><br><span class="line">            console.log(base64encode(data));</span><br><span class="line">            // fqYmJSQjQGJhaWR1</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>mate 标签的 charset 属性为 GBK 时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;GBK&quot;&gt;</span><br><span class="line">        &lt;title&gt;base64&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;script src=&quot;base64.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            var data = &#x27;百度&amp;%$#@baidu&#x27;;</span><br><span class="line">            console.log(base64encode(data));</span><br><span class="line">            // J+ezJiUkI0BiYWlkdQ==</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>所以工作中如果涉及到文本框输入等复杂的内容数据传递为了避免中文乱码以及各种特殊符号带来的困扰就使用 base64 转码传递。如果只是URL里面的传递简单的参数可以使用 encodeURI 和 encodeURIComponent 等转码。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/26/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E4%B8%8D%E5%BE%97%E4%B8%8D%E9%9D%A2%E5%AF%B9%E7%9A%84%E8%BD%AC%E7%A0%81%E9%97%AE%E9%A2%98/" data-id="ckw8thuki002ee4d8bo4796vf" data-title="前后端数据传输不得不面对的转码问题" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-http基础知识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/23/http%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2019-07-23T09:20:45.000Z" itemprop="datePublished">2019-07-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/http/">http</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/23/http%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">http基础知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/23/http%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="ckw8thujv0014e4d81fbbdckb" data-title="http基础知识" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ajax基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/23/ajax%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2019-07-23T08:20:45.000Z" itemprop="datePublished">2019-07-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ajax/">ajax</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/23/ajax%E5%9F%BA%E7%A1%80/">ajax基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>asynchronous javascript and xml: 异步的javascript和xml。<br>ajax是一种用来改善用户体验的技术，其本质是利用浏览器内置的一种特殊的对象(XMLHttpRequest)异步(即发送请求时，浏览器不会销毁当前页面，用户可以继续在当前页面做其它的操作)的向服务器发送请求,并且利用服务器返回的数据(不再是一个完整的页面，只是部分的数据，一般使用文本或者xml返回)来部分更新当前页面。使用ajax技术之后，页面无刷新，并且不打断用户的操作。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="如何获得ajax对象"><a href="#如何获得ajax对象" class="headerlink" title="如何获得ajax对象?"></a>如何获得ajax对象?</h2><p>XMLHttpRequest并没有标准化，要区分浏览器:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function getXhr()&#123;</span><br><span class="line">    var xhr;</span><br><span class="line">    if(window.XMLHttpRequest)&#123;</span><br><span class="line">        xhr = new XMLHttpRequest();						   // 非ie浏览器</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        xhr = new ActiveXObject(&#x27;Microsoft.XMLHttp&#x27;);   // ie浏览器</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ajax对象的属性"><a href="#ajax对象的属性" class="headerlink" title="ajax对象的属性"></a>ajax对象的属性</h2><ul>
+<li>onreadystatechange: 绑定一个事件处理函数(即: 注册一个监听器)当ajax对象的readyState值发生了改变(比如，从0–&gt;1)，就会产生readystatechange事件。</li>
+<li>b. responseText: 获得服务器返回的文本</li>
+<li>c. responseXML:  获得服务器返回的XML dom对象</li>
+<li>d. status:        获得状态码</li>
+<li>e. readyState:   返回ajax对象与服务器通讯的状态。返回值是一个number类型的值，不同的值表示不同的含义:<br>0: (为初始化)    –&gt; 对象已建立，但是尚未初始化(尚未调用 open方法)<br>1: (初始化)     –&gt; 对象已建立，尚未调用send方法<br>2: (发送数据)   –&gt; send方法已调用<br>3: (数据传送中) –&gt; 已接受部分数据<br>4: (响应结束)   –&gt; 接收了所有的数据</li>
+</ul>
+<h2 id="ajax编程的基本步骤"><a href="#ajax编程的基本步骤" class="headerlink" title="ajax编程的基本步骤"></a>ajax编程的基本步骤</h2><p><strong>获取ajax对象(XmlHttpRequest)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var xhr = getXhr();</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用 XmlHttpRequest向服务器发送请求</strong><br>xhr.open(请求方式, 请求地址, 异步还是同步);<br>请求方式: get/post<br>请求地址:如果是get请求，请求参数要添加到请求地址的后面。<br>true表示异步请求: ajax对象发请求的同时，用户可以对当前<br>页面做其它的操作。一般常用异步。<br>false表示同步请求:ajax对象发请求的同时,浏览器会锁订当前页面，用户需要等待处理完成之后才能做下一步操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">方式一: get请求</span><br><span class="line">var xhr = getXhr();</span><br><span class="line">xhr.open(&#x27;get&#x27;, &#x27;check_name.action?name=zs&#x27;, true);</span><br><span class="line">xhr.onreadystatechange=f1;</span><br><span class="line">xhr.send(null);		</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">方式二: post请求</span><br><span class="line">var xhr = getXhr();</span><br><span class="line">xhr.open(&#x27;post&#x27;, &#x27;check_username.action&#x27;, true);</span><br><span class="line">// 如果发送的是 post请求，需要设置消息头的编码格式为 “application”</span><br><span class="line">xhr.setRequestHeader(&#x27;content-type&#x27;, &#x27;application/x-www-form-urlencoded&#x27;);</span><br><span class="line">xhr.onreadystatechange=f1;</span><br><span class="line">xhr.send(&#x27;username=&#x27; + $F(&#x27;username&#x27;));</span><br></pre></td></tr></table></figure>
+<p>注意:因为按照http协议的要求，如果发送的post请求，请求数据包里面，应该有一个消息头 content-type。但是，ajax对象默认没有，所以，需要调用setRequestHeader方法。</p>
+<p><strong>编写服务器端的代码，服务器端一般不需要返回完整的页面，只需要返回部分的数据，比如一个简单的字符串</strong></p>
+<p><strong>编写监听器,在监听器当中，处理服务器返回的响应</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function f1()&#123;</span><br><span class="line">    if(xhr.readyState == 4)&#123;</span><br><span class="line">        //获得服务器返回的数据</span><br><span class="line">        var txt = xhr.responseText;</span><br><span class="line">        //dom操作</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function $(id)&#123;</span><br><span class="line">    return document.getElementById(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function $F(id)	&#123;</span><br><span class="line">    return document.getElementById(id).value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getXhr()&#123; // 获取 XMLHttpRequest</span><br><span class="line">    var xhr;</span><br><span class="line">    if(window.XMLHttpRequest)&#123;</span><br><span class="line">        xhr = new XMLHttpRequest();						   // 非ie浏览器</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        xhr = new ActiveXObject(&#x27;Microsoft.XMLHttp&#x27;);   // ie浏览器</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>GET方式:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function check_name()&#123;</span><br><span class="line">    // 第一步: 获得 ajax对象</span><br><span class="line">    var xhr = getXhr();</span><br><span class="line"></span><br><span class="line">    // 第二步: 发送请求</span><br><span class="line">    xhr.open(&#x27;get&#x27;, &#x27;check_name.action?name=&#x27; + $F(&#x27;uname&#x27;), true);</span><br><span class="line"></span><br><span class="line">    // 第三步: ajax函数: 注册一个事件监听器</span><br><span class="line">    xhr.onreadystatechange = function()&#123; //此函数为 匿名函数，内部函数</span><br><span class="line">        // 只有ajax对象的readyState值为4时，才能获得服务器返回的数据</span><br><span class="line">        if(xhr.readyState == 4)&#123;</span><br><span class="line">            // 获得服务器返回的文本数据</span><br><span class="line">            var txt = xhr.responseText;</span><br><span class="line"></span><br><span class="line">            // 更新页面</span><br><span class="line">            $&#123;&#x27;name_msg&#x27;&#125;.innerHTML = txt;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $(&#x27;name_msg&#x27;).innerHTML = &#x27;正在验证....&#x27;;</span><br><span class="line">    </span><br><span class="line">    // 第四步: 发送请求</span><br><span class="line">    xhr.send(null);		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>POST方式: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">function check_name()&#123;</span><br><span class="line">    // 第一步: 获得 ajax对象</span><br><span class="line">    var xhr = getXhr();</span><br><span class="line"></span><br><span class="line">    // 第二步: 发送请求</span><br><span class="line">    xhr.open(&#x27;post&#x27;, &#x27;check_name.action&#x27;, true);</span><br><span class="line">    xhr.setRequestHeader(&#x27;content-type&#x27;, &#x27;application/x-www-form-urlencoded&#x27;);</span><br><span class="line"></span><br><span class="line">    // 第三步: ajax函数</span><br><span class="line">    xhr.onreadystatechange = function()&#123;//此函数为 匿名函数，内部函数</span><br><span class="line">    </span><br><span class="line">        // 只有ajax对象的readyState值为4时，才能获得服务器返回的数据</span><br><span class="line">        if(xhr.readyState == 4)&#123;</span><br><span class="line">            // 获得服务器返回的文本数据</span><br><span class="line">            var txt = xhr.responseText;</span><br><span class="line"></span><br><span class="line">            // 更新页面</span><br><span class="line">            $&#123;&#x27;name_msg&#x27;&#125;.innerHTML = txt;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $(&#x27;name_msg&#x27;).innerHTML = &#x27;正在验证....&#x27;;</span><br><span class="line"></span><br><span class="line">    // 第四步: 发送请求</span><br><span class="line">    xhr.send(&#x27;username=&#x27; + $F(&#x27;uname&#x27;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用GET 还是 POST？<br>与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。然而，在以下情况中，请使用 POST 请求：<br>(1) 无法使用缓存文件（更新服务器上的文件或数据库）<br>(2) 向服务器发送大量数据（POST 没有数据量限制）<br>(3) 发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠</p>
+<p>get方式 提交的话   表单的内容会拼到地址栏的等号后面   显性的 提交或者获取数据时 长度有限制的   传递速度快  后台处理方式不一样</p>
+<p>post 方式 不会  隐性的  提交或者获取数据时  长度无限制的  传递速度慢些 后台处理方式不一样  获取一篇小说    长度很大 用 post  获取的数据需要隐藏时不想让人看见  </p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p><strong>发送get请求:</strong></p>
+<ol>
+<li>ie浏览器内置的ajax对象，对中文参数使用gbk编码，而其它浏览器(firefox,chrome)使用utf8编码。服务器端默认使用iso-8859-1去解码。</li>
+</ol>
+<p>解决方案: 对于tomcat，可修改conf/server.xml(添加URIEncoding=”UTF-8”),即: 告诉服务器，对于所有的get请求，使用utf-8进行编码/解码</p>
+<ol start="2">
+<li>查询参数有特殊符号或者中文时出现乱码</li>
+</ol>
+<p>解决方案: 使用 encodeURIComponent() 进行手动转义</p>
+<p><strong>发送post请求</strong></p>
+<p>当数据中存在加号(+)、连接符(&amp;)或者百分号(%)时，服务器端接收数据时会丢失数据。</p>
+<p>分析Ajax传送数据的格式与Javascript的语法：</p>
+<ol>
+<li>“+”号：JavaScript解析为字符串连接符，所以服务器端接收数据时”+”会丢失变空格。</li>
+<li>“&amp;”号：JavaScript解析为变量连接符，所以服务器端接收数据时&amp;符号以后的数据都会丢失变空格。</li>
+</ol>
+<p>解决方法是通过正则表达式进行编码替换(假设postStr是你想通过ajax传送的数据字符串)<br>postStr = postStr.replace(/%/g, “%25”);<br>postStr = postStr.replace(/&amp;/g, “%26”);<br>postStr = postStr.replace(/+/g, “%2B”);  </p>
+<h2 id="缓存问题"><a href="#缓存问题" class="headerlink" title="缓存问题:"></a>缓存问题:</h2><p>当使用IE浏览器时，如果使用get方式发请求，浏览器会将数据缓存起来。<br>这样，当再此发送请求时，如果请求地址不变，IE浏览器不会真正地向服务器发送请求，而是将之前缓存的数据显示给用户 。<br>解决方式1: 使用post方式发请求。<br>解决方式2: 在请求地址后面添加一个随机数或者时间戳</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/23/ajax%E5%9F%BA%E7%A1%80/" data-id="ckw8thujg000de4d89c9a9qpv" data-title="ajax基础" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-IP地址和域名的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/23/IP%E5%9C%B0%E5%9D%80%E5%92%8C%E5%9F%9F%E5%90%8D%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2019-07-23T05:20:45.000Z" itemprop="datePublished">2019-07-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/other/">other</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/23/IP%E5%9C%B0%E5%9D%80%E5%92%8C%E5%9F%9F%E5%90%8D%E7%9A%84%E5%8C%BA%E5%88%AB/">IP地址和域名的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h1><p>域名的作用之一是方便记忆和提高辨识度。比如百度<strong><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></strong>可以访问到百度的主页。如果你用ip，也可访问到百度的主页。</p>
+<p>获取百度主页的ip方式如下： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">windows+R----》cmd---》ping www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/other_01.png"></p>
+<p>获取到绿框中的ip，通过这个ip也可以访问百度主页。但是百度不可能只有一台服务器，所以百度的首页对应多个ip。如果使用ip来访问百度，那么可能出现张三访问的百度ip是111.222.333.444，李四访问百度的ip是555.666.777.888，如果百度有一百台服务器部署了百度主页，难道就可以让一百个不同的ip都能访问百度主页吗，这不乱了吗。</p>
+<p>因此，这里就用到了反向代理。比如淘宝就用的Tengine，百度用的BWS，还有的用的nginx等等。</p>
+<p><img src="/images/other_02.png"></p>
+<p>这样可以让所有的ip映射到一个<strong><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></strong>。这样我们访问<strong><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></strong>的时候，就会由百度的负载均衡服务器来分配给一台服务器让用户访问，至于我们访问的是哪一台就不重要了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/23/IP%E5%9C%B0%E5%9D%80%E5%92%8C%E5%9F%9F%E5%90%8D%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="ckw8thujb0007e4d8crvi5hou" data-title="IP地址和域名的区别" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Ngnix简介与安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/22/Ngnix%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/" class="article-date">
+  <time class="dt-published" datetime="2019-07-22T08:20:45.000Z" itemprop="datePublished">2019-07-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Ngnix/">Ngnix</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/22/Ngnix%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/">Ngnix简介与安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Nginx-的简介"><a href="#Nginx-的简介" class="headerlink" title="Nginx 的简介"></a>Nginx 的简介</h1><p>　　Nginx 是由俄罗斯人 Igor Sysoev 设计开发的，开发工作从2002 年开始，第一次公开发布在 2004 年 10 月 4 日。官方网站为：<a target="_blank" rel="noopener" href="http://nginx.org/">http://nginx.org/</a> 。它是一款免费开源的高性能 HTTP 代理服务器及反向代理服务器（Reverse Proxy）产品，同时它还可以提供 IMAP/POP3 邮件代理服务等功能。它高并发性能很好，官方测试能够支撑 5 万的并发量；运行时内存和 CPU 占用率低，配置简单，容易上手，而且运行非常稳定。</p>
+<h1 id="Nginx-的常用功能"><a href="#Nginx-的常用功能" class="headerlink" title="Nginx 的常用功能"></a>Nginx 的常用功能</h1><p>　　</p>
+<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p>　　这是 Nginx 服务器作为 WEB 服务器的主要功能之一，客户端向服务器发送请求时，会首先经过 Nginx 服务器，由服务器将请求分发到相应的 WEB 服务器。正向代理是代理客户端，而反向代理则是代理服务器，Nginx 在提供反向代理服务方面，通过使用正则表达式进行相关配置，采取不同的转发策略，配置相当灵活，而且在配置后端转发请求时，完全不用关心网络环境如何，可以指定任意的IP地址和端口号，或其他类型的连接、请求等。</p>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>　　这也是 Nginx 最常用的功能之一，负载均衡，一方面是将单一的重负载分担到多个网络节点上做并行处理，每个节点处理结束后将结果汇总返回给用户，这样可以大幅度提高网络系统的处理能力；另一方面将大量的前端并发请求或数据流量分担到多个后端网络节点分别处理，这样可以有效减少前端用户等待相应的时间。而 Nginx 负载均衡都是属于后一方面，主要是对大量前端访问或流量进行分流，已保证前端用户访问效率，并可以减少后端服务器处理压力。</p>
+<h2 id="Web-缓存"><a href="#Web-缓存" class="headerlink" title="Web 缓存"></a>Web 缓存</h2><p>　　在很多优秀的网站中，Nginx 可以作为前置缓存服务器，它被用于缓存前端请求，从而提高 Web服务器的性能。Nginx 会对用户已经访问过的内容在服务器本地建立副本，这样在一段时间内再次访问该数据，就不需要通过 Nginx 服务器向后端发出请求。减轻网络拥堵，减小数据传输延时，提高用户访问速度。</p>
+<h1 id="Nginx-安装与运行"><a href="#Nginx-安装与运行" class="headerlink" title="Nginx 安装与运行"></a>Nginx 安装与运行</h1><p>　　关于 Nginx 的安装，分为在 Windows 平台和 Linux 平台安装，Windows 版本的 Nginx 服务器在效率上要比 Linux 版本的 Nginx 服务器差一些，而且实际使用的一般都是 Linux 平台的 Nginx 服务器。所以后期我们介绍时也会以 Linux 版本的为主。</p>
+<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p>　　Nginx 下载地址：<a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a><br>    开发版本主要用于 Nginx 软件项目的研发，稳定版本说明可以作为 Web 服务器投入商业应用。这里我们选择当前稳定版本：nginx-1.14.0</p>
+<h2 id="Windows-版本安装"><a href="#Windows-版本安装" class="headerlink" title="Windows 版本安装"></a>Windows 版本安装</h2><p>我们将上一步下载的 nginx-1.14.0.zip 文件解压看到的目录如下。</p>
+<ul>
+<li><p>conf 目录：存放 Nginx 的主要配置文件，很多功能实现都是通过配置该目录下的 nginx.conf 文件，后面我们会详细介绍。</p>
+</li>
+<li><p>docs 目录：存放 Nginx 服务器的主要文档资料，包括 Nginx 服务器的 LICENSE、OpenSSL 的 LICENSE 、PCRE 的 LICENSE 以及 zlib 的 LICENSE ，还包括本版本的 Nginx服务器升级的版本变更说明，以及 README 文档。</p>
+</li>
+<li><p>html 目录：存放了两个后缀名为 .html 的静态网页文件，这两个文件与 Nginx 服务器的运行相关。</p>
+</li>
+<li><p>logs 目录：存放 Nginx 服务器运行的日志文件。</p>
+</li>
+<li><p>nginx.exe：启动 Nginx 服务器的exe文件，如果 conf 目录下的 nginx.conf 文件配置正确的话，通过该文件即可启动 Nginx 服务器。</p>
+</li>
+</ul>
+<h2 id="启动-nginx"><a href="#启动-nginx" class="headerlink" title="启动 nginx"></a>启动 nginx</h2><p>　　双击解压之后目录中的 nginx.exe 文件，出现一闪而过的画面，则启动成功。</p>
+<p>　　然后在浏览器中输入 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost</a> 或者 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost:80</a> 出现Welcome to ngnix即启动成功。</p>
+<p>　　ps:该页面即是上面解压目录中 html 目录下的 index.html 文件。</p>
+<h2 id="关闭-nginx"><a href="#关闭-nginx" class="headerlink" title="关闭 nginx"></a>关闭 nginx</h2><p>进入到解压之后的目录，输入如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 nginx.exe -s stop</span><br></pre></td></tr></table></figure>
+<p>或者也可以打开任务管理器，找到 nginx 的进程，直接右键结束。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/22/Ngnix%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/" data-id="ckw8thuje0009e4d8e3tlbbds" data-title="Ngnix简介与安装" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-HTTP缓存机制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/20/HTTP%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/" class="article-date">
+  <time class="dt-published" datetime="2019-07-20T02:20:45.000Z" itemprop="datePublished">2019-07-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cache/">cache</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/20/HTTP%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/">HTTP缓存机制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>浏览器缓存（HTTP缓存机制）是为了节约网络的资源加速浏览，浏览器在用户磁盘上对最近请求过的文档进行存储，当访问者再次请求这个页面时，浏览器就可以从本地磁盘显示文档，这样就可以加速页面的阅览。</p>
+<h1 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h1><p>从缓存位置上来说分为四种，并且各自有优先级，当依次查找缓存且都没有命中的时候，才会去请求网络。</p>
+<ul>
+<li>Service Worker</li>
+<li>Memory Cache</li>
+<li>Disk Cache</li>
+<li>Push Cache</li>
+</ul>
+<h2 id="1-Service-Worker"><a href="#1-Service-Worker" class="headerlink" title="1.Service Worker"></a>1.Service Worker</h2><p>Service Worker 是运行在浏览器背后的独立线程，一般可以用来实现缓存功能。使用 Service Worker的话，传输协议必须为 HTTPS。因为 Service Worker 中涉及到请求拦截，所以必须使用 HTTPS 协议来保障安全。Service Worker 的缓存与浏览器其他内建的缓存机制不同，它可以让我们自由控制缓存哪些文件、如何匹配缓存、如何读取缓存，并且缓存是持续性的。<br>Service Worker 实现缓存功能一般分为三个步骤：首先需要先注册 Service Worker，然后监听到 install 事件以后就可以缓存需要的文件，那么在下次用户访问的时候就可以通过拦截请求的方式查询是否存在缓存，存在缓存的话就可以直接读取缓存文件，否则就去请求数据。<br>当 Service Worker 没有命中缓存的时候，我们需要去调用 fetch 函数获取数据。也就是说，如果我们没有在 Service Worker 命中缓存的话，会根据缓存查找优先级去查找数据。但是不管我们是从 Memory Cache 中还是从网络请求中获取的数据，浏览器都会显示我们是从 Service Worker 中获取的内容。</p>
+<h2 id="2-Memory-Cache"><a href="#2-Memory-Cache" class="headerlink" title="2.Memory Cache"></a>2.Memory Cache</h2><p>Memory Cache 也就是内存中的缓存，主要包含的是当前中页面中已经抓取到的资源,例如页面上已经下载的样式、脚本、图片等。读取内存中的数据肯定比磁盘快,内存缓存虽然读取高效，可是缓存持续性很短，会随着进程的释放而释放。 一旦我们关闭 Tab 页面，内存中的缓存也就被释放了。<br>那么既然内存缓存这么高效，我们是不是能让数据都存放在内存中呢？<br>这是不可能的。计算机中的内存一定比硬盘容量小得多，操作系统需要精打细算内存的使用，所以能让我们使用的内存必然不多。<br>当我们访问过页面以后，再次刷新页面，可以发现很多数据都来自于内存缓存</p>
+<p><img src="/images/cache08.webp"></p>
+<p>内存缓存中有一块重要的缓存资源是preloader相关指令（例如<link rel="prefetch">）下载的资源。总所周知preloader的相关指令已经是页面优化的常见手段之一，它可以一边解析js/css文件，一边网络请求下一个资源。<br>需要注意的事情是，内存缓存在缓存资源时并不关心返回资源的HTTP缓存头Cache-Control是什么值，同时资源的匹配也并非仅仅是对URL做匹配，还可能会对Content-Type，CORS等其他特征做校验。</p>
+<h2 id="3-Disk-Cache"><a href="#3-Disk-Cache" class="headerlink" title="3.Disk Cache"></a>3.Disk Cache</h2><p>Disk Cache 也就是存储在硬盘中的缓存，读取速度慢点，但是什么都能存储到磁盘中，比之 Memory Cache 胜在容量和存储时效性上。<br>在所有浏览器缓存中，Disk Cache 覆盖面基本是最大的。它会根据 HTTP Herder 中的字段判断哪些资源需要缓存，哪些资源可以不请求直接使用，哪些资源已经过期需要重新请求。并且即使在跨站点的情况下，相同地址的资源一旦被硬盘缓存下来，就不会再次去请求数据。绝大部分的缓存都来自 Disk Cache，关于 HTTP 的协议头中的缓存字段，我们会在下文进行详细介绍。<br>浏览器会把哪些文件丢进内存中？哪些丢进硬盘中？<br>关于这点，网上说法不一，不过以下观点比较靠得住：</p>
+<p>对于大文件来说，大概率是不存储在内存中的，反之优先<br>当前系统内存使用率高的话，文件优先存储进硬盘</p>
+<h2 id="4-Push-Cache"><a href="#4-Push-Cache" class="headerlink" title="4.Push Cache"></a>4.Push Cache</h2><p>Push Cache（推送缓存）是 HTTP/2 中的内容，当以上三种缓存都没有命中时，它才会被使用。它只在会话（Session）中存在，一旦会话结束就被释放，并且缓存时间也很短暂，在Chrome浏览器中只有5分钟左右，同时它也并非严格执行HTTP头中的缓存指令。<br>Push Cache 在国内能够查到的资料很少，也是因为 HTTP/2 在国内不够普及。这里推荐阅读Jake Archibald的 HTTP/2 push is tougher than I thought 这篇文章，文章中的几个结论：</p>
+<p>所有的资源都能被推送，并且能够被缓存,但是 Edge 和 Safari 浏览器支持相对比较差<br>可以推送 no-cache 和 no-store 的资源<br>一旦连接被关闭，Push Cache 就被释放<br>多个页面可以使用同一个HTTP/2的连接，也就可以使用同一个Push Cache。这主要还是依赖浏览器的实现而定，出于对性能的考虑，有的浏览器会对相同域名但不同的tab标签使用同一个HTTP连接。<br>Push Cache 中的缓存只能被使用一次<br>浏览器可以拒绝接受已经存在的资源推送<br>你可以给其他域名推送资源</p>
+<p>如果以上四种缓存都没有命中的话，那么只能发起请求来获取资源了。<br>那么为了性能上的考虑，大部分的接口都应该选择好缓存策略，通常浏览器缓存策略分为两种：强缓存和协商缓存，并且缓存策略都是通过设置 HTTP Header 来实现的。</p>
+<h1 id="缓存过程分析"><a href="#缓存过程分析" class="headerlink" title="缓存过程分析"></a>缓存过程分析</h1><p>浏览器与服务器通信的方式为应答模式，即是：浏览器发起HTTP请求 – 服务器响应该请求，那么浏览器怎么确定一个资源该不该缓存，如何去缓存呢？浏览器第一次向服务器发起该请求后拿到请求结果后，将请求结果和缓存标识存入浏览器缓存，浏览器对于缓存的处理是根据第一次请求资源时返回的响应头来确定的。具体过程如下图：</p>
+<p><img src="/images/cache09.webp"></p>
+<p>第一次发起HTTP请求</p>
+<p>由上图我们可以知道：</p>
+<p>浏览器每次发起请求，都会先在浏览器缓存中查找该请求的结果以及缓存标识<br>浏览器每次拿到返回的请求结果都会将该结果和缓存标识存入浏览器缓存中</p>
+<p>以上两点结论就是浏览器缓存机制的关键，它确保了每个请求的缓存存入与读取，只要我们再理解浏览器缓存的使用规则，那么所有的问题就迎刃而解了，本文也将围绕着这点进行详细分析。为了方便大家理解，这里我们根据是否需要向服务器重新发起HTTP请求将缓存过程分为两个部分，分别是强缓存和协商缓存。</p>
+<h1 id="缓存分类"><a href="#缓存分类" class="headerlink" title="缓存分类"></a>缓存分类</h1><p>浏览器缓存主要有两类：</p>
+<ul>
+<li>强缓存：cache-control，Expires。</li>
+<li>协商缓存：Last-modified ，Etag </li>
+</ul>
+<h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><p>强缓存：不会向服务器发送请求，直接从缓存中读取资源，在chrome控制台的Network选项中可以看到该请求返回200的状态码，并且Size显示from disk cache或from memory cache。强缓存可以通过设置两种 HTTP Header 实现：Expires 和 Cache-Control。</p>
+<p><strong>1.Expires</strong></p>
+<p>缓存过期时间，用来指定资源到期的时间，是服务器端的具体的时间点。也就是说，Expires=max-age + 请求时间，需要和Last-modified结合使用。Expires是Web服务器响应消息头字段，在响应http请求时告诉浏览器在过期时间前浏览器可以直接从浏览器缓存取数据，而无需再次请求。<br>Expires 是 HTTP/1 的产物，受限于本地时间，如果修改了本地时间，可能会造成缓存失效。Expires: Wed, 22 Oct 2018 08:41:00 GMT表示资源会在 Wed, 22 Oct 2018 08:41:00 GMT 后过期，需要再次请求。</p>
+<p><strong>2.Cache-Control</strong></p>
+<p>在HTTP/1.1中，Cache-Control是最重要的规则，主要用于控制网页缓存。比如当Cache-Control:max-age=300时，则代表在这个请求正确返回时间（浏览器也会记录下来）的5分钟内再次加载资源，就会命中强缓存。<br>Cache-Control 可以在请求头或者响应头中设置，并且可以组合使用多种指令：</p>
+<p><img src="/images/cache01.webp"></p>
+<p>public：所有内容都将被缓存（客户端和代理服务器都可缓存）。具体来说响应可被任何中间节点缓存，如 Browser &lt;– proxy1 &lt;–  proxy2 &lt;– Server，中间的proxy可以缓存资源，比如下次再请求同一资源proxy1直接把自己缓存的东西给 Browser 而不再向proxy2要。</p>
+<p>private：所有内容只有客户端可以缓存，Cache-Control的默认取值。具体来说，表示中间节点不允许缓存，对于Browser &lt;– proxy1 &lt;–  proxy2 &lt;– Server，proxy 会老老实实把Server 返回的数据发送给proxy1,自己不缓存任何数据。当下次Browser再次请求时proxy会做好请求转发而不是自作主张给自己缓存的数据。</p>
+<p>no-cache：客户端缓存内容，是否使用缓存则需要经过协商缓存来验证决定。表示不使用 Cache-Control的缓存控制方式做前置验证，而是使用 Etag 或者Last-Modified字段来控制缓存。需要注意的是，no-cache这个名字有一点误导。设置了no-cache之后，并不是说浏览器就不再缓存数据，只是浏览器在使用缓存数据时，需要先确认一下数据是否还跟服务器保持一致。</p>
+<p>no-store：所有内容都不会被缓存，即不使用强制缓存，也不使用协商缓存</p>
+<p>max-age：max-age=xxx (xxx is numeric)表示缓存内容将在xxx秒后失效</p>
+<p>s-maxage（单位为s)：同max-age作用一样，只在代理服务器中生效（比如CDN缓存）。比如当s-maxage=60时，在这60秒中，即使更新了CDN的内容，浏览器也不会进行请求。max-age用于普通缓存，而s-maxage用于代理缓存。s-maxage的优先级高于max-age。如果存在s-maxage，则会覆盖掉max-age和Expires header。</p>
+<p>max-stale：能容忍的最大过期时间。max-stale指令标示了客户端愿意接收一个已经过期了的响应。如果指定了max-stale的值，则最大容忍时间为对应的秒数。如果没有指定，那么说明浏览器愿意接收任何age的响应（age表示响应由源站生成或确认的时间与当前时间的差值）。</p>
+<p>min-fresh：能够容忍的最小新鲜度。min-fresh标示了客户端不愿意接受新鲜度不多于当前的age加上min-fresh设定的时间之和的响应。</p>
+<p><img src="/images/cache02.webp"></p>
+<p>从图中我们可以看到，我们可以将多个指令配合起来一起使用，达到多个目的。比如说我们希望资源能被缓存下来，并且是客户端和代理服务器都能缓存，还能设置缓存失效时间等等。</p>
+<p><strong>3.Expires和Cache-Control两者对比</strong></p>
+<p>其实这两者差别不大，区别就在于 Expires 是http1.0的产物，Cache-Control是http1.1的产物，两者同时存在的话，Cache-Control优先级高于Expires；在某些不支持HTTP1.1的环境下，Expires就会发挥用处。所以Expires其实是过时的产物，现阶段它的存在只是一种兼容性的写法。<br>强缓存判断是否缓存的依据来自于是否超出某个时间或者某个时间段，而不关心服务器端文件是否已经更新，这可能会导致加载文件不是服务器端最新的内容，那我们如何获知服务器端内容是否已经发生了更新呢？此时我们需要用到协商缓存策略。</p>
+<h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>协商缓存就是强制缓存失效后，浏览器携带缓存标识向服务器发起请求，由服务器根据缓存标识决定是否使用缓存的过程，主要有以下两种情况：</p>
+<p>协商缓存生效，返回304和Not Modified</p>
+<p><img src="/images/cache03.webp"></p>
+<p>协商缓存失效，返回200和请求结果</p>
+<p><img src="/images/cache04.webp"></p>
+<p>协商缓存可以通过设置两种 HTTP Header 实现：Last-Modified 和 ETag 。</p>
+<p><strong>1.Last-Modified和If-Modified-Since</strong></p>
+<p>浏览器在第一次访问资源时，服务器返回资源的同时，在response header中添加 Last-Modified的header，值是这个资源在服务器上的最后修改时间，浏览器接收后缓存文件和header；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Last-Modified: Fri, 22 Jul 2016 01:47:00 GMT</span><br></pre></td></tr></table></figure>
+
+<p>浏览器下一次请求这个资源，浏览器检测到有 Last-Modified这个header，于是添加If-Modified-Since这个header，值就是Last-Modified中的值；服务器再次收到这个资源请求，会根据 If-Modified-Since 中的值与服务器中这个资源的最后修改时间对比，如果没有变化，返回304和空的响应体，直接从缓存读取，如果If-Modified-Since的时间小于服务器中这个资源的最后修改时间，说明文件有更新，于是返回新的资源文件和200</p>
+<p><img src="/images/cache05.webp"></p>
+<p>但是 Last-Modified 存在一些弊端：</p>
+<ul>
+<li>如果本地打开缓存文件，即使没有对文件进行修改，但还是会造成 Last-Modified 被修改，服务端不能命中缓存导致发送相同的资源</li>
+<li>因为 Last-Modified 只能以秒计时，如果在不可感知的时间内修改完成文件，那么服务端会认为资源还是命中了，不会返回正确的资源</li>
+</ul>
+<p>既然根据文件修改时间来决定是否缓存尚有不足，能否可以直接根据文件内容是否修改来决定缓存策略？所以在 HTTP / 1.1 出现了 ETag 和If-None-Match</p>
+<p><strong>2.ETag和If-None-Match</strong></p>
+<p>Etag是服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)，只要资源有变化，Etag就会重新生成。浏览器在下一次加载资源向服务器发送请求时，会将上一次返回的Etag值放到request header里的If-None-Match里，服务器只需要比较客户端传来的If-None-Match跟自己服务器上该资源的ETag是否一致，就能很好地判断资源相对客户端而言是否被修改过了。如果服务器发现ETag匹配不上，那么直接以常规GET 200回包形式将新的资源（当然也包括了新的ETag）发给客户端；如果ETag是一致的，则直接返回304知会客户端直接使用本地缓存即可。</p>
+<p><img src="/images/cache06.webp"></p>
+<p><strong>3.两者之间对比：</strong></p>
+<ul>
+<li>首先在精确度上，Etag要优于Last-Modified。</li>
+</ul>
+<p>Last-Modified的时间单位是秒，如果某个文件在1秒内改变了多次，那么他们的Last-Modified其实并没有体现出来修改，但是Etag每次都会改变确保了精度；如果是负载均衡的服务器，各个服务器生成的Last-Modified也有可能不一致。</p>
+<ul>
+<li>第二在性能上，Etag要逊于Last-Modified，毕竟Last-Modified只需要记录时间，而Etag需要服务器通过算法来计算出一个hash值。</li>
+<li>第三在优先级上，服务器校验优先考虑Etag</li>
+</ul>
+<h1 id="缓存机制"><a href="#缓存机制" class="headerlink" title="缓存机制"></a>缓存机制</h1><p>强制缓存优先于协商缓存进行，若强制缓存(Expires和Cache-Control)生效则直接使用缓存，若不生效则进行协商缓存(Last-Modified / If-Modified-Since和Etag / If-None-Match)，协商缓存由服务器决定是否使用缓存，若协商缓存失效，那么代表该请求的缓存失效，返回200，重新返回资源和缓存标识，再存入浏览器缓存中；生效则返回304，继续使用缓存。具体流程图如下：</p>
+<p><img src="/images/cache07.webp"></p>
+<p>看到这里，不知道你是否存在这样一个疑问:如果什么缓存策略都没设置，那么浏览器会怎么处理？</p>
+<p>对于这种情况，浏览器会采用一个启发式的算法，通常会取响应头中的 Date 减去 Last-Modified 值的 10% 作为缓存时间。</p>
+<h1 id="实际场景应用缓存策略"><a href="#实际场景应用缓存策略" class="headerlink" title="实际场景应用缓存策略"></a>实际场景应用缓存策略</h1><h2 id="1-频繁变动的资源"><a href="#1-频繁变动的资源" class="headerlink" title="1.频繁变动的资源"></a>1.频繁变动的资源</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-cache</span><br></pre></td></tr></table></figure>
+
+<p>对于频繁变动的资源，首先需要使用Cache-Control: no-cache 使浏览器每次都请求服务器，然后配合 ETag 或者 Last-Modified 来验证资源是否有效。这样的做法虽然不能节省请求数量，但是能显著减少响应数据大小。</p>
+<h2 id="2-不常变化的资源"><a href="#2-不常变化的资源" class="headerlink" title="2.不常变化的资源"></a>2.不常变化的资源</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age=31536000</span><br></pre></td></tr></table></figure>
+
+<p>通常在处理这类资源时，给它们的 Cache-Control 配置一个很大的 max-age=31536000 (一年)，这样浏览器之后请求相同的 URL 会命中强制缓存。而为了解决更新的问题，就需要在文件名(或者路径)中添加 hash， 版本号等动态字符，之后更改动态字符，从而达到更改引用 URL 的目的，让之前的强制缓存失效 (其实并未立即失效，只是不再使用了而已)。<br>在线提供的类库 (如 jquery-3.3.1.min.js, lodash.min.js 等) 均采用这个模式。</p>
+<h1 id="用户行为对浏览器缓存的影响"><a href="#用户行为对浏览器缓存的影响" class="headerlink" title="用户行为对浏览器缓存的影响"></a>用户行为对浏览器缓存的影响</h1><p>所谓用户行为对浏览器缓存的影响，指的就是用户在浏览器如何操作时，会触发怎样的缓存策略。主要有 3 种：</p>
+<ul>
+<li>打开网页，地址栏输入地址： 查找 disk cache 中是否有匹配。如有则使用；如没有则发送网络请求。</li>
+<li>普通刷新 (F5)：因为 TAB 并没有关闭，因此 memory cache 是可用的，会被优先使用(如果匹配的话)。其次才是 disk cache。</li>
+<li>强制刷新 (Ctrl + F5)：浏览器不使用缓存，因此发送的请求头部均带有 Cache-control: no-cache(为了兼容，还带了 Pragma: no-cache),服务器直接返回 200 和最新内容。</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/images/cache10.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/20/HTTP%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/" data-id="ckw8thul40051e4d81d8cgcu1" data-title="HTTP缓存机制" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-storage实例" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/18/storage%E5%AE%9E%E4%BE%8B/" class="article-date">
+  <time class="dt-published" datetime="2019-07-18T03:20:45.000Z" itemprop="datePublished">2019-07-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/storage/">storage</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/18/storage%E5%AE%9E%E4%BE%8B/">storage实例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="封装的本地缓存处理工具"><a href="#封装的本地缓存处理工具" class="headerlink" title="封装的本地缓存处理工具"></a>封装的本地缓存处理工具</h1><p>利用web Storage技术实现前端缓存数据。G__Cache_Duration支持自定义缓存有效时间。适用于多租户，多用户切换的使用场景。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * localStorage 本地缓存处理工具</span><br><span class="line"> * @author https://github.com  2019/06/24.</span><br><span class="line"> * @version 1.0 </span><br><span class="line"> *</span><br><span class="line"> * getStorage(key)  - 获取localStorage数据</span><br><span class="line"> * @param &#123;string&#125; [key]    - 返回对象或字符串</span><br><span class="line"> * </span><br><span class="line"> * setStorage(key,value)     - 设置localStorage数据，</span><br><span class="line"> * @param &#123;string&#125; [key] - 设置的localStorage的名称</span><br><span class="line"> * @param &#123;object/string&#125; [value] - 设置的localStorage的名称对应的值</span><br><span class="line"> * </span><br><span class="line"> * clearStorage()  - 清空localStorage数据</span><br><span class="line"> * </span><br><span class="line"> * removeStorage(key)  - 删除localStorage数据</span><br><span class="line"> * @param &#123;string&#125; [key]</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">export const setCache = (key, data, G__Cache_Duration) =&gt; &#123;</span><br><span class="line">    try&#123;</span><br><span class="line">        const _obj = &#123;</span><br><span class="line">            data: data, // 需要缓存的数据</span><br><span class="line">            tenant;: &#x27;moumou&#x27;, // 当前租户</span><br><span class="line">            user: &#x27;zhangsan&#x27;, // 当前用户</span><br><span class="line">            datetime: (new Date()).getTime(),</span><br><span class="line">            duration: G__Cache_Duration // 有效时间</span><br><span class="line">        &#125;</span><br><span class="line">        setStorage(key, _obj);</span><br><span class="line">    &#125;catch(e)&#123;</span><br><span class="line">        console.log(&quot;ERR100:setCache出错了\n&quot; + e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export const getCache = (key) =&gt; &#123;</span><br><span class="line">    try&#123;</span><br><span class="line">        const curT = (new Date()).getTime();</span><br><span class="line">        var old = null;//旧数据</span><br><span class="line">        try&#123;</span><br><span class="line">            old = getStorage(key);</span><br><span class="line">        &#125;catch(e)&#123;</span><br><span class="line">            console.log(&quot;ERR104:缓存数据转json出错了,\n仅支持json数据缓存\n&quot; + e);</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        if(old == null) return;</span><br><span class="line">        const otenant = old.tenant;</span><br><span class="line">        const ouser = old.user;</span><br><span class="line">        if(otenant === &#x27;moumou&#x27; &amp;&amp; ouser ===  &#x27;zhangsan&#x27;)&#123;</span><br><span class="line">            const oldT = old.datetime;</span><br><span class="line">            const dur = old.duration;</span><br><span class="line">            if(curT - parseInt(oldT) &lt;= parseInt(dur))&#123;</span><br><span class="line">                return old.data;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                removeStorage(key);</span><br><span class="line">                return null;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //缓存数据不是当前租户当前用户的缓存</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;catch(e)&#123;</span><br><span class="line">        console.log(&quot;ERR103:getCache出错了\n&quot; + e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export const getStorage = (key) =&gt; &#123;</span><br><span class="line">    var v = localStorage.getItem(key);</span><br><span class="line">    if(!v) &#123;</span><br><span class="line">        return null</span><br><span class="line">    &#125;</span><br><span class="line">    const v4 = v.slice(0, 4);</span><br><span class="line">    if(v4 == &#x27;obj-&#x27;) &#123;</span><br><span class="line">        v = JSON.parse(v.slice(4));</span><br><span class="line">    &#125; else if(v4 == &#x27;str-&#x27;) &#123;</span><br><span class="line">        v = v.slice(4);</span><br><span class="line">    &#125;</span><br><span class="line">    return v</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export const setStorage = (key, value) =&gt; &#123;</span><br><span class="line">    var v = value;</span><br><span class="line">    if(typeof v == &quot;object&quot;) &#123;</span><br><span class="line">        v = &quot;obj-&quot; + JSON.stringify(v)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        if(value == null || value == undefined) &#123;</span><br><span class="line">            v = &quot;str-&quot;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            v = &quot;str-&quot; + v</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    localStorage.setItem(key, v);</span><br><span class="line">    //console.log(localStorage.getItem(key));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export const clearStorage = () =&gt; &#123;</span><br><span class="line">    localStorage.clear();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export const removeStorage = () =&gt; &#123;</span><br><span class="line">    localStorage.remove(key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="组件引入方式"><a href="#组件引入方式" class="headerlink" title="组件引入方式"></a>组件引入方式</h1><blockquote>
+<p>import { setCache, getCache, clearStorage } from ‘../storage’;</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/18/storage%E5%AE%9E%E4%BE%8B/" data-id="ckw8thuk3001ke4d8g7vh1tb1" data-title="storage实例" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-浏览器端数据储存机制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%82%A8%E5%AD%98%E6%9C%BA%E5%88%B6/" class="article-date">
+  <time class="dt-published" datetime="2019-07-16T06:20:45.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/storage/">storage</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%82%A8%E5%AD%98%E6%9C%BA%E5%88%B6/">浏览器端数据储存机制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Storage 接口用于脚本在浏览器保存数据。两个对象部署了这个接口：</p>
+<ul>
+<li>window.sessionStorage</li>
+<li>window.localStorage。</li>
+</ul>
+<p><strong>sessionStorage</strong>保存的数据用于浏览器的一次会话（session），当会话结束（通常是窗口关闭），数据被清空；</p>
+<p><strong>localStorage</strong>保存的数据长期存在，下一次访问该网站的时候，网页可以直接读取以前保存的数据。除了保存期限的长短不同，这两个对象的其他方面都一致。保存的数据都以“键值对”的形式存在。也就是说，每一项数据都有一个键名和对应的值。所有的数据都是以文本格式保存。这个接口很像 Cookie 的强化版，能够使用大得多的存储空间。目前，每个域名的存储上限视浏览器而定，Chrome 是 2.5MB，Firefox 和 Opera 是 5MB，IE 是 10MB。其中，Firefox 的存储空间由一级域名决定，而其他浏览器没有这个限制。也就是说，Firefox 中，a.example.com和b.example.com共享 5MB 的存储空间。另外，与 Cookie 一样，它们也受同域限制。某个网页存入的数据，只有同域下的网页才能读取，如果跨域操作会报错。</p>
+<h1 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h1><blockquote>
+<p>Storage 接口只有一个属性。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Storage.length：返回保存的数据项个数。</span><br><span class="line">window.localStorage.setItem(&#x27;foo&#x27;, &#x27;a&#x27;);</span><br><span class="line">window.localStorage.setItem(&#x27;bar&#x27;, &#x27;b&#x27;);</span><br><span class="line">window.localStorage.setItem(&#x27;baz&#x27;, &#x27;c&#x27;);</span><br><span class="line"></span><br><span class="line">window.localStorage.length // 3</span><br></pre></td></tr></table></figure>
+
+<p>该接口提供5个方法。</p>
+<h2 id="Storage-setItem"><a href="#Storage-setItem" class="headerlink" title="Storage.setItem()"></a>Storage.setItem()</h2><p>Storage.setItem()方法用于存入数据。它接受两个参数，第一个是键名，第二个是保存的数据。如果键名已经存在，该方法会更新已有的键值。该方法没有返回值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.setItem(&#x27;key&#x27;, &#x27;value&#x27;);</span><br><span class="line">window.localStorage.setItem(&#x27;key&#x27;, &#x27;value&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>注意，Storage.setItem()两个参数都是字符串。如果不是字符串，会自动转成字符串，再存入浏览器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.setItem(3, &#123; foo: 1 &#125;);</span><br><span class="line">window.sessionStorage.getItem(&#x27;3&#x27;) // &quot;[object Object]&quot;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，setItem方法的两个参数都不是字符串，但是存入的值都是字符串。</p>
+<p>如果储存空间已满，该方法会抛错。</p>
+<p>写入不一定要用这个方法，直接赋值也是可以的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 下面三种写法等价</span><br><span class="line">window.localStorage.foo = &#x27;123&#x27;;</span><br><span class="line">window.localStorage[&#x27;foo&#x27;] = &#x27;123&#x27;;</span><br><span class="line">window.localStorage.setItem(&#x27;foo&#x27;, &#x27;123&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Storage-getItem"><a href="#Storage-getItem" class="headerlink" title="Storage.getItem()"></a>Storage.getItem()</h2><p>Storage.getItem()方法用于读取数据。它只有一个参数，就是键名。如果键名不存在，该方法返回null。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.getItem(&#x27;key&#x27;)</span><br><span class="line">window.localStorage.getItem(&#x27;key&#x27;)</span><br></pre></td></tr></table></figure>
+<p>键名应该是一个字符串，否则会被自动转为字符串。</p>
+<h2 id="Storage-removeItem"><a href="#Storage-removeItem" class="headerlink" title="Storage.removeItem()"></a>Storage.removeItem()</h2><p>Storage.removeItem()方法用于清除某个键名对应的键值。它接受键名作为参数，如果键名不存在，该方法不会做任何事情。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.removeItem(&#x27;key&#x27;);</span><br><span class="line">localStorage.removeItem(&#x27;key&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Storage-clear"><a href="#Storage-clear" class="headerlink" title="Storage.clear()"></a>Storage.clear()</h2><p>Storage.clear()方法用于清除所有保存的数据。该方法的返回值是undefined。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.clear()</span><br><span class="line">window.localStorage.clear()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Storage-key"><a href="#Storage-key" class="headerlink" title="Storage.key()"></a>Storage.key()</h2><p>Storage.key()接受一个整数作为参数（从零开始），返回该位置对应的键值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.setItem(&#x27;key&#x27;, &#x27;value&#x27;);</span><br><span class="line">window.sessionStorage.key(0) // &quot;key&quot;</span><br></pre></td></tr></table></figure>
+<p>结合使用Storage.length属性和Storage.key()方法，可以遍历所有的键。</p>
+<p>for (var i = 0; i &lt; window.localStorage.length; i++) {<br>  console.log(localStorage.key(i));<br>}</p>
+<h1 id="storage-事件"><a href="#storage-事件" class="headerlink" title="storage 事件"></a>storage 事件</h1><p>Storage 接口储存的数据发生变化时，会触发 storage 事件，可以指定这个事件的监听函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&#x27;storage&#x27;, onStorageChange);</span><br></pre></td></tr></table></figure>
+<p>监听函数接受一个event实例对象作为参数。这个实例对象继承了 StorageEvent 接口，有几个特有的属性，都是只读属性。</p>
+<ul>
+<li>StorageEvent.key：字符串，表示发生变动的键名。如果 storage 事件是由clear()方法引起，该属性返回null。</li>
+<li>StorageEvent.newValue：字符串，表示新的键值。如果 storage 事件是由clear()方法或删除该键值对引发的，该属性返回null。</li>
+<li>Storage.oldValue：字符串，表示旧的键值。如果该键值对是新增的，该属性返回null。</li>
+<li>Storage.storageArea：对象，返回键值对所在的整个对象。也说是说，可以从这个属性上面拿到当前域名储存的所有键值对。</li>
+<li>Storage.url：字符串，表示原始触发 storage 事件的那个网页的网址。</li>
+</ul>
+<p>下面是StorageEvent.key属性的例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function onStorageChange(e) &#123;</span><br><span class="line">  console.log(e.key);</span><br><span class="line">&#125;</span><br><span class="line">window.addEventListener(&#x27;storage&#x27;, onStorageChange);</span><br></pre></td></tr></table></figure>
+
+<p>注意，该事件有一个很特别的地方，就是它不在导致数据变化的当前页面触发，而是在同一个域名的其他窗口触发。也就是说，如果浏览器只打开一个窗口，可能观察不到这个事件。比如同时打开多个窗口，当其中的一个窗口导致储存的数据发生改变时，只有在其他窗口才能观察到监听函数的执行。可以通过这种机制，实现多个窗口之间的通信。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%82%A8%E5%AD%98%E6%9C%BA%E5%88%B6/" data-id="ckw8thukp002ze4d837999hd6" data-title="浏览器端数据储存机制" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-前后端分离" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/14/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" class="article-date">
+  <time class="dt-published" datetime="2019-07-14T06:06:45.000Z" itemprop="datePublished">2019-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project/">project</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/14/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">前后端分离</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>到目前为止，前后端分离并不是什么新鲜事，新的项目基本都是前后端分离的。然而一些历史项目在从一体化Web设计转向前后端分离的架构时，不可避免的会遇到各种各样的问题。由于层出不穷的问题，甚至会有团队质疑，一体化好好的，为什么要前后端分离？</p>
+<p>说到底，并不是前后分离不好，只是可能不适合，或者说设计者和开发人员的思维还没有转变过来</p>
+<blockquote>
+<p>一体式 Web 架构示意图<br><img src="/images/project_01.png"></p>
+</blockquote>
+<blockquote>
+<p>前后分离式 Web 架构示意图<br><img src="/images/project_02.png"></p>
+</blockquote>
+<h1 id="为什么需要前后端分离"><a href="#为什么需要前后端分离" class="headerlink" title="为什么需要前后端分离"></a>为什么需要前后端分离</h1><p>老牌的一些大公司可能有些产品是用不同的计算机语言开发的，但是项目之前可能会存在大量重复性的工作。在这种情况下，如果前端实现与后端技术无关，那页面呈现的部分就可以共用，不同的后端技术只需要实现后端业务逻辑就好。分离老项目首先解决的问题是把数据和页面剥离开来。应对这种需求的技术是现成的，前端采用静态网页相关的技术，HTML + CSS + JavaScript，通过 AJAX 技术调用后端提供的业务接口。前后端协商好接口方式通过 HTTP 提供，统一使用 POST 谓词。接口数据结构使用 XML 实现，前端 jQuery 解析 XML 很方便，后端对 XML 的处理工具就更多了……后来由于后端 JSON库（比如 Newtonsoft JSON.NET、jackson、Gson 等）崛起，前端处理 JSON 也更容易（JSON.parse() 和 JSON.stringify()），就将数据结构换成了 JSON 实现。</p>
+<p>这种架构从本质上来说就是 SOA（面向服务的架构）。当后端不提供页面，只是纯粹的通过 Web API 来提供数据和业务交互能力之后，Web 前端就成了纯粹的客户端角色，与 WinForm、移动终端应用属于同样的角色，可以把它们合在一起，统称为前端。以前的一体化架构需要定制页面来实现 Web 应用，同时又定义一套 WebService/WSDL 来对 WinForm 和移动终端提供服务。转换为新的架构之后，可以统一使用 Web API 形式为所有类型的前端提供服务。至于某些类型的前端对这个 Web API 进行的 RPC 封装，那又是另外一回事了。</p>
+<p>通过这样的架构改造，前后端实际就已经分离开了。抛开其它类型的前端不提，这里只讨论 Web 前端和后端。由于分离，Web 前端在开发的时候压根不需要了解后端是用的什么技术，只需要后端提供了什么样的接口可以用来做什么事情就好，什么 C#/ASP.NET、Java/JEE、数据库……这些技术可以统统不去了解。而后端的 .NET 团队和 Java 团队也脱离了逻辑无关的美学思维，不需要面对美工精细的界面设计约束，也不需要在思考逻辑实现的同时还要去考虑页面上怎么布局的问题，只需要处理自己擅长的逻辑和数据就好。</p>
+<h1 id="前后端分离指的是"><a href="#前后端分离指的是" class="headerlink" title="前后端分离指的是"></a>前后端分离指的是</h1><ol>
+<li><p>前后职责分离<br>前端倾向于呈现，着重处理用户体验相关的问题；后端则倾处于业务逻辑、数据处理和持久化等。在设计清晰的情况下，后端只需要以数据为中心对业务处理算法负责，并按约定为前端提供 API 接口；而前端使用这些接口对用户体验负责。</p>
+</li>
+<li><p>前后技术分离<br>前端可以不用了解后端技术，也不关心后端具体用什么技术来实现，只需要会 HTML/CSS/JavaScript 就能入手；而后端只需要关心后端开发技术，除了省去学习前端技术的麻烦，连 Web 框架的学习研究都只需要关注 Web API 就好，而不用去关注基于页面视图的 MVC 技术（并不是说不需要 MVC，Web API 的接口部分的数据结构呈现也是 View），不用考虑特别复杂的数据组织和呈现。</p>
+</li>
+</ol>
+<h1 id="前后端分离的好处"><a href="#前后端分离的好处" class="headerlink" title="前后端分离的好处"></a>前后端分离的好处</h1><ol>
+<li><p>前后分离带来了用户用户体验和业务处理解耦<br>前端可以根据用户不同时期的体验需求迅速改版，后端对此毫无压力。同理，后端进行的业务逻辑升级，数据持久方案变更，只要不影响到接口，前端可以毫不知情。当然如果需求变更引起接口变化的时候，前后端又需要坐在一起同步信息了。</p>
+</li>
+<li><p>前后分离，可以分别归约两端的设计<br>后端只提供 API 服务，不考虑页面呈现的问题。实现 SOA 架构的 API 可以服务于各种前端，而不仅仅是 Web 前端，可以做到一套服务，各端使用；同时对于前端来说，不依赖后端技术的前端部分可以独立部署，也可以应于 Hybrid 架构，嵌入各种“壳”（比如 Electron、Codorva 等），迅速实现多终端。</p>
+</li>
+</ol>
+<h1 id="前后分离架构"><a href="#前后分离架构" class="headerlink" title="前后分离架构"></a>前后分离架构</h1><p>任何技术方案都不是银弹，前后分离不仅带来好处，也带来矛盾。我们在实践初期，由于前端团队力量相对薄弱，同时按照惯例，所有业务处理几乎都是由后端（原来的技术骨干）来设计和定义的，前端处理过程中常常发现接口定义不符合用户操作流程，AJAX 异步请求过多等问题。毕竟后端思维和前端思维还是有所不同——前端思维倾向于用户体验，而后端思维则更倾向于业务的技术实现。</p>
+<p>除此之外，前后分离在安全性上的要求也略有不同。由于前后分离本质上是一种 SOA 架构，所以在授权上也需要按 SOA 架构的方式来思考。Cookie/Session 的方式虽然可用，但并不是特别合适，相对来说，基于 Token 的认证则更适合一些。采用基于 Token 的认证就意味着后端的认证部分需要重写……后端当然不想重写，于是会将皮球踢给前端来让前端想办法实现基于 Cookie/Session 的认证……于是前端开始报怨（悲剧）……</p>
+<h2 id="谁来主导"><a href="#谁来主导" class="headerlink" title="谁来主导"></a>谁来主导</h2><p>这些矛盾的出现，归根结底在于设计不够清晰明确。毫无疑问，在开发过程中，主导者应该是架构师或者设计师。然而实际场景中，架构师或者设计师往往也是开发人员，所以他们的主要技术栈会极大的影响前后端在整个项目中的主次作用。这位骨干处于哪端，开发的便捷性就会向哪端倾斜。这是一个不好的现象，但是我们不得不面对这样的现状，我相信很多不太大的团队也面临着类似的问题。</p>
+<p>如果没有良好的流程规范，通常前端接触的到角色会比后端更多（多数应用型项目/产品，并非所有情况）。</p>
+<p>前端开发人员会受到项目/产品经理或客户的直接影响：这个地方应该放个按钮，那个操作应该这么进行……；<br>前端还要与美工对接——这样的设计不好实现，是否可以改成那样？客户要求必须这么操作，但是这个设计做不到；<br>前端还要跟后端对接，对于某些应用，甚至是多个后端<br>换句话说，前端可以成为项目沟通的中心，所以比后端更合适承担主导的角色。</p>
+<h2 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h2><p>接口分后端服务实现和前端调用两个部分，技术都是成熟技术，并不难，接口设计才是难点。前面提到前后端会产生一些矛盾。从前端的角度来看，重点关注的是用户体验，包括用户在进行业务操作时的流动方向和相关处理；而从后端的角度来看，重点关注的是数据完整、有效、安全。矛盾在于双方关注点不同，信息不对称，还各有私心。解决这些矛盾的着眼点就是接口设计。</p>
+<p>接口设计时，其粒度的大小往往代表了前后端工作量的大小（非绝对，这和整体架构有关）。接口粒度太小，前端要处理的事情就多，尤其是对各种异步处理就可能会感到应接不暇；粒度太大，就会出现高耦合，降低灵活性和扩展性，当然这种情况下后端的工作就轻松不了。业务层面的东西涉及到具体的产品，这里不多做讨论。这里主要讨论一点点技术层面的东西。</p>
+<p>就形式上来说，Web API 可以定义成 REST，也可以是 RPC，只要前后端商议确定下来就行。更重要的是在输入参数和输出结果上，最好一开始就有相对固定的定义，这往往取决于前端架构或采用的 UI 框架。</p>
+<p>常见请求参数的数据形式有如下一些：</p>
+<p>键值对，用于 URL 中的 QueryString 或者 POST 等方法的 Payload<br>XML/JSON/…，通常用于 POST 等方法的 Payload，也可以使用 multipart 传递<br>ROUTE，由后端路由解析 URL 取得，在 RESTful 中常用<br>而服务器响应的数据形式就五花八门各式各样了，通常一个完整的响应至少需要包含状态码、消息、数据三个部分的内容，其中</p>
+<p>状态码，HTTP 状态码或响应数据中特定的状态属性<br>消息，通常是放在响应内容中，作为数据的一部分<br>数据，根据接口协议，可能是各种格式，当前最流行的是 JSON<br>我们在实践中使用 JSON 形式，最初定义了这样一种形式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;: &quot;number&quot;,</span><br><span class="line">    &quot;message&quot;: &quot;string&quot;,</span><br><span class="line">    &quot;data&quot;: &quot;any&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>code 主要用于指导前端进行一些特殊的操作，比如 0 表示 API 调用成功，非0 表示调用失败，其中 1 表示需要登录、2 表示未获取授权……对于这个定义，前端拿到响应之后，就可以在应用框架层进行一些常规处理，比如当 code 为 1 的时候，弹出登录窗口请用户在当前页面登录，而当 code 为 2 的时候，则弹出消息提示并后附链接引导用户获取授权。</p>
+<p>一开始这样做并没有什么问题，直到前端框架换用了 jQuery EasyUI。以 EasyUI 为例的好多 UI 库都支持为组件配置数据 URL，它会自动通过 AJAX 来获取数据，但对数据结构有要求。如果仍然采用之前设计的响应结构，就需要为组件定义数据过滤器（filter）来处理响应结果，这样做写 filter 以及为组件声明 filter 的工作量也是不小的。为了减少这部分工作量我们决定改一改接口。</p>
+<p>新的接口是一种可变结构，正常情况下返回 UI 需要的数据结构，出错的情况则响应一个类型于原定结构的数据结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;error&quot;: &#123;</span><br><span class="line">        &quot;identity&quot;: &quot;special identity string&quot;,</span><br><span class="line">        &quot;code&quot;: &quot;number&quot;,</span><br><span class="line">        &quot;message&quot;: &quot;string&quot;,</span><br><span class="line">        &quot;data&quot;: &quot;any&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于新响应数据结构，前端框架只需要判断一下是否存在 error 属性，如果存在，检查其 identity 属性是否为指定的特殊值（比如某个特定的 GUID），然后再使用其 code 和 message 属性处理错误。这个错误判断过程略为复杂一些，但可以由前端应用框架统一处理。</p>
+<p>如果使用 RESTful 风格的接口，部分状态码可以用 HTTP 状态码代替，比如 401 表示需要登录，403 就可以表示没有获得授权，500 表示程序处理过程中发生错误。当然，虽然 HTTP 状态码与 RESTful 风格更配，但是非 RESTful 风格也可以使用 HTTP 状态码来代替 error.code。</p>
+<h2 id="用户认证"><a href="#用户认证" class="headerlink" title="用户认证"></a>用户认证</h2><p>认证方案很多，比如 Cookie/Session 在某些环境下仍然可行、也可以使用基于 Token 和 OAuth 或者 JWT，甚至是自己实现基于 Token 的认证方式。</p>
+<ol>
+<li>基于 Cookie/Session 的认证方案<br>采用传统的 Cookie/Session 认证方案并非不可行，只不过有一些限制。如果前端部分和后端部分同源，比如页面发布在 **<a target="_blank" rel="noopener" href="http://domain.name/**%EF%BC%8C%E8%80%8C">http://domain.name/**，而</a> Web API 发布在 **<a target="_blank" rel="noopener" href="http://domain.name/api/**%EF%BC%8C%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E5%8E%9F%E6%9D%A5%E7%9A%84%E4%B8%80%E4%BD%93%E5%BC%8F">http://domain.name/api/**，这种情况下，原来的一体式</a> Web 方案所采用的 Cookie/Session 方案可以直接迁移过来，毫无压力。但是如果前面发布和 API 发布不同源，这种方法处理起来就复杂了。</li>
+</ol>
+<p>然后一般前后端分离的开发方式，不管是开发阶段还是发布阶段，不同源的可能性占绝大比例，所以认证方案通常会使用与 Cookie 无关的方案。</p>
+<ol start="2">
+<li><p>基于 OAuth 的认证方案<br>目前各大网站的开放式接口都是 SOA 架构，如果把这些开放式接口看作提供服务方（服务端），而把使用这些开放式接口的应用看作客户端，那么就可以产生这样一种和前后分离对应的关系：</p>
+<p> 前端 ⇌ 客户端</p>
+<pre><code> ⇣
+</code></pre>
+<p> 基于 OAuth 的认证）</p>
+<pre><code> ⇡ 
+</code></pre>
+<p> 后端 ⇌ 服务端<br>所以，开放式接口广泛使用的 OAuth 方案用于前后分离是可行的，但在具体实施上却并不是那么容易。尤其是在安全性上，由于前端是完全暴露在外的，与 OAuth 通常实施的环境（后端⇌服务端）相比，要注意的是首次认证不是使用已注册的 AppID 和 AppToken，而是使用用户名和密码。</p>
+</li>
+<li><p>基于 Token/JWT 的认证方案</p>
+</li>
+</ol>
+<p>虽然这个方案放在最后，但这个方案却是目前前后端分离最适合的方案。基于 Token 的认证方案，各种讨论由来已久，而 JWT 是相对较为成熟，也得到多数人认可的一种。从 jwt.io 上可以找到各种技术栈的 JWT 实现，应用起来也比较方便。话虽如此，JWT 方案和以前使用的 Cookie/Session 在处理上还是有较大的差别，需要一定的学习成本。有人担心 JWT 的数据量太大。这确实是一个问题，但是硬件并不贵，4G 也开始进入不限流量阶段，一般应用中不用太在意这个问题。</p>
+<h1 id="前后分离的测试"><a href="#前后分离的测试" class="headerlink" title="前后分离的测试"></a>前后分离的测试</h1><p>前后分离之后，前端的测试将以用户体验测试和集成测试为主，而后端则主要是进行单元测试和 Web API 接口测试。与一体化的 Web 应用相比，多了一层接口测试，这一层测试可以完全自动化，一旦完成测试开发，就能在很大程度上控制住业务处理和数据错误。这样一来，集成测试的工作量会相对单一也容易得多。</p>
+<p>前端测试的工作相对来说减轻不了多少，前后分离之后的前端部分承担了原来的集成测试工作。但是在假设 Web API 正确的情况下进行集成测试，工作量是可以减轻不少的，用例可以只关注前端体验性的问题，比如呈现是否正确，跳转是否正确，用户的操作步骤是否符合要求以及提示信息是否准确等等。</p>
+<p>对于用户输入有效性验证这部分工作在项目时间紧迫的情况下甚至都可以完全抛给 Web API 去处理。不管是否前后端分离，Web 开发中都有一个共识：永远不要相信前端！既然后端必须保证数据的安全性和有效性，那么前端省略这一步骤并不会对后端造成什么实质性的威胁，最多只是用户体验差一点。但是，如果前后端都要做数据有效性验证，那一定要严格按照文档来进行，不然很容易出现前后端数据验证不一致的情况（这不是前后分离的问题，一体化架构同样存在这个问题）。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总的来说，前后分离所带来的好处还是很明显的。但是具体实施的时候需要一个全新的思考方式，而不是基于原有一体化 Web 开发方式来进行思考。前后分离的开放方式将开发人员从复杂的技术组合中解放出来，大家都可以更专注于自己擅长的领域来进行开发，但同时也对前后端团队的沟通交流提出了更高的要求，前后端团队必须要一同设计出相对稳定的 Web API 接口（这部分工作其实不管是否前后端分离都是少不了的，只是前后分离的架构对此要求更高，更明确地要求接口不只存在于人的记忆中，更要文档化、持久化）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/14/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" data-id="ckw8thukh002be4d828r6f95y" data-title="前后端分离" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ngnix/">Ngnix</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ajax/">ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css2-1/">css2.1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/funny/">funny</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memory/">memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/storage/">storage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue2-x/">vue2.x</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/tags/%E5%AF%BC%E8%88%AA/" style="font-size: 10px;">导航</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/">软件的兼容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/">webpack异步加载组件原理.md</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">组件的按需加载</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

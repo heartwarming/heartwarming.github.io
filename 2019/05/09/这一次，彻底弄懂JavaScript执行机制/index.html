@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>这一次，彻底弄懂JavaScript执行机制 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="这一次，彻底弄懂 JavaScript 执行机制因为javascript是一门单线程语言，所以我们可以得出结论：  javascript是按照语句出现的顺序执行的  所以我们以为js都是这样的： 12345const a &#x3D; &amp;#x27;1&amp;#x27;;console.log(a);const b &#x3D; &amp;#x27;2&amp;#x27;;console.log(b); 然而实际上js是这样的： 12345">
+<meta property="og:type" content="article">
+<meta property="og:title" content="这一次，彻底弄懂JavaScript执行机制">
+<meta property="og:url" content="http://example.com/2019/05/09/%E8%BF%99%E4%B8%80%E6%AC%A1%EF%BC%8C%E5%BD%BB%E5%BA%95%E5%BC%84%E6%87%82JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="这一次，彻底弄懂 JavaScript 执行机制因为javascript是一门单线程语言，所以我们可以得出结论：  javascript是按照语句出现的顺序执行的  所以我们以为js都是这样的： 12345const a &#x3D; &amp;#x27;1&amp;#x27;;console.log(a);const b &#x3D; &amp;#x27;2&amp;#x27;;console.log(b); 然而实际上js是这样的： 12345">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/el_01.png">
+<meta property="og:image" content="http://example.com/images/el_02.png">
+<meta property="article:published_time" content="2019-05-09T11:06:45.000Z">
+<meta property="article:modified_time" content="2020-11-27T06:47:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="导航">
+<meta property="article:tag" content="分享">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/el_01.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-这一次，彻底弄懂JavaScript执行机制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/05/09/%E8%BF%99%E4%B8%80%E6%AC%A1%EF%BC%8C%E5%BD%BB%E5%BA%95%E5%BC%84%E6%87%82JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/" class="article-date">
+  <time class="dt-published" datetime="2019-05-09T11:06:45.000Z" itemprop="datePublished">2019-05-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      这一次，彻底弄懂JavaScript执行机制
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="这一次，彻底弄懂-JavaScript-执行机制"><a href="#这一次，彻底弄懂-JavaScript-执行机制" class="headerlink" title="这一次，彻底弄懂 JavaScript 执行机制"></a>这一次，彻底弄懂 JavaScript 执行机制</h1><p>因为javascript是一门单线程语言，所以我们可以得出结论：</p>
+<ul>
+<li>javascript是按照语句出现的顺序执行的</li>
+</ul>
+<p>所以我们以为js都是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = &#x27;1&#x27;;</span><br><span class="line">console.log(a);</span><br><span class="line"></span><br><span class="line">const b = &#x27;2&#x27;;</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure>
+<p>然而实际上js是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span><br><span class="line">    console.log(&#x27;定时器开始啦&#x27;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(&#x27;代码执行结束&#x27;);</span><br></pre></td></tr></table></figure>
+<p>依照js是按照语句出现的顺序执行这个理念，我自信的写下输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//&quot;定时器开始啦&quot;</span><br><span class="line">//&quot;代码执行结束&quot;</span><br></pre></td></tr></table></figure>
+<p>去chrome上验证下，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//&quot;代码执行结束&quot;</span><br><span class="line">//&quot;定时器开始啦&quot;</span><br></pre></td></tr></table></figure>
+<p>结果是这样的,瞬间懵了，说好的一行一行执行的呢？<br>这回我们真的要彻底弄明白javascript的执行机制了。</p>
+<h2 id="为什么JavaScript是单线程？"><a href="#为什么JavaScript是单线程？" class="headerlink" title="为什么JavaScript是单线程？"></a>为什么JavaScript是单线程？</h2><p>JavaScript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。那么，为什么JavaScript不能有多个线程呢？这样能提高效率啊。</p>
+<p>JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？</p>
+<p>所以，为了避免复杂性，从一诞生，JavaScript就是单线程，这已经成了这门语言的核心特征，将来也不会改变。</p>
+<p>为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质。</p>
+<h2 id="javascript事件循环"><a href="#javascript事件循环" class="headerlink" title="javascript事件循环"></a>javascript事件循环</h2><p>既然js是单线程，那就像只有一个窗口的银行，客户需要排队一个一个办理业务，同理js任务也要一个一个顺序执行。如果一个任务耗时过长，那么后一个任务也必须等着。那么问题来了，假如我们想浏览新闻，但是新闻包含的超清图片加载很慢，难道我们的网页要一直卡着直到图片完全显示出来？因此聪明的程序员将任务分为两类：</p>
+<ul>
+<li>同步任务</li>
+<li>异步任务</li>
+</ul>
+<p>当我们打开网站时，网页的渲染过程就是一大堆同步任务，比如页面骨架和页面元素的渲染。而像加载图片音乐之类占用资源大耗时久的任务，就是异步任务。关于这部分有严格的文字定义，但本文的目的是用最小的学习成本彻底弄懂执行机制，所以我们用导图来说明：<br><img src="/images/el_01.png"><br>导图要表达的内容用文字来表述的话：</p>
+<ul>
+<li>同步和异步任务分别进入不同的执行”场所”，同步的进入主线程，异步的进入Event Table并注册函数。</li>
+<li>当指定的事情完成时，Event Table会将这个函数移入Event Queue。</li>
+<li>主线程内的任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程执行。</li>
+<li>上述过程会不断重复，也就是常说的Event Loop(事件循环)。</li>
+</ul>
+<p>我们不禁要问了，那怎么知道主线程执行栈为空啊？js引擎存在monitoring process进程，会持续不断的检查主线程执行栈是否为空，一旦为空，就会去Event Queue那里检查是否有等待被调用的函数。<br>说了这么多文字，不如直接一段代码更直白：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const data = [];</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url:www.javascript.com,</span><br><span class="line">    data:data,</span><br><span class="line">    success:() =&gt; &#123;</span><br><span class="line">        console.log(&#x27;发送成功!&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(&#x27;代码执行结束&#x27;);</span><br></pre></td></tr></table></figure>
+<p>上面是一段简易的ajax请求代码：</p>
+<ul>
+<li>ajax进入Event Table，注册回调函数success。</li>
+<li>执行console.log(‘代码执行结束’)。</li>
+<li>ajax事件完成，回调函数success进入Event Queue。</li>
+<li>主线程从Event Queue读取回调函数success并执行。</li>
+</ul>
+<p>相信通过上面的文字和代码，你已经对js的执行顺序有了初步了解。接下来我们来研究进阶话题：setTimeout。</p>
+<h2 id="又爱又恨的setTimeout"><a href="#又爱又恨的setTimeout" class="headerlink" title="又爱又恨的setTimeout"></a>又爱又恨的setTimeout</h2><p>大名鼎鼎的setTimeout无需再多言，大家对他的第一印象就是异步可以延时执行，我们经常这么实现延时3秒执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    console.log(&#x27;延时3秒&#x27;);</span><br><span class="line">&#125;,3000)</span><br></pre></td></tr></table></figure>
+<p>渐渐的setTimeout用的地方多了，问题也出现了，有时候明明写的延时3秒，实际却5，6秒才执行函数，这又咋回事啊？<br>先看一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    task();</span><br><span class="line">&#125;,3000)</span><br><span class="line">console.log(&#x27;执行console&#x27;);</span><br></pre></td></tr></table></figure>
+<p>根据前面我们的结论，setTimeout是异步的，应该先执行console.log这个同步任务，所以我们的结论是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//执行console</span><br><span class="line">//task()</span><br></pre></td></tr></table></figure>
+<p>去验证一下，结果正确！然后我们修改一下前面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    task()</span><br><span class="line">&#125;,3000)</span><br><span class="line"></span><br><span class="line">sleep(10000000)</span><br></pre></td></tr></table></figure>
+<p>乍一看其实差不多嘛，但我们把这段代码在chrome执行一下，却发现控制台执行task()需要的时间远远超过3秒，说好的延时三秒，为啥现在需要这么长时间啊？<br>这时候我们需要重新理解setTimeout的定义。我们先说上述代码是怎么执行的：</p>
+<ul>
+<li>task()进入Event Table并注册,计时开始。</li>
+<li>执行sleep函数，很慢，非常慢，计时仍在继续。</li>
+<li>3秒到了，计时事件timeout完成，task()进入Event Queue，但是sleep也太慢了吧，还没执行完，只好等着。</li>
+<li>sleep终于执行完了，task()终于从Event Queue进入了主线程执行。</li>
+</ul>
+<p>上述的流程走完，我们知道setTimeout这个函数，是经过指定时间后，把要执行的任务(本例中为task())加入到Event Queue中，又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间远远大于3秒。<br>我们还经常遇到setTimeout(fn,0)这样的代码，0秒后执行又是什么意思呢？是不是可以立即执行呢？<br>答案是不会的，setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少秒了，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行。举例说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//代码1</span><br><span class="line">console.log(&#x27;先执行这里&#x27;);</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    console.log(&#x27;执行啦&#x27;)</span><br><span class="line">&#125;,0);复制代码//代码2</span><br><span class="line">console.log(&#x27;先执行这里&#x27;);</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    console.log(&#x27;执行啦&#x27;)</span><br><span class="line">&#125;,3000);</span><br></pre></td></tr></table></figure>
+<p>代码1的输出结果是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//先执行这里</span><br><span class="line">//执行啦复制代码代码2的输出结果是：</span><br><span class="line">//先执行这里</span><br><span class="line">// ... 3s later</span><br><span class="line">// 执行啦</span><br></pre></td></tr></table></figure>
+<p>关于setTimeout要补充的是，即便主线程为空，0毫秒实际上也是达不到的。根据HTML的标准，最低是4毫秒。有兴趣的同学可以自行了解。</p>
+<h2 id="又恨又爱的setInterval"><a href="#又恨又爱的setInterval" class="headerlink" title="又恨又爱的setInterval"></a>又恨又爱的setInterval</h2><p>上面说完了setTimeout，当然不能错过它的孪生兄弟setInterval。他俩差不多，只不过后者是循环的执行。对于执行顺序来说，setInterval会每隔指定的时间将注册的函数置入Event Queue，如果前面的任务耗时太久，那么同样需要等待。<br>唯一需要注意的一点是，对于setInterval(fn,ms)来说，我们已经知道不是每过ms秒会执行一次fn，而是每过ms秒，会有fn进入Event Queue。一旦setInterval的回调函数fn执行时间超过了延迟时间ms，那么就完全看不出来有时间间隔了。这句话请读者仔细品味。</p>
+<h2 id="Promise与process-nextTick-callback"><a href="#Promise与process-nextTick-callback" class="headerlink" title="Promise与process.nextTick(callback)"></a>Promise与process.nextTick(callback)</h2><p>传统的定时器我们已经研究过了，接着我们探究Promise与process.nextTick(callback)的表现。<br>Promise的定义和功能本文不再赘述，不了解的读者可以学习一下阮一峰老师的Promise。而process.nextTick(callback)类似node.js版的”setTimeout”，在事件循环的下一次循环中调用 callback 回调函数。<br>我们进入正题，除了广义的同步任务和异步任务，我们对任务有更精细的定义：</p>
+<ul>
+<li>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval</li>
+<li>micro-task(微任务)：Promise，process.nextTick</li>
+</ul>
+<p>不同类型的任务会进入对应的Event Queue，比如setTimeout和setInterval会进入相同的Event Queue。<br>事件循环的顺序，决定js代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。听起来有点绕，我们用文章最开始的一段代码说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&#x27;setTimeout&#x27;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Promise(function(resolve) &#123;</span><br><span class="line">    console.log(&#x27;promise&#x27;);</span><br><span class="line">&#125;).then(function() &#123;</span><br><span class="line">    console.log(&#x27;then&#x27;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(&#x27;console&#x27;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这段代码作为宏任务，进入主线程。</li>
+<li>先遇到setTimeout，那么将其回调函数注册后分发到宏任务Event Queue。(注册过程与上同，下文不再描述)</li>
+<li>接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。</li>
+<li>遇到console.log()，立即执行。</li>
+<li>好啦，整体代码script作为第一个宏任务执行结束，看看有哪些微任务？我们发现了then在微任务Event Queue里面，执行。</li>
+<li>ok，第一轮事件循环结束了，我们开始第二轮循环，当然要从宏任务Event Queue开始。我们发现了宏任务Event Queue中setTimeout对应的回调函数，立即执行。</li>
+<li>结束。</li>
+</ul>
+<p>事件循环，宏任务，微任务的关系如图所示：</p>
+<p><img src="/images/el_02.png"></p>
+<p>我们来分析一段较复杂的代码，看看你是否真的掌握了js的执行机制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;1&#x27;);</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&#x27;2&#x27;);</span><br><span class="line">    process.nextTick(function() &#123;</span><br><span class="line">        console.log(&#x27;3&#x27;);</span><br><span class="line">    &#125;)</span><br><span class="line">    new Promise(function(resolve) &#123;</span><br><span class="line">        console.log(&#x27;4&#x27;);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(function() &#123;</span><br><span class="line">        console.log(&#x27;5&#x27;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">process.nextTick(function() &#123;</span><br><span class="line">    console.log(&#x27;6&#x27;);</span><br><span class="line">&#125;)</span><br><span class="line">new Promise(function(resolve) &#123;</span><br><span class="line">    console.log(&#x27;7&#x27;);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(function() &#123;</span><br><span class="line">    console.log(&#x27;8&#x27;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&#x27;9&#x27;);</span><br><span class="line">    process.nextTick(function() &#123;</span><br><span class="line">        console.log(&#x27;10&#x27;);</span><br><span class="line">    &#125;)</span><br><span class="line">    new Promise(function(resolve) &#123;</span><br><span class="line">        console.log(&#x27;11&#x27;);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(function() &#123;</span><br><span class="line">        console.log(&#x27;12&#x27;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>第一轮事件循环流程分析如下：</p>
+<ul>
+<li>整体script作为第一个宏任务进入主线程，遇到console.log，输出1。</li>
+<li>遇到setTimeout，其回调函数被分发到宏任务Event Queue中。我们暂且记为setTimeout1。</li>
+<li>遇到process.nextTick()，其回调函数被分发到微任务Event Queue中。我们记为process1。</li>
+<li>遇到Promise，new Promise直接执行，输出7。then被分发到微任务Event Queue中。我们记为then1。</li>
+<li>又遇到了setTimeout，其回调函数被分发到宏任务Event Queue中，我们记为setTimeout2。</li>
+</ul>
+<p><strong>宏任务Event Queue</strong></p>
+<ul>
+<li>setTimeout1</li>
+<li>process1</li>
+</ul>
+<p><strong>微任务Event Queue</strong></p>
+<ul>
+<li>setTimeout2</li>
+<li>then1</li>
+</ul>
+<p>上面是第一轮事件循环宏任务结束时各Event Queue的情况，此时已经输出了1和7。</p>
+<p>我们发现了process1和then1两个微任务。</p>
+<ul>
+<li>执行process1,输出6。</li>
+<li>执行then1，输出8。</li>
+</ul>
+<p>好了，第一轮事件循环正式结束，这一轮的结果是输出1，7，6，8。那么第二轮时间循环从setTimeout1宏任务开始：</p>
+<ul>
+<li>首先输出2。接下来遇到了process.nextTick()，同样将其分发到微任务Event Queue中，记为process2。new Promise立即执行输出4，then也分发到微任务Event Queue中，记为then2。</li>
+</ul>
+<p><strong>宏任务Event Queue</strong></p>
+<ul>
+<li>setTimeout2</li>
+</ul>
+<p><strong>微任务Event Queue</strong></p>
+<ul>
+<li><p>process2</p>
+</li>
+<li><p>then2</p>
+</li>
+<li><p>第二轮事件循环宏任务结束，我们发现有process2和then2两个微任务可以执行。</p>
+</li>
+<li><p>输出3。</p>
+</li>
+<li><p>输出5。</p>
+</li>
+<li><p>第二轮事件循环结束，第二轮输出2，4，3，5。</p>
+</li>
+<li><p>第三轮事件循环开始，此时只剩setTimeout2了，执行。</p>
+</li>
+<li><p>直接输出9。</p>
+</li>
+<li><p>将process.nextTick()分发到微任务Event Queue中。记为process3。</p>
+</li>
+<li><p>直接执行new Promise，输出11。</p>
+</li>
+<li><p>将then分发到微任务Event Queue中，记为then3。</p>
+</li>
+</ul>
+<p><strong>宏任务Event Queue</strong></p>
+<ul>
+<li>无</li>
+</ul>
+<p><strong>微任务Event Queue</strong></p>
+<ul>
+<li><p>process3</p>
+</li>
+<li><p>then3</p>
+</li>
+<li><p>第三轮事件循环宏任务执行结束，执行两个微任务process3和then3。</p>
+</li>
+<li><p>输出10。</p>
+</li>
+<li><p>输出12。</p>
+</li>
+<li><p>第三轮事件循环结束，第三轮输出9，11，10，12。</p>
+</li>
+</ul>
+<p>整段代码，共进行了三次事件循环，完整的输出为1，7，6，8，2，4，3，5，9，11，10，12。</p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>Tips: js执行和运行是有很大区别的</p>
+<ul>
+<li>javascript在不同的环境下，比如node，浏览器，Ringo等等，执行方式是不同的。</li>
+<li>运行大多指javascript解析引擎，是统一的。</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.im/post/59e85eebf265da430d571f89">https://juejin.im/post/59e85eebf265da430d571f89</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/05/09/%E8%BF%99%E4%B8%80%E6%AC%A1%EF%BC%8C%E5%BD%BB%E5%BA%95%E5%BC%84%E6%87%82JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/" data-id="ckw8thul3004ye4d80pn1628i" data-title="这一次，彻底弄懂JavaScript执行机制" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/10/%E6%B7%B1%EF%BC%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          深，浅拷贝
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/08/%E4%BD%BF%E7%94%A8Atomics%E9%81%BF%E5%85%8DSharedArrayBuffers%E4%B8%AD%E7%9A%84%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用Atomics避免SharedArrayBuffers中的竞争条件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ngnix/">Ngnix</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ajax/">ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css2-1/">css2.1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/funny/">funny</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memory/">memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/storage/">storage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue2-x/">vue2.x</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/tags/%E5%AF%BC%E8%88%AA/" style="font-size: 10px;">导航</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/">软件的兼容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/">webpack异步加载组件原理.md</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">组件的按需加载</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

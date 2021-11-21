@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>JavaScript语言编程规范(ES6) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本篇博文参考Airbnb规范制定,有错误或不当请您务必指出  代码风格导出的默认函数使用驼峰命名、文件名与函数完全一致。1234function makeStyleGuide()&amp;#123;&amp;#125;export default makeStyleGuide;  导出单例、函数库、空对象时使用帕斯卡式命名（帕斯卡式命名法是在命名的时候将首字母大写, 如： DisplayInfo）。1234co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript语言编程规范(ES6)">
+<meta property="og:url" content="http://example.com/2019/05/14/JavaScript%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83(ES6)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本篇博文参考Airbnb规范制定,有错误或不当请您务必指出  代码风格导出的默认函数使用驼峰命名、文件名与函数完全一致。1234function makeStyleGuide()&amp;#123;&amp;#125;export default makeStyleGuide;  导出单例、函数库、空对象时使用帕斯卡式命名（帕斯卡式命名法是在命名的时候将首字母大写, 如： DisplayInfo）。1234co">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-05-13T23:20:13.000Z">
+<meta property="article:modified_time" content="2020-11-27T06:47:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="导航">
+<meta property="article:tag" content="分享">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript语言编程规范(ES6)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/05/14/JavaScript%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83(ES6)/" class="article-date">
+  <time class="dt-published" datetime="2019-05-13T23:20:13.000Z" itemprop="datePublished">2019-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      JavaScript语言编程规范(ES6)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本篇博文参考Airbnb规范制定,有错误或不当请您务必指出</p>
+</blockquote>
+<h1 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h1><h2 id="导出的默认函数使用驼峰命名、文件名与函数完全一致。"><a href="#导出的默认函数使用驼峰命名、文件名与函数完全一致。" class="headerlink" title="导出的默认函数使用驼峰命名、文件名与函数完全一致。"></a>导出的默认函数使用驼峰命名、文件名与函数完全一致。</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function makeStyleGuide()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">export default makeStyleGuide;</span><br></pre></td></tr></table></figure>
+
+<h2 id="导出单例、函数库、空对象时使用帕斯卡式命名（帕斯卡式命名法是在命名的时候将首字母大写-如：-DisplayInfo）。"><a href="#导出单例、函数库、空对象时使用帕斯卡式命名（帕斯卡式命名法是在命名的时候将首字母大写-如：-DisplayInfo）。" class="headerlink" title="导出单例、函数库、空对象时使用帕斯卡式命名（帕斯卡式命名法是在命名的时候将首字母大写, 如： DisplayInfo）。"></a>导出单例、函数库、空对象时使用帕斯卡式命名（帕斯卡式命名法是在命名的时候将首字母大写, 如： DisplayInfo）。</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const AirbnbStyleGuide = &#123;</span><br><span class="line">    es6: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">export default AirbnbStyleGuide</span><br></pre></td></tr></table></figure>
+
+<h1 id="类型和变量"><a href="#类型和变量" class="headerlink" title="类型和变量"></a>类型和变量</h1><h2 id="变星必须显式声明作用域"><a href="#变星必须显式声明作用域" class="headerlink" title="变星必须显式声明作用域"></a>变星必须显式声明作用域</h2><ul>
+<li>var =&gt; 用于声明全局变量或函数级变量</li>
+<li>let  =&gt; 用于声明块级的局部变量</li>
+<li>const =&gt; 声明块级域的只读局部变量。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const names = [];</span><br><span class="line">names.push(&#x27;john&#x27;);</span><br><span class="line">console.log(names);</span><br><span class="line">// 变量名字在内存中的指针不能够改变， 但是指向这个变量的值可能改变。</span><br><span class="line">name = [] // ERROR</span><br><span class="line">&#123;</span><br><span class="line">    let name;</span><br><span class="line">    name = &#x27;tom&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在ES6中， const代表一个值的“常量索引”， 换句话说， 变量名字在内存中的指针不能够改变， 但是指向这个变量的值可能改变。</p>
+<h2 id="尽量对所有的引用使用const，-不要使用var。-如果你一定需要使用可变动的引用，-使用let代替var。"><a href="#尽量对所有的引用使用const，-不要使用var。-如果你一定需要使用可变动的引用，-使用let代替var。" class="headerlink" title="尽量对所有的引用使用const， 不要使用var。 如果你一定需要使用可变动的引用， 使用let代替var。"></a>尽量对所有的引用使用const， 不要使用var。 如果你一定需要使用可变动的引用， 使用let代替var。</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a=1;</span><br><span class="line">var count=1;</span><br><span class="line">if(true)&#123;</span><br><span class="line">    count+=1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a=1;</span><br><span class="line">let count=1;</span><br><span class="line">if(true)&#123;</span><br><span class="line">    count+=1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：const和let的作用域更小， 写代码更容易控制。 const可确保无法对引用重新赋值， const引用的指针不变， 重新赋值会报错， 避免不小心的重新赋值给覆盖了。</p>
+<h2 id="将所有的const和let分组-并隔行"><a href="#将所有的const和let分组-并隔行" class="headerlink" title="将所有的const和let分组,并隔行"></a>将所有的const和let分组,并隔行</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let i;</span><br><span class="line">const items=[];</span><br><span class="line">let d;</span><br><span class="line">const flag=true;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const flag=true;</span><br><span class="line">const items=[];</span><br><span class="line"></span><br><span class="line">let i;</span><br><span class="line">let d;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在需要的地方给变量-赋值，-但请把它们放在一个合理的位置。"><a href="#在需要的地方给变量-赋值，-但请把它们放在一个合理的位置。" class="headerlink" title="在需要的地方给变量 赋值， 但请把它们放在一个合理的位置。"></a>在需要的地方给变量 赋值， 但请把它们放在一个合理的位置。</h2><p>说明：let和const是作用域而不是函数作用域， 不用担心变量定义会被前移导致问题， 把变量的赋值和调用代码放在一起会使逻辑更加清晰， 可读性更好。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function(name)&#123;</span><br><span class="line">    const name=getName();</span><br><span class="line">    if(name)&#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setName(name);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function(name)&#123;</span><br><span class="line">    if(name)&#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    const name=getName();</span><br><span class="line">    this.setName(name);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="对象和引用"><a href="#对象和引用" class="headerlink" title="对象和引用"></a>对象和引用</h1><h2 id="创建有动态属性名的对象时，-尽量在一个地方定义对象的所有属性。"><a href="#创建有动态属性名的对象时，-尽量在一个地方定义对象的所有属性。" class="headerlink" title="创建有动态属性名的对象时， 尽量在一个地方定义对象的所有属性。"></a>创建有动态属性名的对象时， 尽量在一个地方定义对象的所有属性。</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const obj=&#123;</span><br><span class="line">    id:&#x27;aadadadaffaxvv&#x27;,</span><br><span class="line">    name:&#x27;zhangsan&#x27;,</span><br><span class="line">&#125;</span><br><span class="line">obj[getKey(&#x27;enabled&#x27;)]=true;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const obj=&#123;</span><br><span class="line">    id:&#x27;aadadadaffaxvv&#x27;,</span><br><span class="line">    name:&#x27;zhangsan&#x27;,</span><br><span class="line">    obj[getKey(&#x27;enabled&#x27;)]:true,</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用对象方法的简写。"><a href="#使用对象方法的简写。" class="headerlink" title="使用对象方法的简写。"></a>使用对象方法的简写。</h2><p>说明：ES6中， 对象字面量被增强了， 写法更加简洁与灵活， 同时在定义对象的时候， 能够做的事件更多了。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const atom = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    addValue:function(value) &#123;</span><br><span class="line">        return atom.value + value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const atom = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    addValue(value) &#123;</span><br><span class="line">        return atom.value + value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用对象属性的简写"><a href="#使用对象属性的简写" class="headerlink" title="使用对象属性的简写"></a>使用对象属性的简写</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  a: a,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    a,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="使用扩展运算符-…-复制数组"><a href="#使用扩展运算符-…-复制数组" class="headerlink" title="使用扩展运算符 … 复制数组"></a>使用扩展运算符 … 复制数组</h2><p>扩展运算符可以减少赋值语句的使用， 或者减少通过下标访问数组或对象的方式， 使用代码更加简洁优雅， 可读性更佳。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const len = items.length;</span><br><span class="line">const itemsCopy = [];</span><br><span class="line"></span><br><span class="line">let i;</span><br><span class="line">for(i=0; i&lt;len; i++) &#123;</span><br><span class="line">  itemsCopy[i] = items[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const itemsCopy = [...items];</span><br></pre></td></tr></table></figure>
+
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><h2 id="使用-来访问对象的属性，-只有属性是动态的时候使用-。"><a href="#使用-来访问对象的属性，-只有属性是动态的时候使用-。" class="headerlink" title="使用 . 来访问对象的属性， 只有属性是动态的时候使用 []。"></a>使用 . 来访问对象的属性， 只有属性是动态的时候使用 []。</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const key=getKey();</span><br><span class="line">const props=obj[key];</span><br></pre></td></tr></table></figure>
+
+<h1 id="逗号、分号"><a href="#逗号、分号" class="headerlink" title="逗号、分号"></a>逗号、分号</h1><h2 id="逗号写在行尾，-并且增加结尾的逗号。"><a href="#逗号写在行尾，-并且增加结尾的逗号。" class="headerlink" title="逗号写在行尾， 并且增加结尾的逗号。"></a>逗号写在行尾， 并且增加结尾的逗号。</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  firstName: &#x27;Dana&#x27;,</span><br><span class="line">  lastName: &#x27;Scally&#x27;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  firstName: &#x27;Dana&#x27;,</span><br><span class="line">  lastName: Scally&#x27;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用分号，-以分号作为语句的结束符。"><a href="#使用分号，-以分号作为语句的结束符。" class="headerlink" title="使用分号， 以分号作为语句的结束符。"></a>使用分号， 以分号作为语句的结束符。</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">;(()=&gt;&#123;</span><br><span class="line">    const name=&#x27;a&#x27;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="使用函数声明代替函数表达式"><a href="#使用函数声明代替函数表达式" class="headerlink" title="使用函数声明代替函数表达式"></a>使用函数声明代替函数表达式</h2><p>说明：因为函数声明是可命名的， 所以他们在调用栈中更容易被识别。 此外， 函数声明会把整个函数提升， 而函数表达式只会把函数引用的变量名提升。 这条规则使得箭头函数可以取代函数表达式。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const function = foo()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="不要使用arguments-可以选择rest语法-…-替代。"><a href="#不要使用arguments-可以选择rest语法-…-替代。" class="headerlink" title="不要使用arguments, 可以选择rest语法 … 替代。"></a>不要使用arguments, 可以选择rest语法 … 替代。</h2><p>说明：使用 … 能明确你要传入的参数， 另外， rest语法参数是一个真正的数组， 而arguments是一个类数组。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function concatenateAll() &#123;</span><br><span class="line">  const args = Array.prototype.slice.call(arguments);</span><br><span class="line">  return args.join(&#x27; &#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function concatenateAll(...args) &#123;</span><br><span class="line">  return args.join(&#x27; &#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="直接给函数的参数指定默认值，-不要使用一个变化的函数参数。"><a href="#直接给函数的参数指定默认值，-不要使用一个变化的函数参数。" class="headerlink" title="直接给函数的参数指定默认值， 不要使用一个变化的函数参数。"></a>直接给函数的参数指定默认值， 不要使用一个变化的函数参数。</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function handle(opts=&#123;&#125;)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="直接给函数参数赋值时，-需要避免副作用。"><a href="#直接给函数参数赋值时，-需要避免副作用。" class="headerlink" title="直接给函数参数赋值时， 需要避免副作用。"></a>直接给函数参数赋值时， 需要避免副作用。</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var b=1;</span><br><span class="line">function count(a=b++)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">count();//1</span><br><span class="line">count();//2</span><br></pre></td></tr></table></figure>
+
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><h2 id="使用大括号包裹所有的多行代码块。"><a href="#使用大括号包裹所有的多行代码块。" class="headerlink" title="使用大括号包裹所有的多行代码块。"></a>使用大括号包裹所有的多行代码块。</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(true) </span><br><span class="line">    return false;</span><br><span class="line"></span><br><span class="line">function ()&#123; return false &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if(true) return false;</span><br><span class="line">if(true) &#123;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function ()&#123; </span><br><span class="line">    return false </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>如果通过if和else使用多行代码块， 把else放在if代码块关闭括号的同一行。</li>
+</ol>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(arg) &#123;</span><br><span class="line">  return arg;</span><br><span class="line">&#125; </span><br><span class="line">else &#123;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(arg) &#123;</span><br><span class="line">  return arg;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><h2 id="代码中总是使用ES6标准的模块（import-export-方式，-而不是使用非标准的模块加载器。"><a href="#代码中总是使用ES6标准的模块（import-export-方式，-而不是使用非标准的模块加载器。" class="headerlink" title="代码中总是使用ES6标准的模块（import/export)方式， 而不是使用非标准的模块加载器。"></a>代码中总是使用ES6标准的模块（import/export)方式， 而不是使用非标准的模块加载器。</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const AirbnbStyleGuide=require(&#x27;./AirbnbStyleGuide&#x27;);</span><br><span class="line">moudle.exports=AirbnbStyleGuide.es6;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import AirbnbStyleGuide from &#x27;/AirbnbStyleGuide&#x27;;</span><br><span class="line">export default AirbnbStyleGuide.es6;</span><br></pre></td></tr></table></figure>
+
+<p><strong>更好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123; es6 &#125; from &#x27;/AirbnbStyleGuide&#x27;;</span><br><span class="line">export default es6;</span><br></pre></td></tr></table></figure>
+
+<h2 id="不要使用通配符-的import-。"><a href="#不要使用通配符-的import-。" class="headerlink" title="不要使用通配符 *的import 。"></a>不要使用通配符 *的import 。</h2><p>说明：这样可以确保被import的模块只有一个默认的export项。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import * as AirbnbStyleGuide from &#x27;/AirbnbStyleGuide&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import AirbnbStyleGuide from &#x27;/AirbnbStyleGuide&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="不要从import中直接export"><a href="#不要从import中直接export" class="headerlink" title="不要从import中直接export."></a>不要从import中直接export.</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export &#123;es6 as defaults&#125; from &#x27;./ablier.js&#x27;; </span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123;es6&#125; from &#x27;./ablier.js&#x27;;</span><br><span class="line">export default es6;</span><br></pre></td></tr></table></figure>
+
+<h2 id="如果你的文件只输出一个类，-那你的文件名必须和类名完全保持一致。"><a href="#如果你的文件只输出一个类，-那你的文件名必须和类名完全保持一致。" class="headerlink" title="如果你的文件只输出一个类， 那你的文件名必须和类名完全保持一致。"></a>如果你的文件只输出一个类， 那你的文件名必须和类名完全保持一致。</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import CheckBox from &#x27;./CheckBox&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><h2 id="别保存this的引用，-使用箭头函数或Function-bind。"><a href="#别保存this的引用，-使用箭头函数或Function-bind。" class="headerlink" title="别保存this的引用， 使用箭头函数或Function.bind。"></a>别保存this的引用， 使用箭头函数或Function.bind。</h2><p>说明：箭头函数提供了更简洁的语法， 并且箭头函数中的this对象指向是不变的， this绑定到定义时所在的对象。 通常情况下， 这是我们想要的， 有很好的代码可读性， 而保存this对象的使用方式， 会让开发人员搞混。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    const self=this;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        console.log(self)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function foo()&#123;</span><br><span class="line">    const that=this;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        console.log(that)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    return () =&gt;&#123;</span><br><span class="line">        console.log(this)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="当你必须使用函数表达式（或传递一个匿名函数）时，-使用箭头函数。"><a href="#当你必须使用函数表达式（或传递一个匿名函数）时，-使用箭头函数。" class="headerlink" title="当你必须使用函数表达式（或传递一个匿名函数）时， 使用箭头函数。"></a>当你必须使用函数表达式（或传递一个匿名函数）时， 使用箭头函数。</h2><p>说明：箭头函数创造了一个新的this执行环境。 通常情况下， 能满足你的需求， 而且这样的写更为简洁。 如果你有一个相当复杂的函数， 那么可以把逻辑部分转移到一个函数声明上。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3].map(function(x) &#123;</span><br><span class="line">  return x * x;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3].map( (x) =&gt; &#123;</span><br><span class="line">    return x * x;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="如果一个函数适用一行写出并且只有一个参数，-那就把花括号、圆括号和return都省略掉，-如果不是，-那就不要省略。"><a href="#如果一个函数适用一行写出并且只有一个参数，-那就把花括号、圆括号和return都省略掉，-如果不是，-那就不要省略。" class="headerlink" title="如果一个函数适用一行写出并且只有一个参数， 那就把花括号、圆括号和return都省略掉， 如果不是， 那就不要省略。"></a>如果一个函数适用一行写出并且只有一个参数， 那就把花括号、圆括号和return都省略掉， 如果不是， 那就不要省略。</h2><p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3].map( x =&gt; x * x;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[1, 2, 3].reduce((total,n)=&gt;&#123;</span><br><span class="line">    return total+n;</span><br><span class="line">&#125;, 0)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h1><h2 id="采用class关键字定义类"><a href="#采用class关键字定义类" class="headerlink" title="采用class关键字定义类"></a>采用class关键字定义类</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Queue(contents=[]&#123;</span><br><span class="line">    this._queue=[...contents];</span><br><span class="line">&#125;)</span><br><span class="line">Queue.prototype.pop=function()&#123;</span><br><span class="line">    const value=this._queue[0];</span><br><span class="line">    this.queue.splice(0,1);</span><br><span class="line">    return value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Queue&#123;</span><br><span class="line">    constructor(contents=[])&#123;</span><br><span class="line">        this._queue=[...contents];</span><br><span class="line">    &#125;</span><br><span class="line">    pop()&#123;</span><br><span class="line">        const value=this._queue[0];</span><br><span class="line">        this.queue.splice(0,1);</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="采用extends关键字实现继承。"><a href="#采用extends关键字实现继承。" class="headerlink" title="采用extends关键字实现继承。"></a>采用extends关键字实现继承。</h2><p>说明：因为extends是内建的继承方式， 并不会破坏instanceof原型检查。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const inherits=require(&#x27;inherits&#x27;);</span><br><span class="line">function peekableQueue(contents)&#123;</span><br><span class="line">    Queue.apply(this, contents)</span><br><span class="line">&#125;</span><br><span class="line">inherits(peekableQueue, Queue);</span><br><span class="line">peekableQueue.prototype.peek=function()&#123;</span><br><span class="line">    return this._queue[0];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class peekableQueue extends Queue&#123;</span><br><span class="line">   peek()&#123;</span><br><span class="line">       return this._queue[0];</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h1><h2 id="使用解构存取和使用多属性对象。"><a href="#使用解构存取和使用多属性对象。" class="headerlink" title="使用解构存取和使用多属性对象。"></a>使用解构存取和使用多属性对象。</h2><p>说明：ES6允许按照一定的模式， 从数组和对象中提取值、对变量进行赋值， 这称之为解构， 解构赋值避免了临时变量或对象， 给JavaScript书写带来了很大的便利性， 同时也提高了代码的可读性。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function getFullName (user) &#123;</span><br><span class="line">  const firstName = user.firstName;</span><br><span class="line">  const lastName = user.lastName;</span><br><span class="line">  return  `$&#123;firstName&#125; $&#123;lastName&#125;`;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function getFullName (&#123;firstName, lastName&#125;) &#123;</span><br><span class="line">  return `$&#123;firstName&#125; $&#123;lastName&#125;`;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="将数组成员赋值给变量时，-使用数组解析。"><a href="#将数组成员赋值给变量时，-使用数组解析。" class="headerlink" title="将数组成员赋值给变量时， 使用数组解析。"></a>将数组成员赋值给变量时， 使用数组解析。</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1,2,3]</span><br><span class="line">const first=arr[0];</span><br><span class="line">const second=arr[1];</span><br></pre></td></tr></table></figure>
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [first, second]=arr;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="需要回传多个值时，-使用对象解构，-而不是数组解构。"><a href="#需要回传多个值时，-使用对象解构，-而不是数组解构。" class="headerlink" title="需要回传多个值时， 使用对象解构， 而不是数组解构。"></a>需要回传多个值时， 使用对象解构， 而不是数组解构。</h2><p>说明：对象解构在增加属性或改变排序时， 无需改变调用时的位置。</p>
+<p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function input(inputType)&#123;</span><br><span class="line">    return [left, right, top, bottom]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 调用时候考虑回调函数顺序</span><br><span class="line">const [left, _, top]=input(inputType);</span><br></pre></td></tr></table></figure>
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 调用时候只选择需要的数据</span><br><span class="line">const [left, top]=input(inputType);</span><br></pre></td></tr></table></figure>
+
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h2 id="长度超过80的字符串应该使用字符串连接换行。"><a href="#长度超过80的字符串应该使用字符串连接换行。" class="headerlink" title="长度超过80的字符串应该使用字符串连接换行。"></a>长度超过80的字符串应该使用字符串连接换行。</h2><h2 id="构建字符串时，-使用字符串模板而不是字符串连接。"><a href="#构建字符串时，-使用字符串模板而不是字符串连接。" class="headerlink" title="构建字符串时， 使用字符串模板而不是字符串连接。"></a>构建字符串时， 使用字符串模板而不是字符串连接。</h2><p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function sayHi(name) &#123;</span><br><span class="line">  return `How are you, $&#123;name&#125;`;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组遍历采用for-of-对象遍历采用for-in。"><a href="#数组遍历采用for-of-对象遍历采用for-in。" class="headerlink" title="数组遍历采用for/of, 对象遍历采用for/in。"></a>数组遍历采用for/of, 对象遍历采用for/in。</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">let sum = 0;</span><br><span class="line">for (let num in arr) &#123;</span><br><span class="line">  sum += num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">let sum = 0;</span><br><span class="line">for (let num of arr) &#123;</span><br><span class="line">  sum += num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="存取器"><a href="#存取器" class="headerlink" title="存取器"></a>存取器</h1><h2 id="属性的存取函数不是必须的，-如果需要存储函数使用get方法和set方法。-如果属性是布尔值，-存取函数是isVal-或hasVal-。"><a href="#属性的存取函数不是必须的，-如果需要存储函数使用get方法和set方法。-如果属性是布尔值，-存取函数是isVal-或hasVal-。" class="headerlink" title="属性的存取函数不是必须的， 如果需要存储函数使用get方法和set方法。 如果属性是布尔值， 存取函数是isVal()或hasVal()。"></a>属性的存取函数不是必须的， 如果需要存储函数使用get方法和set方法。 如果属性是布尔值， 存取函数是isVal()或hasVal()。</h2><p><strong>不好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dragon.age();</span><br><span class="line">dragon.age(25);</span><br><span class="line">if (!dragon.age()) &#123;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dragon.getAge();</span><br><span class="line">dragon.setAge(25);</span><br><span class="line">if (!dragon.getAge()) &#123;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建get-和set-函数要保持一致。"><a href="#创建get-和set-函数要保持一致。" class="headerlink" title="创建get()和set()函数要保持一致。"></a>创建get()和set()函数要保持一致。</h2><p><strong>好</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Demo &#123;</span><br><span class="line">  constructor (options = &#123;&#125;) &#123;</span><br><span class="line">      const lightsaber = options.lightsaber || &#x27;blue&#x27;;</span><br><span class="line">      this.set(&#x27;lightsaber&#x27;, lightsaber);</span><br><span class="line">  &#125;</span><br><span class="line">  set (key, val) &#123;</span><br><span class="line">    this[key] = val;</span><br><span class="line">  &#125;</span><br><span class="line">  get (key) &#123;</span><br><span class="line">    return this[key];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/05/14/JavaScript%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83(ES6)/" data-id="ckw8thujc0008e4d8gtcphoog" data-title="JavaScript语言编程规范(ES6)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20React%20JS%20%E4%B8%AD%E7%9A%84%20setState/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          深入理解 React JS 中的 setState
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/13/React-UI/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">React-UI</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ngnix/">Ngnix</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ajax/">ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css2-1/">css2.1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/funny/">funny</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memory/">memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/storage/">storage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue2-x/">vue2.x</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/tags/%E5%AF%BC%E8%88%AA/" style="font-size: 10px;">导航</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/">软件的兼容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/">webpack异步加载组件原理.md</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">组件的按需加载</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

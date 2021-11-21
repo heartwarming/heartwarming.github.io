@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>使用Atomics避免SharedArrayBuffers中的竞争条件 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识： 内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 [使用Atomics避免SharedArrayBuffers中的竞争条件]  使用Atomics避免SharedArrayBuffers中的竞争条件在上一部分中，我谈到了使用SharedArrayBuffers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Atomics避免SharedArrayBuffers中的竞争条件">
+<meta property="og:url" content="http://example.com/2019/05/08/%E4%BD%BF%E7%94%A8Atomics%E9%81%BF%E5%85%8DSharedArrayBuffers%E4%B8%AD%E7%9A%84%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识： 内存管理的速成课程 ArrayBuffers和SharedArrayBuffers的介绍 [使用Atomics避免SharedArrayBuffers中的竞争条件]  使用Atomics避免SharedArrayBuffers中的竞争条件在上一部分中，我谈到了使用SharedArrayBuffers">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/memory_28.png">
+<meta property="og:image" content="http://example.com/images/memory_29.png">
+<meta property="og:image" content="http://example.com/images/memory_30.png">
+<meta property="og:image" content="http://example.com/images/memory_31.png">
+<meta property="og:image" content="http://example.com/images/memory_32.png">
+<meta property="og:image" content="http://example.com/images/memory_33.png">
+<meta property="og:image" content="http://example.com/images/memory_34.png">
+<meta property="og:image" content="http://example.com/images/memory_35.png">
+<meta property="og:image" content="http://example.com/images/memory_36.png">
+<meta property="og:image" content="http://example.com/images/memory_37.png">
+<meta property="og:image" content="http://example.com/images/memory_38.png">
+<meta property="og:image" content="http://example.com/images/memory_39.png">
+<meta property="og:image" content="http://example.com/images/memory_40.png">
+<meta property="og:image" content="http://example.com/images/memory_41.png">
+<meta property="og:image" content="http://example.com/images/memory_42.png">
+<meta property="og:image" content="http://example.com/images/memory_43.png">
+<meta property="og:image" content="http://example.com/images/memory_44.png">
+<meta property="og:image" content="http://example.com/images/memory_45.png">
+<meta property="og:image" content="http://example.com/images/memory_46.png">
+<meta property="og:image" content="http://example.com/images/memory_47.png">
+<meta property="og:image" content="http://example.com/images/memory_48.png">
+<meta property="og:image" content="http://example.com/images/memory_49.png">
+<meta property="og:image" content="http://example.com/images/memory_50.png">
+<meta property="og:image" content="http://example.com/images/memory_51.png">
+<meta property="og:image" content="http://example.com/images/memory_52.png">
+<meta property="og:image" content="http://example.com/images/memory_53.png">
+<meta property="og:image" content="http://example.com/images/memory_54.png">
+<meta property="og:image" content="http://example.com/images/memory_55.png">
+<meta property="og:image" content="http://example.com/images/memory_56.png">
+<meta property="article:published_time" content="2019-05-08T14:55:45.000Z">
+<meta property="article:modified_time" content="2020-11-27T06:47:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="导航">
+<meta property="article:tag" content="分享">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/memory_28.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-使用Atomics避免SharedArrayBuffers中的竞争条件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/05/08/%E4%BD%BF%E7%94%A8Atomics%E9%81%BF%E5%85%8DSharedArrayBuffers%E4%B8%AD%E7%9A%84%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2019-05-08T14:55:45.000Z" itemprop="datePublished">2019-05-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/memory/">memory</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      使用Atomics避免SharedArrayBuffers中的竞争条件
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："><a href="#关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：" class="headerlink" title="关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识："></a>关于ECMAScript2017特性SharedArrayBuffer和atomics的背景知识：</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%861/#more">内存管理的速成课程</a></li>
+<li><a target="_blank" rel="noopener" href="https://heartwarming.github.io/heartwarming.github.io/2019/05/07/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%862/#more">ArrayBuffers和SharedArrayBuffers的介绍</a></li>
+<li>[使用Atomics避免SharedArrayBuffers中的竞争条件]</li>
+</ul>
+<h2 id="使用Atomics避免SharedArrayBuffers中的竞争条件"><a href="#使用Atomics避免SharedArrayBuffers中的竞争条件" class="headerlink" title="使用Atomics避免SharedArrayBuffers中的竞争条件"></a>使用Atomics避免SharedArrayBuffers中的竞争条件</h2><p>在上一部分中，我谈到了使用SharedArrayBuffers如何导致竞争条件。这使得使用SharedArrayBuffers变得困难。我们不希望应用程序开发人员直接使用SharedArrayBuffers。</p>
+<p>但是，具有其他语言多线程编程经验的库开发人员可以使用这些新的低级API来创建更高级别的工具。然后，应用程序开发人员可以直接使用这些工具而无需触及SharedArrayBuffers或Atomics。</p>
+<p><img src="/images/memory_28.png"></p>
+<p>即使您可能不应该直接使用SharedArrayBuffers和Atomics，我认为了解它们的工作原理仍然很有趣。因此，在本文中，我将解释并发可以带来什么样的竞争条件，以及Atomics如何帮助库避免它们。</p>
+<p>但首先，什么是竞争条件？</p>
+<p><img src="/images/memory_29.png"></p>
+<p>比赛条件：您可能已经看过的一个例子<br>当你有一个在两个线程之间共享的变量时，就会发生一个非常简单的竞争条件示例。假设一个线程想要加载一个文件而另一个线程检查它是否存在。他们共享一个变量fileExists，进行沟通。</p>
+<p>最初，fileExists设置为false。</p>
+<p><img src="/images/memory_30.png"></p>
+<p>只要线程2中的代码首先运行，就会加载该文件。</p>
+<p><img src="/images/memory_31.png"></p>
+<p>但是如果线程1中的代码首先运行，那么它将向用户记录一个错误，说该文件不存在。</p>
+<p><img src="/images/memory_32.png"></p>
+<p>但那不是问题。这不是文件不存在。真正的问题是竞争条件。</p>
+<p>许多JavaScript开发人员都遇到过这种竞争条件，即使在单线程代码中也是如此。你不必了解多线程的任何信息，看看为什么这是一场比赛。</p>
+<p>但是，有些种类的竞争条件在单线程代码中是不可能的，但是当您使用多个线程编程并且这些线程共享内存时可能会发生这种情况。</p>
+<p><strong>不同类别的竞争条件以及Atomics如何提供帮助</strong><br>让我们探讨一下您可以在多线程代码中使用的各种竞争条件以及Atomics如何帮助防止它们。这并未涵盖所有可能的竞争条件，但应该让您知道为什么API提供它所执行的方法。</p>
+<p>在我们开始之前，我想再说一遍：你不应该直接使用Atomics。编写多线程代码是一个众所周知的难题。相反，您应该使用可靠的库来处理多线程代码中的共享内存。</p>
+<p><img src="/images/memory_33.png"></p>
+<p>随着那个…</p>
+<p>单次操作中的比赛条件<br>假设您有两个线程正在递增相同的变量。您可能认为无论哪个线程首先出现，最终结果都是相同的。</p>
+<p><img src="/images/memory_34.png"></p>
+<p>但即使在源代码中，递增变量看起来像一个操作，当您查看已编译的代码时，它不是单个操作。</p>
+<p>在CPU级别，递增值需要三条指令。这是因为计算机具有长期记忆和短期记忆。（我在另一部分中更多地讨论了这一切是如何工作的）。</p>
+<p><img src="/images/memory_35.png"></p>
+<p>所有线程共享长期记忆。但短期内存 - 寄存器 - 不在线程之间共享。</p>
+<p>每个线程都需要将内存中的值拉入其短期内存中。之后，它可以在短期记忆中对该值进行计算。然后它将该值从其短期记忆中写回到长期记忆中。</p>
+<p><img src="/images/memory_36.png"></p>
+<p>如果线程1中的所有操作首先发生，然后线程2中的所有操作都发生，我们将得到我们想要的结果。</p>
+<p><img src="/images/memory_37.png"></p>
+<p>但是如果它们在时间上交错，则线程2拉入其寄存器的值与内存中的值不同步。这意味着线程2不考虑线程1的计算。相反，它只是破坏了线程1用自己的值写入内存的值。</p>
+<p><img src="/images/memory_38.png"></p>
+<p>原子操作所做的一件事是将人类认为是单个操作的这些操作，但计算机视为多个操作，并使计算机将它们视为单个操作。</p>
+<p>这就是他们被称为原子操作的原因。这是因为他们采取的操作通常会有多个指令 - 指令可以暂停和恢复 - 并且它使得它们看起来都是瞬间发生的，就像它是一条指令一样。它就像一个不可分割的原子。</p>
+<p><img src="/images/memory_39.png"></p>
+<p>使用原子操作，递增的代码看起来会有所不同。</p>
+<p><img src="/images/memory_40.png"></p>
+<p>现在我们正在使用Atomics.add，增加变量所涉及的不同步骤不会在线程之间混淆。相反，一个线程将完成其原子操作并阻止另一个线程启动。然后另一个将开始自己的原子操作。</p>
+<p><img src="/images/memory_41.png"></p>
+<p>有助于避免这种竞争的原子方法是：</p>
+<ul>
+<li>Atomics.add</li>
+<li>Atomics.sub</li>
+<li>Atomics.and</li>
+<li>Atomics.or</li>
+<li>Atomics.xor</li>
+<li>Atomics.exchange</li>
+</ul>
+<p>您会注意到此列表相当有限。它甚至不包括除法和乘法之类的东西。但是，库开发人员可以为其他事情创建类似原子的操作。</p>
+<p>为此，开发人员将使用Atomics.compareExchange。这样，您可以从SharedArrayBuffer获取一个值，对其执行操作，并且如果您第一次检查后没有其他线程更新它，则只将其写回SharedArrayBuffer。如果另一个线程已更新它，那么您可以获取该新值并再试一次。</p>
+<p><strong>多个操作的竞争条件</strong><br>因此，这些原子操作有助于在“单一操作”期间避免竞争条件。但有时您希望更改对象上的多个值（使用多个操作）并确保没有其他人同时对该对象进行更改。基本上，这意味着在对象的每次更改过程中，该对象都处于锁定状态，并且其他线程无法访问。</p>
+<p>Atomics对象不提供任何直接处理此工具的工具。但它确实提供了图书馆作者可以用来处理这个问题的工具。库作者可以创建的是锁。</p>
+<p><img src="/images/memory_42.png"></p>
+<p>如果代码想要使用锁定数据，则必须获取数据锁。然后它可以使用锁来锁定其他线程。只有在锁定处于活动状态时才能访问或更新数据。</p>
+<p>要构建锁，库作者将使用Atomics.wait和Atomics.wake，以及其他诸如Atomics.compareExchange和Atomics.store。如果您想了解这些是如何工作的，请看一下这个基本的锁实现。</p>
+<p>在这种情况下，线程2将获取数据的锁定并将值设置locked为true。这意味着在线程2解锁之前，线程1无法访问数据。</p>
+<p><img src="/images/memory_43.png"></p>
+<p>如果线程1需要访问数据，它将尝试获取锁。但由于锁已经在使用，它不能。然后线程将等待 - 因此它将被阻止 - 直到锁可用。</p>
+<p><img src="/images/memory_44.png"></p>
+<p>一旦线程2完成，它将调用解锁。锁将通知一个或多个等待线程它现在可用。</p>
+<p><img src="/images/memory_45.png"></p>
+<p>然后该线程可以挖出锁并锁定数据供自己使用。</p>
+<p><img src="/images/memory_46.png"></p>
+<p>锁库将在Atomics对象上使用许多不同的方法，但对于此用例最重要的方法是：</p>
+<ul>
+<li>Atomics.wait</li>
+<li>Atomics.wake</li>
+</ul>
+<p><strong>指令重新排序引起的竞争条件</strong><br>Atomics会解决第三个同步问题。这个可能令人惊讶。</p>
+<p>您可能没有意识到这一点，但是您编写的代码很可能没有按照您期望的顺序运行。编译器和CPU都重新排序代码以使其运行得更快。</p>
+<p>例如，假设您已经编写了一些代码来计算总计。您想在计算完成时设置标志。</p>
+<p><img src="/images/memory_47.png"></p>
+<p>为了编译它，我们需要决定每个变量使用哪个寄存器。然后我们可以将源代码翻译成机器的指令。</p>
+<p><img src="/images/memory_48.png"></p>
+<p>到目前为止，一切都如预期。</p>
+<p>如果您不了解计算机在芯片级别的工作方式（以及它们用于执行代码工作的管道如何），那么我们的代码中的第2行需要等待一段时间才能执行，这一点并不明显。</p>
+<p>大多数计算机将执行指令的过程分解为多个步骤。这可以确保CPU的所有不同部分始终处于忙碌状态，因此可以充分利用CPU。</p>
+<p>以下是指令执行步骤的一个示例：</p>
+<ul>
+<li>从内存中获取下一条指令</li>
+<li>弄清楚指令告诉我们做什么（也就是解码指令），并从寄存器中获取值</li>
+<li>执行指令</li>
+<li>将结果写回寄存器</li>
+</ul>
+<p><img src="/images/memory_49.png"></p>
+<p><img src="/images/memory_50.png"></p>
+<p><img src="/images/memory_51.png"></p>
+<p><img src="/images/memory_52.png"></p>
+<p>这就是一条指令通过管道的方式。理想情况下，我们希望在它之后直接跟随第二条指令。一旦进入第2阶段，我们想要获取下一条指令。</p>
+<p>问题是指令＃1和指令＃2之间存在依赖关系。</p>
+<p><img src="/images/memory_53.png"></p>
+<p>我们可以暂停CPU直到指令＃1 subTotal在寄存器中更新。但这会减慢事情的速度。</p>
+<p>为了提高效率，许多编译器和CPU将做的是重新排序代码。他们将寻找不使用其他指令subTotal或total与这两条线之间搬完英寸</p>
+<p><img src="/images/memory_54.png"></p>
+<p>这样可以保持稳定的指令流在管道中移动。</p>
+<p>因为第3行不依赖于第1行或第2行中的任何值，所以编译器或CPU认为像这样重新排序是安全的。当你在一个线程中运行时，无论如何，在整个函数完成之前，其他任何代码都不会看到这些值。</p>
+<p>但是当你在另一个处理器上同时运行另一个线程时，情况并非如此。另一个线程不必等到函数完成才能看到这些更改。几乎只要它们被写回内存就可以看到它们。所以它可以告诉它isDone在总计之前设定。</p>
+<p>如果你使用isDone的total是已经计算好并且准备在另一个线程中使用的标志，那么这种重新排序会产生竞争条件。</p>
+<p>Atomics试图解决其中的一些错误。当您使用Atomic写入时，就像在代码的两个部分之间放置一个栅栏。</p>
+<p>原子操作不会相对于彼此重新排序，并且其他操作不会在它们周围移动。特别是，通常用于强制排序的两个操作是：</p>
+<ul>
+<li>Atomics.load</li>
+<li>Atomics.store</li>
+</ul>
+<p>Atomics.store函数源代码中的所有变量更新都保证在将Atomics.store其值写回内存之前完成。即使非原子指令相对于彼此重新排序，它们也不会移动到Atomics.store源代码中的下面的调用之下。</p>
+<p>并且Atomics.load在函数之后的所有变量加载都保证在Atomics.load获取其值之后完成。同样，即使非原子指令被重新排序，它们也不会被移动Atomics.load到源代码中位于它们之上的指令之上。</p>
+<p><img src="/images/memory_55.png"></p>
+<p>注意：我在这里展示的while循环称为自旋锁，效率非常低。如果它在主线程上，它可以使您的应用程序停止。你几乎肯定不想在实际代码中使用它。</p>
+<p>再一次，这些方法并不真正意味着直接在应用程序代码中使用。相反，库会使用它们来创建锁。</p>
+<p><strong>结论</strong><br>编程共享内存的多个线程很难。有许多不同种类的竞争条件等着你绊倒你。</p>
+<p><img src="/images/memory_56.png"></p>
+<p>这就是您不希望直接在应用程序代码中使用SharedArrayBuffers和Atomics的原因。相反，您应该依赖于具有多线程经验并且花时间研究内存模型的开发人员经过验证的库。</p>
+<p>SharedArrayBuffer和Atomics仍处于早期阶段。那些图书馆尚未创建。但是这些新的API提供了构建的基础。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/05/08/%E4%BD%BF%E7%94%A8Atomics%E9%81%BF%E5%85%8DSharedArrayBuffers%E4%B8%AD%E7%9A%84%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6/" data-id="ckw8thukd0022e4d8hfix5ot1" data-title="使用Atomics避免SharedArrayBuffers中的竞争条件" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/09/%E8%BF%99%E4%B8%80%E6%AC%A1%EF%BC%8C%E5%BD%BB%E5%BA%95%E5%BC%84%E6%87%82JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          这一次，彻底弄懂JavaScript执行机制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/08/ArrayBuffers%E5%92%8CSharedArrayBuffers%E7%9A%84%E4%BB%8B%E7%BB%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ArrayBuffers和SharedArrayBuffers的介绍</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ngnix/">Ngnix</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ajax/">ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css2-1/">css2.1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/funny/">funny</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memory/">memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/storage/">storage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue2-x/">vue2.x</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag">导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/tags/%E5%AF%BC%E8%88%AA/" style="font-size: 10px;">导航</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%BC%E5%AE%B9/">软件的兼容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/webpack%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E5%8E%9F%E7%90%86/">webpack异步加载组件原理.md</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">组件的按需加载</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
